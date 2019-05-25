@@ -1,0 +1,19 @@
+.navbar-brand
+{
+    font-family: 'Major Mono Display', monospace;
+    font-size: 1.5em;
+    font-weight: 600;
+}
+
+.navbar{
+    box-shadow: 0px 0.5px 0.5px 0px lightgrey;
+}
+
+a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited {
+    text-decoration: none;
+}
+
+hr
+{
+    box-shadow: 0px 2px 4px 0px rgba(204,204,204,1);
+}
