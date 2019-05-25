@@ -148,38 +148,46 @@
 		$msg_erreur .= " - rechargement incorrect";
 	}
 
+	/*
+	*
+	*	CONTENU
+	*
+	*/
+
 	if(!$erreur)
 	{
 		if(!$rechargement_filtre)
 		{
-			$html .= "<fieldset>
+			?>
+			<fieldset>
 				<div id=\"div_filtre_recherche\">
 					<label>Rechercher un média : </label>
 					<input id=\"input_filtre_recherche\" type=\"text\" name=\"test\"></input>
 					<button onClick=\"charge_catalogue()\">Image loupe</button>
 				</div>
-				<div id=\"div_filtre_type\">";
+				<div id=\"div_filtre_type\">
 
-			$requete_types_medias = "select *
-			from TypeMedia";
-			//$types_medias = requete_tableau($requete_types_medias);
-			$types_medias[0] = "Livre";
-			$types_medias[1] = "CD";
-			$types_medias[2] = "DVD";
-			$types_medias[3] = "Revue";
+			<?php
+				$requete_types_medias = "select *
+				from TypeMedia";
+				//$types_medias = requete_tableau($requete_types_medias);
+				$types_medias[0] = "Livre";
+				$types_medias[1] = "CD";
+				$types_medias[2] = "DVD";
+				$types_medias[3] = "Revue";
 
-			foreach($types_medias as $id_media => $type_media)
-			{
-				$html .=
-					"<input onChange=\"charge_catalogue()\" type=\"checkbox\" id=\"input_".$id_media."\" name=\"".strtolower($type_media)."\" ".(in_array($id_media, $filtre_type)?"checked":"").">
-					<label for=\"".strtolower($type_media)."\">".$type_media."</label>";
-			}
-			$html .= "
-					</div>
-				</fieldset>
-				</br>
-				<fieldset>
-					<div id=\"tableau_catalogue\">";
+				foreach($types_medias as $id_media => $type_media)
+				{
+					echobr("<input onChange=\"charge_catalogue()\" type=\"checkbox\" id=\"input_".$id_media."\" name=\"".strtolower($type_media)."\" ".(in_array($id_media, $filtre_type)?"checked":"").">
+					<label for=\"".strtolower($type_media)."\">".$type_media."</label>");
+				}
+			?>
+				</div>
+			</fieldset>
+			</br>
+			<fieldset>
+				<div id=\"tableau_catalogue\">
+			<?php
 		}
 		$requete_medias = "select *
 		from Média m";
@@ -223,7 +231,7 @@
 			"prix" => 5,
 			"type" => "DVD",
 		];
-		$html .= "
+		?>
 			<table>
 			    <thead>
 			        <tr>
@@ -235,28 +243,27 @@
 			            <th>Action</th>
 			        </tr>
 			    </thead>
-			    <tbody>";
-
+			    <tbody>
+		<?php
 		foreach($medias as $id_media => $media)
 		{
-			$html .= "<tr>
+			echobr("<tr>
 				<td>".$media["id"]."</td>
 				<td>".$media["titre"]."</td>
 				<td>".$media["nb_exemplaire"]."</td>
 				<td>".$media["prix"]."</td>
 				<td>".$media["type"]."</td>
 				<td onClick=reserveMedia(\"".$id_media."\")>Réserver</td>
-			</tr>";
+			</tr>");
 		}
-
-		$html .= "
+		?>
 			    </tbody>
-			</table>";
+			</table>
+		<?php
 		if(!$rechargement_filtre)
 		{
-			$html .= "</div></fieldset>";
+			echobr("</div></fieldset>");
 		}
-		echobr($html);
 	}
 	else
 		echobr($msg_erreur);
