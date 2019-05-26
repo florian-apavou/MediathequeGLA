@@ -99,7 +99,7 @@
     foreach($commentaires as $commentaire)
     {
       $html .= "<tr>
-        <td>".$commentaire['prenom']." ".$commentaire['prenom']."</td>
+        <td>".$commentaire['prenom']." ".$commentaire['nom']."</td>
         <td>".$commentaire['commentaire']."</td>
         <td>".$commentaire['note']."/5</td>
       </tr>";
