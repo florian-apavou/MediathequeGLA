@@ -93,62 +93,61 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
               <td>
                 <div>
                 <span id="span_titre"><?= $media["titre"]?></span>
-                <?php
-                if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
-                echo "
-                <input id=\"input_titre\" value=\"".$media["titre"]."\" hidden></input>
-                <i id=\"pen_titre\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre')\"></i>
-                <i id=\"check_titre\" class=\"fas fa-check\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre'); modifie_titre('".$id_media."')\" hidden></i>";
-                ?>
+
                 </div>
               </td>
+              <?php
+              if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
+              echo "
+              <td><input id=\"input_titre\" value=\"".$media["titre"]."\" hidden></input>
+              <i id=\"pen_titre\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre')\"></i>
+              <i id=\"check_titre\" class=\"fas fa-check\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre'); modifie_titre('".$id_media."')\" hidden></i></td>";
+              ?>
             </tr>
             <tr>
               <th scope="row">Auteur</th>
               <td>
                 <div>
                 <span id="span_auteur"><?= $media["auteur"]?></span>
-                <?php
-                if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
-                echo "
-                <input id=\"input_auteur\" value=\"".$media["auteur"]."\" hidden></input>
-                <i id=\"pen_auteur\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur')\"></i>
-                <i id=\"check_auteur\" class=\"fas fa-check\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur'); modifie_auteur('".$id_media."')\" hidden></i>";
-                ?>
                 </div>
               </td>
+              <?php
+              if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
+              echo "
+              <td><input id=\"input_auteur\" value=\"".$media["auteur"]."\" hidden></input>
+              <i id=\"pen_auteur\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur')\"></i>
+              <i id=\"check_auteur\" class=\"fas fa-check\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur'); modifie_auteur('".$id_media."')\" hidden></i></td>";
+              ?>
             </tr>
             <tr>
               <th scope="row">Prix</th>
               <td>
                 <div>
-                <span id="span_prix"><?= $media["prix"]?></span>
-                <?php
-                if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
-                echo "
-                <input type=\"number\" id=\"input_prix\" value=\"".$media["prix"]."\" hidden></input><span> euros</span>
-                <i id=\"pen_prix\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix')\"></i>
-                <i id=\"check_prix\" class=\"fas fa-check\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix'); modifie_prix('".$id_media."')\" hidden></i>";
-                else
-                echo "<span> euros</span>";
-                ?>
+                <span id="span_prix"><?= $media["prix"]?> euros</span>
                 </div>
               </td>
+              <?php
+              if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
+              echo "
+              <td><input type=\"number\" id=\"input_prix\" value=\"".$media["prix"]."\" hidden></input>
+              <i id=\"pen_prix\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix')\"></i>
+              <i id=\"check_prix\" class=\"fas fa-check\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix'); modifie_prix('".$id_media."')\" hidden></i></td>";
+              ?>
             </tr>
             <tr>
               <th scope="row">Nombre d'exemplaire restant </th>
               <td>
                 <div>
                 <span id="span_nb_exemplaire"><?= $media["nb_exemplaire"]?></span>
-                <?php
-                if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
-                echo "
-                <input type=\"number\" id=\"input_nb_exemplaire\" value=\"".$media["nb_exemplaire"]."\" hidden></input>
-                <i id=\"pen_nb_exemplaire\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire')\"></i>
-                <i id=\"check_nb_exemplaire\" class=\"fas fa-check\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire'); modifie_nb_exemplaire('".$id_media."')\" hidden></i>";
-                ?>
                 </div>
               </td>
+              <?php
+              if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
+              echo "
+              <td><input type=\"number\" id=\"input_nb_exemplaire\" value=\"".$media["nb_exemplaire"]."\" hidden></input>
+              <i id=\"pen_nb_exemplaire\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire')\"></i>
+              <i id=\"check_nb_exemplaire\" class=\"fas fa-check\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire'); modifie_nb_exemplaire('".$id_media."')\" hidden></i></td>";
+              ?>
             </tr>
           </tbody>
         </table>
