@@ -37,3 +37,42 @@ function noteCommentaire(note)
 {
 	$("#span_note_commentaire").text(note+"/5");
 }
+
+function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = null)
+{
+	if(id1 != null)
+	{
+		if($("#"+id1).attr("hidden"))
+			$("#"+id1).removeAttr("hidden");
+		else
+			$("#"+id1).attr("hidden", "hidden");
+	}
+	if(id2 != null)
+	{
+		if($("#"+id2).attr("hidden"))
+			$("#"+id2).removeAttr("hidden");
+		else
+			$("#"+id2).attr("hidden", "hidden");
+	}
+	if(id3 != null)
+	{
+		if($("#"+id3).attr("hidden"))
+			$("#"+id3).removeAttr("hidden");
+		else
+			$("#"+id3).attr("hidden", "hidden");
+	}
+	if(id4 != null)
+	{
+		if($("#"+id4).attr("hidden"))
+			$("#"+id4).removeAttr("hidden");
+		else
+			$("#"+id4).attr("hidden", "hidden");
+	}
+	if(id5 != null)
+	{
+		if($("#"+id5).attr("hidden"))
+			$("#"+id5).removeAttr("hidden");
+		else
+			$("#"+id5).attr("hidden", "hidden");
+	}
+}

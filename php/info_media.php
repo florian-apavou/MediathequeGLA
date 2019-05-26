@@ -1,5 +1,9 @@
 <?php
 	include "../php/fonctions.php";
+
+	//Debug :
+	$_SESSION['type_utilisateur'] = "Admin";
+
 	/*
 	*
 	*	GESTION DES VARIABLES ET ERREURS
@@ -79,10 +83,40 @@
       <div>
         <div id=\"div_photo\" class=\"div_25\">".$media['photo']."</div>
         <div id=\"div_attributs\" class=\"div_75\">
+				".($_SESSION['type_utilisateur'] == "Employe" || $_SESSION['type_utilisateur'] == "Admin"?"
+					<label>Auteur&nbsp;:&nbsp;</label>
+					<span id=\"span_auteur_".$id_media."\">".$media['auteur']."</span>
+					<input type=\"text\" id=\"input_auteur_".$id_media."\" value=\"".$media['auteur']."\" hidden></input>
+					<i id=\"pen_auteur_".$id_media."\" class=\"fas fa-pen\" onClick=\"bascule_masque('span_auteur_".$id_media."', 'input_auteur_".$id_media."', 'pen_auteur_".$id_media."', 'check_auteur_".$id_media."');\"></i>
+					<i id=\"check_auteur_".$id_media."\" class=\"fas fa-check\" onClick=\"bascule_masque('span_auteur_".$id_media."', 'input_auteur_".$id_media."', 'pen_auteur_".$id_media."', 'check_auteur_".$id_media."');\" hidden></i>
+					</br>
+
+					<label>Exemplaires&nbsp;libres&nbsp;:&nbsp;</label>
+					<span id=\"span_nb_exemplaire_".$id_media."\">".$media['nb_exemplaire']."</span>
+					<input type=\"text\" id=\"input_nb_exemplaire_".$id_media."\" value=\"".$media['nb_exemplaire']."\" hidden></input>
+					<i id=\"pen_nb_exemplaire_".$id_media."\" class=\"fas fa-pen\" onClick=\"bascule_masque('span_nb_exemplaire_".$id_media."', 'input_nb_exemplaire_".$id_media."', 'pen_nb_exemplaire_".$id_media."', 'check_nb_exemplaire_".$id_media."');\"></i>
+					<i id=\"check_nb_exemplaire_".$id_media."\" class=\"fas fa-check\" onClick=\"bascule_masque('span_nb_exemplaire_".$id_media."', 'input_nb_exemplaire_".$id_media."', 'pen_nb_exemplaire_".$id_media."', 'check_nb_exemplaire_".$id_media."');\" hidden></i>
+					</br>
+
+					<label>Prix&nbsp;:&nbsp;</label>
+					<span id=\"span_prix_".$id_media."\">".$media['prix']."</span>
+					<input type=\"number\" id=\"input_prix_".$id_media."\" value=\"".$media['prix']."\" hidden></input>
+					<i id=\"pen_prix_".$id_media."\" class=\"fas fa-pen\" onClick=\"bascule_masque('span_prix_".$id_media."', 'input_prix_".$id_media."', 'pen_prix_".$id_media."', 'check_prix_".$id_media."');\"></i>
+					<i id=\"check_prix_".$id_media."\" class=\"fas fa-check\" onClick=\"bascule_masque('span_prix_".$id_media."', 'input_prix_".$id_media."', 'pen_prix_".$id_media."', 'check_prix_".$id_media."');\" hidden></i>
+					</br>
+
+					<label>Type&nbsp;:&nbsp;</label>
+					<span id=\"span_type_".$id_media."\">".$media['type']."</span>
+					<input type=\"text\" id=\"input_type_".$id_media."\" value=\"".$media['type']."\" hidden></input>
+					<i id=\"pen_type_".$id_media."\" class=\"fas fa-pen\" onClick=\"bascule_masque('span_type_".$id_media."', 'input_type_".$id_media."', 'pen_type_".$id_media."', 'check_type_".$id_media."');\"></i>
+					<i id=\"check_type_".$id_media."\" class=\"fas fa-check\" onClick=\"bascule_masque('span_type_".$id_media."', 'input_type_".$id_media."', 'pen_type_".$id_media."', 'check_type_".$id_media."');\" hidden></i>
+					</br>"
+					:"
           <label>Auteur&nbsp;:&nbsp;</label>".$media['auteur']."</br>
           <label>Exemplaires&nbsp;libres&nbsp;:&nbsp;</label>".$media['nb_exemplaire']."</br>
           <label>Prix&nbsp;:&nbsp;</label>".$media['prix']."</br>
-          <label>Type&nbsp;:&nbsp;</label>".$media['type']."</br>
+          <label>Type&nbsp;:&nbsp;</label>".$media['type']."</br>"
+					)."
         </div>
       </div>
       </br>
