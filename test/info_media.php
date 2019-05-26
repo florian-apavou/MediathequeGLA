@@ -1,7 +1,3 @@
-<!DOCTYPE html>
-
-<!DOCTYPE html>
-
 <?php
 
 include "../php/fonctions.php";
@@ -29,7 +25,7 @@ if(!$erreur)
 
 //$media = requete_tableau($requete_media)[0];
 $media = [
-  'photo' => "photo",
+  'photo' => "LivreJungle.jpg",
   'titre' => "Le livre de la jungle",
   'auteur' => 'Rudyard Kipling',
   "nb_exemplaire" => 3,
@@ -51,6 +47,7 @@ $commentaires[3] = ["commentaire" => "Moyen","nom" => "Goodenough","prenom" => "
 $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "lheur","prenom" => "Spoï","note" => 1];
 ?>
 
+<!DOCTYPE html>
 <html lang=fr dir="ltr">
 <head>
   <meta charset="utf-8">
@@ -69,28 +66,62 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
   <link rel="stylesheet" href="../css/style.css">
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script>
   $(document).ready(function(){
     $('#content').load("nav.html");
   });
   </script>
+
 </head>
 <body>
 
   <div id="content"></div>
 
   <div class="container">
-
-    <p> Mon Media = <?= $media["titre"] ?></p>
-    <table>
-      <?php
-      foreach($commentaires as $commentaire)
-      {
-        echo "<tr><td>".$commentaire['prenom']." ".$commentaire['nom']."</td><td>".$commentaire['commentaire']."</td><td>".$commentaire['note']."/5</td></tr>";
-      }
-      ?>
-    </table>
+    <div class="row align-items-center">
+      <div class="col-lg-4">
+        <img src="../imgs/<?=$media["photo"]?>" class="img-thumbnail imgFM" alt="Responsive image">
+      </div>
+      <div class="col-lg-6">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th scope="row"><?= $media["type"]?></th>
+              <td><?= $media["titre"]?></td>
+            </tr>
+            <tr>
+              <th scope="row">Auteur</th>
+              <td><?= $media["auteur"]?></td>
+            </tr>
+            <tr>
+              <th scope="row">Prix</th>
+              <td><?= $media["prix"]?> euros</td>
+            </tr>
+            <tr>
+              <th scope="row">Nombre d'exemplaire restant </th>
+              <td><?= $media["nb_exemplaire"]?></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <br>
+    <fieldset>
+      <legend>Commentaires</legend>
+      <table class="table table-striped">
+        <?php
+        foreach($commentaires as $commentaire)
+        {
+          echo "<tr><td>".$commentaire['prenom']." ".$commentaire['nom']."</td><td>".$commentaire['commentaire']."</td><td>".$commentaire['note']."/5</td></tr>";
+        }
+        ?>
+      </table>
+    </fieldset>
   </div>
+
+
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>

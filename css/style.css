@@ -35,3 +35,12 @@ hr
 	float:left;
 	width:75%;
 }
+
+.imgFM{
+  width: 100%;
+  max-width: 300px;
+}
+
+.content-page {
+  padding-left: 7%;
+}
