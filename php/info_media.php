@@ -109,8 +109,7 @@
 			    </tbody>
 			</table>
     </div>
-    </br></br>
-    <label>Ajouter un commentaire :</label>
+    </br>
     <input type=\"text\" id=\"input_commentaire\"></input>
     <button onClick=\"noteCommentaire(1)\">*</button>
     <button onClick=\"noteCommentaire(2)\">*</button>
@@ -118,7 +117,7 @@
     <button onClick=\"noteCommentaire(4)\">*</button>
     <button onClick=\"noteCommentaire(5)\">*</button>&nbsp;
     <span id=\"span_note_commentaire\">5/5</span>
-    <button id=\"button_commentaire\">Ajouter un commentaire</button></br>
+    <button id=\"button_commentaire\">Ajouter un commentaire</button></br></br>
     <button id=\"retour\" onClick=\"charge_conteneur_central('catalogue')\">Fleche + retour au catalogue</button>";
 
     echobr($html);
