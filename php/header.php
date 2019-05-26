@@ -57,7 +57,7 @@ include "../php/includes.php";
 					<!-- Liste des boutons dispo. Ajouter <li> pour plus d'options-->
 					<ul class="nav navbar-nav ml-auto p-2">
 						<li class="bg-nav-inverse">
-							<a href="login.html">
+							<a href="../php/login.php">
 								<i class="fa fa-user-circle"></i>
 								<span> Connexion</span>
 							</a>
