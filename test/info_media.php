@@ -84,7 +84,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
         <img src="../imgs/<?=$media["photo"]?>" class="img-thumbnail imgFM" alt="Responsive image">
       </div>
       <div class="col-lg-6">
-        <h1><?= $media["titre"]?></h1>
+        <h1>Infos Pratiques</h1>
         <br>
         <table class="table table-hover self-align-center">
           <tbody>
