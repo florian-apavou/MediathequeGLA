@@ -76,3 +76,11 @@ function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = nu
 			$("#"+id5).attr("hidden", "hidden");
 	}
 }
+
+function modifie_titre(id)
+{
+	nouvelle_val = $("#input_titre").val();
+	console.log(nouvelle_val);
+	$("#span_titre").text(nouvelle_val);
+	// On sauvegarde dans la bdd
+}

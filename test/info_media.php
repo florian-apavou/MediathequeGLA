@@ -90,19 +90,32 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
           <tbody>
             <tr>
               <th scope="row"><?= $media["type"]?></th>
-              <td><?= $media["titre"]?></td>
+              <td>
+                <div>
+                <span id="span_titre"><?= $media["titre"]?></span>
+                <input id="input_titre" value="<?= $media["titre"]?>" hidden></input>
+                <i id="pen_titre" class="fas fa-pen" onclick="bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre')"></i>
+                <i id="check_titre" class="fas fa-check" onclick="bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre'); modifie_titre('<?=$id_media?>')" hidden></i>
+                </div>
+              </td>
             </tr>
             <tr>
               <th scope="row">Auteur</th>
-              <td><?= $media["auteur"]?></td>
+              <td>
+                <?= $media["auteur"]?>
+              </td>
             </tr>
             <tr>
               <th scope="row">Prix</th>
-              <td><?= $media["prix"]?> euros</td>
+              <td>
+                <?= $media["prix"]?> euros
+              </td>
             </tr>
             <tr>
               <th scope="row">Nombre d'exemplaire restant </th>
-              <td><?= $media["nb_exemplaire"]?></td>
+              <td>
+                <?= $media["nb_exemplaire"]?>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -115,7 +128,10 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
         <?php
         foreach($commentaires as $commentaire)
         {
-          echo "<tr><td>".$commentaire['prenom']." ".$commentaire['nom']."</td><td>".$commentaire['commentaire']."</td><td>".$commentaire['note']."/5</td></tr>";
+          echo "<tr>
+              <td>".$commentaire['prenom']." ".$commentaire['nom']."</td>
+              <td>".$commentaire['commentaire']."</td><td>".$commentaire['note']."/5</td>
+            </tr>";
         }
         ?>
       </table>
