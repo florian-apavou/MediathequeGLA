@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 
-<!DOCTYPE html>
-
 <?php
 
 include "../php/fonctions.php";
