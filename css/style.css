@@ -17,3 +17,21 @@ hr
 {
     box-shadow: 0px 2px 4px 0px rgba(204,204,204,1);
 }
+
+.div_25
+{
+	float:left;
+	width:25%;
+}
+
+.div_50
+{
+	float:left;
+	width:50%;
+}
+
+.div_75
+{
+	float:left;
+	width:75%;
+}

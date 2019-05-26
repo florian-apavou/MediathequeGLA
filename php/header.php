@@ -103,6 +103,3 @@ include "../php/includes.php";
 	</div>
 </div>
 <hr>
-
-</body>
-</html>
