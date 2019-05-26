@@ -172,7 +172,7 @@ $medias[4] = [
                   <div class=\"card-body\">
                     <h5 class=\"card-title\">".$media["titre"]."</h5>
                       <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
-                      <a href=\" \" class=\"btn btn-primary\">Go somewhere</a>
+                      <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
                       </div>
                 </div>";
           echo $html;
