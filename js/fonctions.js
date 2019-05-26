@@ -104,3 +104,8 @@ function modifie_nb_exemplaire(id)
 	$("#span_nb_exemplaire").text(nouvelle_val);
 	// On sauvegarde dans la bdd
 }
+
+function demande_notification(id)
+{
+	// On add dans la bdd
+}

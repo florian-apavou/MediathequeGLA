@@ -28,7 +28,7 @@ $media = [
   'photo' => "LivreJungle.jpg",
   'titre' => "Le livre de la jungle",
   'auteur' => 'Rudyard Kipling',
-  "nb_exemplaire" => 3,
+  "nb_exemplaire" => 0,
   "prix" => 5,
   "type" => "Livre",
 ];
@@ -121,6 +121,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             <tr>
               <th scope="row">Prix</th>
               <td>
+                <div>
                 <span id="span_prix"><?= $media["prix"]?></span>
                 <?php
                 if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
@@ -137,6 +138,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             <tr>
               <th scope="row">Nombre d'exemplaire restant </th>
               <td>
+                <div>
                 <span id="span_nb_exemplaire"><?= $media["nb_exemplaire"]?></span>
                 <?php
                 if($_SESSION['type_utilisateur'] == "Admin" || $_SESSION['type_utilisateur'] == "Employe")
@@ -150,6 +152,13 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             </tr>
           </tbody>
         </table>
+        <?php
+        if($media["nb_exemplaire"] == 0)
+        echo "
+        <div>
+          <button onClick=\"demande_notification('".$id_media."')\">Me notifier en cas de disponibilité</button>
+        </div>";
+        ?>
       </div>
     </div>
     <br>
