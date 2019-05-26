@@ -37,16 +37,12 @@ include "../php/includes.php";
 					<div class="form-group">
 						<div class="input-group">
 							<form method="GET" class="navbar-form" role="search">
-								<input class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Rechercher dans le Catalogue">
+								<input id="recherche_catalogue" class="form-control mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Rechercher dans le Catalogue">
 							</form>
 							<div class="input-group-btn">
-								<button class="btn btn-link btn-search" data-toggle="tooltip" title-data-placement="bottom" data-original-title='Lancer la recherche'>
-									<i class="fa fa-search"></i>
+								<button class="btn btn-link btn-search" data-toggle="tooltip" title-data-placement="bottom" data-original-title='Lancer la recherche' onclick="recherche_catalogue()">
+									<i class="fas fa-search"></i>
 								</button>
-								<a class="btn btn-link" href="#">
-									<i class="fa fa-search-plus"></i>
-									<span class="hidden-sm hidden-xs"> Recherche Avancée</span>
-								</a>
 							</div>
 						</div>
 					</div>

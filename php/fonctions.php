@@ -6,7 +6,7 @@ function requete_tableau($requete, $ligne = null)
 	mysql_select_db('nom_de_la_base',$db);
 	$req = mysql_query($requete) or die('Erreur SQL !<br>'.$requete.'<br>'.mysql_error());
 	$tableau = [];
-	while($data = mysql_fetch_assoc($req)) 
+	while($data = mysql_fetch_assoc($req))
     {
     	if($ligne != null && isset($data[$ligne]))
     	{ // Si une ligne est envoyée en parametre et qu'elle existe, on la met en index
@@ -14,7 +14,7 @@ function requete_tableau($requete, $ligne = null)
     	}
     	else
     		$tableau[] = $data;
-    } 
+    }
 	mysql_close();
 
 	return $tableau;
@@ -26,7 +26,7 @@ function echobr($var_a_afficher)
 	{
 		foreach($var_a_afficher as $id => $affiche)
 		{
-			echobr($affiche."&nbsp;");
+			echobr($id." => ".$affiche."&nbsp;");
 		}
 		echo("</br>");
 	}

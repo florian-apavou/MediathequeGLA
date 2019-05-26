@@ -109,3 +109,11 @@ function demande_notification(id)
 {
 	// On add dans la bdd
 }
+
+function recherche_catalogue()
+{
+	$("#conteneur_central").load("../php/catalogue.php", {
+		filtre_recherche : $("#recherche_catalogue").val(),
+		oui : "non",
+	});
+}
