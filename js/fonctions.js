@@ -80,7 +80,27 @@ function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = nu
 function modifie_titre(id)
 {
 	nouvelle_val = $("#input_titre").val();
-	console.log(nouvelle_val);
 	$("#span_titre").text(nouvelle_val);
+	// On sauvegarde dans la bdd
+}
+
+function modifie_auteur(id)
+{
+	nouvelle_val = $("#input_auteur").val();
+	$("#span_auteur").text(nouvelle_val);
+	// On sauvegarde dans la bdd
+}
+
+function modifie_prix(id)
+{
+	nouvelle_val = $("#input_prix").val();
+	$("#span_prix").text(nouvelle_val);
+	// On sauvegarde dans la bdd
+}
+
+function modifie_nb_exemplaire(id)
+{
+	nouvelle_val = $("#input_nb_exemplaire").val();
+	$("#span_nb_exemplaire").text(nouvelle_val);
 	// On sauvegarde dans la bdd
 }
