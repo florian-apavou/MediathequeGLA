@@ -146,15 +146,18 @@ $medias[4] = [
         <div class=\"card-body\">
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
+        <form method=\"POST\" action=\"reservation.php\"><input type=\"hidden\" name=\"id\" id=\"hiddenField\" value=\"".$media["id"]."\">
         <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mx-2\">Plus d'infos</a>";
 
         if($media["nb_exemplaire"]>0){
-          $html .= "<a href=\"reservation.php?id=".$media["id"]."\" class=\"btn btn-primary\">Réserver</a>
+          $html .= "<button type=\"submit\" class=\"btn btn-primary\">Réserver</button>
+          </form>
           </div>
           </div>";
         }
         else {
-          $html .="<button class=\"btn btn-danger\">Indisponible</a>
+          $html .="<button class=\"btn btn-danger\" disabled>Indisponible</a>
+          </form>
           </div>
           </div>";
         }
