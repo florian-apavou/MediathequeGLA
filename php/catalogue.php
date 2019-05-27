@@ -156,7 +156,7 @@ $medias[4] = [
           </div>";
         }
         else {
-          $html .="<button class=\"btn btn-danger\" disabled>Indisponible</a>
+          $html .="<button class=\"btn btn-danger\" disabled>Indisponible</button>
           </form>
           </div>
           </div>";
