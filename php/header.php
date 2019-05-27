@@ -77,6 +77,9 @@
 	      <div class="mt-2 p-2 menu-web">
 	        <a href="historique.php">Historique</a>
 	      </div>
+	      <div class="mt-2 p-2 menu-web">
+	        <a href="liste_reservations.php">Reservations</a>
+	      </div>
 	    </div>
 	  </div>
 	  <hr>
