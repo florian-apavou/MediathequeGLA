@@ -117,3 +117,17 @@ function recherche_catalogue()
 		oui : "non",
 	});
 }
+
+function reserve_media(id)
+{
+	action = "media_id_"+id+"_disponible_false";
+	update_bdd(action);
+}
+
+function update_bdd(action)
+{
+	$.post("../php/sauvegarde_modif_bdd.php", {action: action}, function(data){
+        // Tu affiches le contenu dans ta div
+        console.log(data);
+    });
+}
