@@ -136,7 +136,7 @@ $medias[4] = [
       foreach($medias as $id_media => $media)
       {
 
-        $html .= "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
+        echo "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
         <img src=\"../imgs/LivreJungle.jpg\" class=\"card-img-top \" alt=\" Image \">
         <div class=\"card-body\">
         <h5 class=\"card-title\">".$media["titre"]."</h5>
@@ -144,7 +144,6 @@ $medias[4] = [
         <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
         </div>
         </div>";
-        echo $html;
       }
       ?>
     </div>
