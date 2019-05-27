@@ -21,6 +21,7 @@ where h.id_client = ".$_SESSION['id_utilisateur'];
 
 //$medias = requete_tableau($requete_histo)[0];
 $medias_histo[0] = [
+  'id' => 0,
   'type' => "Livre",
   'titre' => "Le livre de la jungle",
   'auteur' => 'Rudyard Kipling',
@@ -29,6 +30,7 @@ $medias_histo[0] = [
   "prix" => 5,
 ];
 $medias_histo[1] = [
+  'id' => 1,
   "type" => "DVD",
   "titre" => "Comment c'est loin",
   "auteur" => "Les casseurs flowters",
@@ -37,6 +39,7 @@ $medias_histo[1] = [
   "prix" => 15,
 ];
 $medias_histo[2] = [
+  'id' => 2,
   "type" => "CD",
   "titre" => "Humain à l'eau",
   "auteur" => "Stromae",
@@ -45,6 +48,7 @@ $medias_histo[2] = [
   "prix" => 10,
 ];
 $medias_histo[3] = [
+  'id' => 3,
   "type" => "DVD",
   "titre" => "Bambi",
   "auteur" => "Bambo",
@@ -53,6 +57,7 @@ $medias_histo[3] = [
   "prix" => 5,
 ];
 $medias_histo[4] = [
+  'id' => 4,
   "type" => "DVD",
   "titre" => "Les mystérieuses cités d'or",
   "auteur" => "Esteban",
@@ -62,6 +67,7 @@ $medias_histo[4] = [
 ];
 
 $medias_en_cours[0] = [
+  'id' => 5,
   'type' => "DVD",
   'titre' => "YMCA 4ever",
   'auteur' => 'YMCA',
@@ -70,6 +76,7 @@ $medias_en_cours[0] = [
   "prix" => 5,
 ];
 $medias_en_cours[1] = [
+  'id' => 6,
   "type" => "DVD",
   "titre" => "La belle et la bête",
   "auteur" => "Disney",
@@ -83,24 +90,27 @@ foreach($medias_histo as $id => $media)
 {
     $tableau_histo .= "
       <tr>
-        <td>
-          ".$media["type"]."
-        </td>
-        <td>
-          ".$media["titre"]."
-        </td>
-        <td>
-          ".$media["auteur"]."
-        </td>
-        <td>
-          ".$media["date_reservation"]->format('d/m/Y')."
-        </td>
-        <td>
-          ".$media["date_retour"]->format('d/m/Y')."
-        </td>
-        <td>
-          ".$media["prix"]."
-        </td>
+          <td>
+            ".$media["type"]."
+          </td>
+          <td>
+            ".$media["titre"]."
+          </td>
+          <td>
+            ".$media["auteur"]."
+          </td>
+          <td>
+            ".$media["date_reservation"]->format('d/m/Y')."
+          </td>
+          <td>
+            ".$media["date_retour"]->format('d/m/Y')."
+          </td>
+          <td>
+            ".$media["prix"]."
+          </td>
+          <td>
+            <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+          </td>
       </tr>";
 }
 
@@ -112,24 +122,27 @@ foreach($medias_en_cours as $id => $media)
 {
     $tableau_en_cours .= "
       <tr".($date < $media['date_retour_max']?"":" class=\"table-danger\"").">
-        <td>
-          ".$media["type"]."
-        </td>
-        <td>
-          ".$media["titre"]."
-        </td>
-        <td>
-          ".$media["auteur"]."
-        </td>
-        <td>
-          ".$media["date_reservation"]->format('d/m/Y')."
-        </td>
-        <td>
-          ".$media['date_retour_max']->format('d/m/Y')."
-        </td>
-        <td>
-          ".$media["prix"]."
-        </td>
+          <td>
+            ".$media["type"]."
+          </td>
+          <td>
+            ".$media["titre"]."
+          </td>
+          <td>
+            ".$media["auteur"]."
+          </td>
+          <td>
+            ".$media["date_reservation"]->format('d/m/Y')."
+          </td>
+          <td>
+            ".$media['date_retour_max']->format('d/m/Y')."
+          </td>
+          <td>
+            ".$media["prix"]."
+          </td>
+          <td>
+            <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+          </td>
       </tr>";
 }
 
@@ -143,27 +156,30 @@ foreach($medias_en_cours as $id => $media)
       <br>
       <h1>Réservations en cours</h1>
       <br>
-      <table class="table table-hover self-align-center">
+      <table class="table table-hover table-striped self-align-center">
         <thead>
           <tr>
-            <td>
+            <th scope="col">
               Type
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Titre
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Auteur
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Date réservation
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Date retour max
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Prix
-            </td>
+            </th>
+            <th scope="col">
+              Action
+            </th>
           </tr>
         </thead>
         <tbody>
@@ -195,6 +211,9 @@ foreach($medias_en_cours as $id => $media)
             </th>
             <th scope="col">
               Prix
+            </th>
+            <th scope="col">
+              Action
             </th>
           </tr>
         </thead>
