@@ -74,6 +74,9 @@
 	      <div class="mt-2 p-2 menu-web">
 	        <a href="#">Contacts</a>
 	      </div>
+	      <div class="mt-2 p-2 menu-web">
+	        <a href="historique.php">Historique</a>
+	      </div>
 	    </div>
 	  </div>
 	  <hr>
