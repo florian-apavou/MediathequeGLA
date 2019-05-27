@@ -147,6 +147,7 @@ $medias[4] = [
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
         <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+        <a href=\"reservation.php?id=".$media["id"]."\" class=\"btn btn-primary\">Réserver</a>
         </div>
         </div>";
       }

@@ -1,5 +1,10 @@
+<script type="text/javascript" src="../js/fonctions.js"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 <?php
   include '../php/fonctions.php';
+  $media['id'] = $_POST['id']??$_GET['id'];
   $media['type'] = "CD";
   $media['titre'] = "XEU";
   $media['auteur'] = "Vald";
@@ -22,5 +27,5 @@
   <label>Date de réservation : </label><?= $date_reservation->format('d/m/Y')?></br>
   <label>Date de réservation : </label><?= $date_retour_max->format('d/m/Y')?></br>
   <label>Tarif : </label><?= $media['prix']?> euros</br></br>
-  <button>Payer et réserver</button>
+  <button onclick="reserve_media('<?= $media['id']?>')">Payer et réserver</button>
 </div>

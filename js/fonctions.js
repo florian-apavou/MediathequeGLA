@@ -105,15 +105,36 @@ function modifie_nb_exemplaire(id)
 	// On sauvegarde dans la bdd
 }
 
-function demande_notification(id)
-{
-	// On add dans la bdd
-}
-
 function recherche_catalogue()
 {
 	$("#conteneur_central").load("../php/catalogue.php", {
 		filtre_recherche : $("#recherche_catalogue").val(),
 		oui : "non",
 	});
+}
+
+function demande_notification(id_media, id_client)
+{
+	requete = "insert into notification...";
+	update_bdd(requete);
+}
+
+function reserve_media(id_media)
+{
+	requete = "update table...";
+	update_bdd(requete);
+}
+
+function rend_media(id_media)
+{
+	requete = "delete from...";
+	update_bdd(requete);
+}
+
+function update_bdd(requete)
+{
+	$.post("../php/sauvegarde_modif_bdd.php", {requete: requete}, function(data){
+        // Tu affiches le contenu dans ta div
+        console.log(data);
+    });
 }

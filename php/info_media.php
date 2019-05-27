@@ -8,23 +8,7 @@
 //Debug :
 $_SESSION['type_utilisateur'] = "Admin";
 
-$erreur = false;
-$msg_erreur = "Erreur";
-$html = "";
 $id_media = $_POST['id_media']??null;
-
-if(!isset($id_media))
-{
-  $erreur = true;
-  $msg_erreur .= " - media manquant";
-}
-
-if(!$erreur)
-{
-  $requete_media = "select *
-  from Média m
-  where m.id = ".$id_media;
-}
 
 //$media = requete_tableau($requete_media)[0];
 $media = [
