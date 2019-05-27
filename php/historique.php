@@ -91,27 +91,27 @@ foreach($medias as $id => $media)
     <div class="col-lg-12">
       <h1>Historique</h1>
       <br>
-      <table class="table table-hover self-align-center">
+      <table class="table table-hover table-striped self-align-center">
         <thead>
           <tr>
-            <td>
+            <th scope="col">
               Type
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Titre
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Auteur
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Date réservation
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Date retour
-            </td>
-            <td>
+            </th>
+            <th scope="col">
               Prix
-            </td>
+            </th>
           </tr>
         </thead>
         <tbody>

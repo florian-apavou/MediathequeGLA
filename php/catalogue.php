@@ -137,19 +137,29 @@ $medias[4] = [
 
     <div class="row justify-content-center">
       <?php
-      $html = "";
+
       foreach($medias as $id_media => $media)
       {
-
-        echo "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
+        $html = "";
+        $html .= "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
         <img src=\"".$media["photo"]."\" class=\"card-img-top \" alt=\" Image \">
         <div class=\"card-body\">
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
-        <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
-        <a href=\"reservation.php?id=".$media["id"]."\" class=\"btn btn-primary\">Réserver</a>
-        </div>
-        </div>";
+        <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mx-2\">Plus d'infos</a>";
+
+        if($media["nb_exemplaire"]>0){
+          $html .= "<a href=\"reservation.php?id=".$media["id"]."\" class=\"btn btn-primary\">Réserver</a>
+          </div>
+          </div>";
+        }
+        else {
+          $html .="<button class=\"btn btn-danger\">Indisponible</a>
+          </div>
+          </div>";
+        }
+
+        echo $html;
       }
       ?>
     </div>
