@@ -8,7 +8,7 @@
 //Debug :
 $_SESSION['type_utilisateur'] = "Admin";
 
-$id_media = $_REQUEST['id']??null;
+$id_media = $_REQUEST['id']-1??null;
 
 //$media = requete_tableau($requete_media)[0];
 $medias[0] = [
