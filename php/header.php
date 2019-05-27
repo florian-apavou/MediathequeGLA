@@ -72,7 +72,7 @@
 	        <a href="#">Nouveautés</a>
 	      </div>
 	      <div class="mt-2 p-2 menu-web">
-	        <a href="#">Contacts</a>
+	        <a href="contact.php">Contact</a>
 	      </div>
 	      <div class="mt-2 p-2 menu-web">
 	        <a href="historique.php">Historique</a>
