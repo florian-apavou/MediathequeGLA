@@ -16,7 +16,7 @@
 	  <!-- Colonne Icone -->
 	  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 	    <!-- Logo Navbar -->
-	    <a class="navbar-brand" href="index.html">Médiathèque <br> Karine <br> Lemarchand</a>
+	    <a class="navbar-brand" href="index.php">Médiathèque <br> Karine <br> Lemarchand</a>
 
 	    <!-- Définition Bouton Collapse -->
 	    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,7 +48,7 @@
 	          <!-- Liste des boutons dispo. Ajouter <li> pour plus d'options-->
 	          <ul class="nav navbar-nav ml-auto p-2">
 	            <li class="bg-nav-inverse">
-	              <a href="login.html">
+	              <a href="login.php">
 	                <i class="fa fa-user-circle"></i>
 	                <span> Mon Compte</span>
 	              </a>
