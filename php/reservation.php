@@ -4,7 +4,7 @@
 
 <?php
   include '../php/fonctions.php';
-  $media['id'] = 7;
+  $media['id'] = $_POST['id']??$_GET['id'];
   $media['type'] = "CD";
   $media['titre'] = "XEU";
   $media['auteur'] = "Vald";
