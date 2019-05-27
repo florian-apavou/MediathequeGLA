@@ -147,16 +147,16 @@ $medias[4] = [
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
         <form method=\"POST\" action=\"reservation.php\"><input type=\"hidden\" name=\"id\" id=\"hiddenField\" value=\"".$media["id"]."\">
-        <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mx-2\">Plus d'infos</a>";
+        <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mr-1 my-1\">Plus d'infos</a>";
 
         if($media["nb_exemplaire"]>0){
-          $html .= "<button type=\"submit\" class=\"btn btn-primary\">Réserver</button>
+          $html .= "<button type=\"submit\" class=\"btn btn-primary my-1\">Réserver</button>
           </form>
           </div>
           </div>";
         }
         else {
-          $html .= "<button class=\"btn btn-danger\" disabled>Indisponible</button>";
+          $html .= "<button class=\"btn btn-danger my-1\" disabled>Indisponible</button>";
           if(/*connecte && pas encore dans les notifiés*/true)
             $html .= "
               <a id=\"notif_bell\" onClick=\"demande_notification('".$id_media."'); bascule_masque('notif_bell')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"></a>";

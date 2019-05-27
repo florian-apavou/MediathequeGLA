@@ -1,11 +1,11 @@
 <?php
-  include "../php/header.php";
-  include "../php/includes.php";
-  include "../php/fonctions.php";
- ?>
+include "../php/header.php";
+include "../php/includes.php";
+include "../php/fonctions.php";
+?>
 
- <div class="container">rien mettre ici</div></br>
+<div class="container">rien mettre ici</div></br>
 
- <?php
-   include "../php/footer.php";
-  ?>
+<?php
+include "../php/footer.php";
+?>

@@ -16,6 +16,10 @@
   </br>
   <form action="/ma-page-de-traitement" method="post">
     <div>
+      <label for="objet">Objet du message</label>
+      <input type='text' class="form-control" name="objet" placeholder="Objet du Message">
+      <br>
+      <label for="message">Message</label>
       <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
     </div>
     </br>
