@@ -1,9 +1,10 @@
 <?php
-  include "../html/nav.html";
+  include "../php/header.php";
   include "../php/includes.php";
+  include "../php/fonctions.php";
  ?>
 
- <div id="conteneur_central">rien mettre ici</div></br>
+ <div class="container">rien mettre ici</div></br>
 
  <?php
    include "../php/footer.php";
