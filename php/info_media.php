@@ -150,7 +150,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
         if($medias[$id_media]["nb_exemplaire"] == 0)
         echo "
         <div>
-          <button onClick=\"demande_notification('".$id_media."')\">Me notifier en cas de disponibilité</button>
+          <button id=\"notif_bell\" onClick=\"demande_notification('".$id_media."'); bascule_masque('notif_bell')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"></button>
         </div>";
         ?>
       </div>
