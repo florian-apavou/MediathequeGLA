@@ -61,6 +61,7 @@ $medias[0] = [
   "nb_exemplaire" => 3,
   "prix" => 5,
   "type" => "Livre",
+  "photo" => "../imgs/LivreJungle.jpg",
 ];
 $medias[1] = [
   "id" => 2,
@@ -69,6 +70,7 @@ $medias[1] = [
   "nb_exemplaire" => 1,
   "prix" => 15,
   "type" => "DVD",
+  "photo" => "../imgs/Caeurs-Flowters.jpg",
 ];
 $medias[2] = [
   "id" => 3,
@@ -77,6 +79,7 @@ $medias[2] = [
   "nb_exemplaire" => 2,
   "prix" => 10,
   "type" => "CD",
+  "photo" => "../imgs/racine_carre.jpg",
 ];
 $medias[3] = [
   "id" => 4,
@@ -85,6 +88,7 @@ $medias[3] = [
   "nb_exemplaire" => 0,
   "prix" => 5,
   "type" => "DVD",
+  "photo" => "../imgs/bambi.jpg",
 ];
 $medias[4] = [
   "id" => 5,
@@ -93,6 +97,7 @@ $medias[4] = [
   "nb_exemplaire" => 4,
   "prix" => 5,
   "type" => "DVD",
+  "photo" => "../imgs/mysterieusecitedor.jpg",
 ];
 ?>
 <div class="container-fluid content-page">
@@ -137,7 +142,7 @@ $medias[4] = [
       {
 
         echo "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
-        <img src=\"../imgs/LivreJungle.jpg\" class=\"card-img-top \" alt=\" Image \">
+        <img src=\"".$media["photo"]."\" class=\"card-img-top \" alt=\" Image \">
         <div class=\"card-body\">
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
