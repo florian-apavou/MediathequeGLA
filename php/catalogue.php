@@ -11,7 +11,7 @@ include "../php/fonctions.php";
 $erreur = false;
 $msg_erreur = "Erreur";
 $html = "";
-$filtre_recherche = $_POST['filtre_recherche']??null;
+$filtre_recherche = $_POST['filtre_recherche']??$_GET['search']??null;
 $filtre_type = $_POST['filtre_type']??[];
 $rechargement_filtre = (bool)($_POST['rechargement_filtre']??false);
 
@@ -105,7 +105,7 @@ $medias[4] = [
         <tr>
           <td class="col-lg-8">
             <div class="input-group md-form form-sm form-2 pl-0">
-              <input class="form-control my-0 py-1 lime-border" type="text" placeholder="Search" aria-label="Search">
+              <input class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" value="<?= $filtre_recherche?>">
               <div class="input-group-append">
                 <button class="input-group-text lime lighten-2" id="basic-text1" onclick="charge_catalogue()"><i class="fas fa-search text-grey"
                   aria-hidden="true"></i></button>
