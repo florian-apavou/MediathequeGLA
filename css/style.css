@@ -6,14 +6,14 @@
 }
 
 .header{
-  box-shadow: 0px 0.5px 0.5px 0px lightgrey;
+  box-shadow: 0px 0.1px 0.1px 0px lightgrey;
 }
 
 a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited {
   text-decoration: none;
 }
 
-hr
+.nav-end
 {
   box-shadow: 0px 2px 4px 0px rgba(204,204,204,1);
 }
@@ -58,7 +58,7 @@ hr
   margin: 0;
   position: absolute;
   top: 50%;
-  left: 53%;
+  left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
 }
@@ -67,6 +67,7 @@ hr
   border-right: 1px solid lightgrey;
 }
 
+<<<<<<< HEAD
 .centered-div{
   margin: auto;
   width: 60%;
@@ -95,3 +96,17 @@ hr
 .creditCardForm label{
   font-weight: bold;
 }
+=======
+.toggler-btn{
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+}
+
+.nav2 .nav-link{
+  font-size: 1.1em;
+}
+
+.nav2 .nav-link:hover{
+  background-color: lightgrey;
+}
+>>>>>>> 0bbdc5fabe567e89bda475db99db0fc17c18455a
