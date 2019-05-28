@@ -1,7 +1,8 @@
 <?php
-include "../php/header.php";
+$_SESSION['page_en_cours'] = "catalogue";
 include "../php/includes.php";
 include "../php/fonctions.php";
+include "../php/header.php";
 /*
 *
 *	GESTION DES VARIABLES ET ERREURS
@@ -100,6 +101,7 @@ $medias[4] = [
   "photo" => "../imgs/mysterieusecitedor.jpg",
 ];
 ?>
+
 <div class="container-fluid content-page">
   <h1>Catalogue</h1>
   <br>

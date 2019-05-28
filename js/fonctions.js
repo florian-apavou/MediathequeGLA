@@ -138,3 +138,18 @@ function update_bdd(requete)
         console.log(data);
     });
 }
+
+$(window).bind("load", function() {
+   // code here
+	 alert('fin du js?');
+});
+
+function selectionne_menu()
+{
+	console.log("sm");
+	$("#ul_menu_header").children().each(function()
+	{
+	console.log(this);
+	})
+	$("#menu_").addClass("active");
+}

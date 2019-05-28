@@ -131,7 +131,6 @@ echo "header('Location: login.php')";
 
   </fieldset>
 </div>
-
 <?php
 include "../php/footer.php";
 ?>
