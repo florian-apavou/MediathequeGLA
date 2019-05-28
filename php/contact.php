@@ -1,8 +1,8 @@
 <?php
-
-  include "../php/header.php";
-  include "../php/includes.php";
-  include "../php/fonctions.php";
+$_SESSION['page_en_cours'] = "contact";
+include "../php/includes.php";
+include "../php/fonctions.php";
+include "../php/header.php";
 
 
 ?>
