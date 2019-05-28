@@ -5,8 +5,10 @@
 	<title>Connexion</title>
 
 	<?php
-	include "../php/includes.php";
-	include "../php/fonctions.php";
+  $_SESSION['page_en_cours'] = "";
+  include "../php/includes.php";
+  include "../php/fonctions.php";
+  include "../php/header.php";
 	?>
 </head>
 <body>
