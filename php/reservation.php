@@ -1,7 +1,7 @@
 <?php
-include "../php/header.php";
 include "../php/includes.php";
 include "../php/fonctions.php";
+include "../php/header.php";
 ?>
 
 <script type="text/javascript" src="../js/fonctions.js"></script>
