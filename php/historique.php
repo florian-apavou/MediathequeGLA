@@ -148,47 +148,14 @@ foreach($medias_en_cours as $id => $media)
 
 ?>
 
-
+<div class="sidebar list-group">
+  <a class=" list-group-item" href="account.php">Infos Générales</a>
+  <a class=" list-group-item" href="liste_reservations.php">Réservations</a>
+  <a class="active list-group-item" href="historique.php">Historique</a>
+  <a class=" list-group-item" href="abonnement.php">Abonnement</a>
+</div>
 
 <div class="container">
-  <div class="row">
-    <div class="col-lg-12">
-      <br>
-      <h1>Réservations en cours</h1>
-      <br>
-      <table class="table table-hover table-striped self-align-center">
-        <thead>
-          <tr>
-            <th scope="col">
-              Type
-            </th>
-            <th scope="col">
-              Titre
-            </th>
-            <th scope="col">
-              Auteur
-            </th>
-            <th scope="col">
-              Date réservation
-            </th>
-            <th scope="col">
-              Date retour max
-            </th>
-            <th scope="col">
-              Prix
-            </th>
-            <th scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <?= $tableau_en_cours?>
-        </tbody>
-      </table>
-      <br>
-      <hr>
-      <br>
       <h1>Historique</h1>
       <br>
       <table class="table table-hover table-striped self-align-center">
@@ -221,7 +188,6 @@ foreach($medias_en_cours as $id => $media)
           <?= $tableau_histo?>
         </tbody>
       </table>
-    </div>
   </div>
 </div>
 

@@ -70,6 +70,7 @@ echo "header('Location: login.php')";
     <legend>Informations de Paiement</legend>
     <div class="creditCardForm">
       <div class="payment">
+        <form >
           <div class="row">
             <div class="form-group owner col-lg-9">
               <label for="owner">Propriétaire</label>
@@ -123,6 +124,7 @@ echo "header('Location: login.php')";
           <div class="form-group" id="pay-now">
             <button class="btn btn-primary" onclick="reserve_media('<?= $media['id']?>')">Payer et réserver</button>
           </div>
+        </form>
       </div>
     </div>
 

@@ -100,18 +100,13 @@ $medias_en_cours[7] = [
 ];
 
 $tableau_en_cours = "";
-$tableau_en_retard = "";
 $date = getdate();
 $date = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+
 foreach($medias_en_cours as $id => $media)
 {
-  if($date < $media['date_retour_max'])
-  {
     $tableau_en_cours .= "
-      <tr>
-          <td>
-            ".$media["client"]."
-          </td>
+      <tr".($date < $media['date_retour_max']?"":" class=\"table-danger\"").">
           <td>
             ".$media["type"]."
           </td>
@@ -125,7 +120,7 @@ foreach($medias_en_cours as $id => $media)
             ".$media["date_reservation"]->format('d/m/Y')."
           </td>
           <td>
-            ".$media["date_retour_max"]->format('d/m/Y')."
+            ".$media['date_retour_max']->format('d/m/Y')."
           </td>
           <td>
             ".$media["prix"]."
@@ -134,55 +129,25 @@ foreach($medias_en_cours as $id => $media)
             <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
           </td>
       </tr>";
-    }
-    else
-    {
-      $tableau_en_retard .= "
-        <tr>
-            <td>
-              ".$media["client"]."
-            </td>
-            <td>
-              ".$media["type"]."
-            </td>
-            <td>
-              ".$media["titre"]."
-            </td>
-            <td>
-              ".$media["auteur"]."
-            </td>
-            <td>
-              ".$media["date_reservation"]->format('d/m/Y')."
-            </td>
-            <td>
-              ".$media["date_retour_max"]->format('d/m/Y')."
-            </td>
-            <td>
-              ".$media["prix"]."
-            </td>
-            <td>
-              <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
-            </td>
-        </tr>";
-    }
 }
 
 ?>
 
+<div class="sidebar list-group">
+  <a class=" list-group-item" href="account.php">Infos Générales</a>
+  <a class="active list-group-item" href="liste_reservations.php">Réservations</a>
+  <a class=" list-group-item" href="historique.php">Historique</a>
+  <a class=" list-group-item" href="abonnement.php">Abonnement</a>
+</div>
 
-
-<div class="container">
+<div class="container ">
   <div class="row">
     <div class="col-lg-12">
-      <br>
       <h1>Réservations en cours</h1>
       <br>
       <table class="table table-hover table-striped self-align-center">
         <thead>
           <tr>
-            <th scope="col">
-              Emprunteur
-            </th>
             <th scope="col">
               Type
             </th>
@@ -208,44 +173,6 @@ foreach($medias_en_cours as $id => $media)
         </thead>
         <tbody>
           <?= $tableau_en_cours?>
-        </tbody>
-      </table>
-      <br>
-      <hr>
-      <br>
-      <h1>Réservations en retard</h1>
-      <br>
-      <table class="table table-hover table-striped self-align-center">
-        <thead>
-          <tr>
-            <th scope="col">
-              Emprunteur
-            </th>
-            <th scope="col">
-              Type
-            </th>
-            <th scope="col">
-              Titre
-            </th>
-            <th scope="col">
-              Auteur
-            </th>
-            <th scope="col">
-              Date réservation
-            </th>
-            <th scope="col">
-              Date retour max
-            </th>
-            <th scope="col">
-              Prix
-            </th>
-            <th scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <?= $tableau_en_retard?>
         </tbody>
       </table>
       <br>
