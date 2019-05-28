@@ -58,18 +58,18 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav mr-auto ">
+				<ul class="navbar-nav mr-auto list-group">
 					<li class="nav-item">
-						<a class="nav-link" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+						<a class="nav-link list-group-item" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="catalogue.php">Catalogue</a>
+						<a class="nav-link list-group-item" href="catalogue.php">Catalogue</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link" href="#">Nouveautés</a>
+						<a class="nav-link list-group-item" href="#">Nouveautés</a>
 					</li>
 					<li class="nav-item" >
-						<a class="nav-link" href="contact.php">Contact</a>
+						<a class="nav-link list-group-item" href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</div>
