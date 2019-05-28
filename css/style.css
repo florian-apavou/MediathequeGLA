@@ -67,7 +67,19 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
   border-right: 1px solid lightgrey;
 }
 
-<<<<<<< HEAD
+.toggler-btn{
+  border: 1px solid lightgrey;
+  border-radius: 2px;
+}
+
+.nav2 .nav-link{
+  font-size: 1.1em;
+}
+
+.nav2 .nav-link:hover{
+  background-color: lightgrey;
+}
+
 .centered-div{
   margin: auto;
   width: 60%;
@@ -96,17 +108,3 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
 .creditCardForm label{
   font-weight: bold;
 }
-=======
-.toggler-btn{
-  border: 1px solid lightgrey;
-  border-radius: 2px;
-}
-
-.nav2 .nav-link{
-  font-size: 1.1em;
-}
-
-.nav2 .nav-link:hover{
-  background-color: lightgrey;
-}
->>>>>>> 0bbdc5fabe567e89bda475db99db0fc17c18455a
