@@ -157,6 +157,17 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
     </div>
     <br>
     <fieldset>
+      <legend>Laisser un commentaire</legend>
+      <form action="#" method="post">
+      <div>
+        <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
+      </div>
+      </br>
+      <div class="d-flex">
+        <input type="submit" class="btn btn-primary ml-auto p-2" value="Envoyer"></input>
+      </div>
+    </form>
+    <fieldset>
       <legend>Commentaires</legend>
       <table class="table table-striped">
         <?php
