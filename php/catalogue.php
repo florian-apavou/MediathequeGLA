@@ -146,7 +146,8 @@ $medias[4] = [
         <div class=\"card-body\">
         <h5 class=\"card-title\">".$media["titre"]."</h5>
         <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
-        <form method=\"POST\" action=\"reservation.php\"><input type=\"hidden\" name=\"id\" id=\"hiddenField\" value=\"".$media["id"]."\">
+        <form method=\"post\" action=\"reservation.php\">
+        <input type=\"hidden\" name=\"idMed\" value=\"".$media["id"]."\">
         <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mr-1 my-1\">Plus d'infos</a>";
 
         if($media["nb_exemplaire"]>0){

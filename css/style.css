@@ -66,3 +66,32 @@ hr
 .verticalLine {
   border-right: 1px solid lightgrey;
 }
+
+.centered-div{
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+}
+
+#credit_cards img{
+  max-width:50px;
+  max-height:50px;
+  width: auto;
+  height: auto;
+}
+
+.creditCardForm #pay-now {
+    width: 100%;
+    margin-top: 25px;
+}
+
+.creditCardForm .payment .btn {
+    width: 100%;
+    margin-top: 3px;
+    font-size: 24px;
+    color: white;
+}
+
+.creditCardForm label{
+  font-weight: bold;
+}
