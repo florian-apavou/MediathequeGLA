@@ -58,33 +58,18 @@
 			</button>
 
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-<<<<<<< HEAD
-				<ul class="navbar-nav mr-auto list-group">
+				<ul class="navbar-nav mr-auto list-group" id="ul_menu_header">
 					<li class="nav-item">
-						<a class="nav-link list-group-item" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+						<a id="menu-accueil" class="nav-link list-group-item <?php selected('accueil')?>" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link list-group-item" href="catalogue.php">Catalogue</a>
+						<a id="menu-catalogue" class="nav-link list-group-item <?php selected('catalogue')?>" href="catalogue.php">Catalogue</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link list-group-item" href="#">Nouveautés</a>
-					</li>
-					<li class="nav-item" >
-						<a class="nav-link list-group-item" href="contact.php">Contact</a>
-=======
-				<ul class="navbar-nav mr-auto" id="ul_menu_header">
-					<li class="nav-item">
-						<a id="menu-accueil" class="nav-link<?php selected('accueil')?>" href="index.php">Accueil <span class="sr-only">(current)</span></a>
-					</li>
-					<li class="nav-item">
-						<a id="menu-catalogue" class="nav-link<?php selected('catalogue')?>" href="catalogue.php">Catalogue</a>
-					</li>
-					<li class="nav-item">
-						<a id="menu-nouveautes" class="nav-link<?php selected('nouveautes')?>" href="#">Nouveautés</a>
+						<a id="menu-nouveautes" class="nav-link list-group-item <?php selected('nouveautes')?>" href="#">Nouveautés</a>
 					</li>
 					<li class="nav-item" >
-						<a id="menu-contact" class="nav-link<?php selected('contact')?>" href="contact.php">Contact</a>
->>>>>>> cf90799554c0fae1f3bcd3d850ce966f416acb7c
+						<a id="menu-contact" class="nav-link list-group-item <?php selected('contact')?>" href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</div>

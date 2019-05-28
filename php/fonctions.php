@@ -38,7 +38,7 @@ function selected($page)
 {
 	$_SESSION['page_en_cours'] = $_SESSION['page_en_cours']??"accueil";
 	if($_SESSION['page_en_cours'] == $page)
-		echo "&nbsp;active";
+		echo "active";
 }
 
 ?>

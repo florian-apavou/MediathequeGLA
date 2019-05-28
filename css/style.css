@@ -191,3 +191,7 @@ div.content {
 .star-rating input[type=radio]:checked ~ label {
     color: #f2b600
 }
+
+.list-group-item{
+  border: 0px;
+}
