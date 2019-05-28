@@ -1,5 +1,8 @@
 <?php
+<<<<<<< HEAD
 $_SESSION['page_en_cours'] = "";
+=======
+>>>>>>> c53981029d8a048559baf51635176627e3725cfd
 include "../php/includes.php";
 include "../php/fonctions.php";
 include "../php/header.php";

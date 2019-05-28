@@ -8,9 +8,9 @@ $_SESSION['type_utilisateur'] = "Admin";
 if($_SESSION['type_utilisateur'] != "Admin")
   header('Location: login.php');
 
-  include "../php/header.php";
   include "../php/includes.php";
   include "../php/fonctions.php";
+  include "../php/header.php";
 
 
 //Debug :

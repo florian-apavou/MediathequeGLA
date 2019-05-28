@@ -9,10 +9,10 @@ $_SESSION['id_utilisateur'] = "22";
 
 if(!isset($_SESSION['id_utilisateur']))
   header('Location: login.php');
-
-  include "../php/header.php";
   include "../php/includes.php";
   include "../php/fonctions.php";
+  include "../php/header.php";
+
 
 
 //Debug :
