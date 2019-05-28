@@ -25,7 +25,7 @@
 			<div id="connexion" class="col-lg-5 verticalLine">
 				<fieldset>
 					<legend>Connexion</legend>
-					<form>
+					<form method="post" action="account.php">
 						<div class="form-group">
 							<label for="inputEmail1">Email</label>
 							<input type="email" class="form-control" id="inputEmail1" aria-describedby="emailHelp" placeholder="Entrer email" required>
@@ -47,7 +47,7 @@
 				<div>
 					<fieldset>
 						<legend>Inscription</legend>
-						<form>
+						<form method="post" action="account.php">
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inputEmail4">Email</label>
