@@ -140,6 +140,7 @@ foreach($medias_en_cours as $id => $media)
   <a class=" list-group-item" href="abonnement.php">Abonnement</a>
 </div>
 
+<div class="content">
 <div class="container ">
   <div class="row">
     <div class="col-lg-12">
@@ -179,7 +180,7 @@ foreach($medias_en_cours as $id => $media)
     </div>
   </div>
 </div>
-
+</div>
 
 
 <?php

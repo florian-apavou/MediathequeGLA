@@ -154,7 +154,7 @@ foreach($medias_en_cours as $id => $media)
   <a class="active list-group-item" href="historique.php">Historique</a>
   <a class=" list-group-item" href="abonnement.php">Abonnement</a>
 </div>
-
+<div class="content">
 <div class="container">
       <h1>Historique</h1>
       <br>
@@ -190,7 +190,7 @@ foreach($medias_en_cours as $id => $media)
       </table>
   </div>
 </div>
-
+</div>
 
 
 <?php

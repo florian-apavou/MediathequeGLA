@@ -161,3 +161,8 @@ div.content {
     float: none;
   }
 }
+
+.infoBG{
+  background-color: lightgrey;
+  border-radius: 2px;
+}
