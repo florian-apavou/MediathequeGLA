@@ -5,8 +5,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-	<title>Accueil</title>
-
+	<title>Médiathèque KLM</title>
 </head>
 <body>
 
@@ -23,7 +22,7 @@
 		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 d-flex row">
 
 			<!-- Colonne Recherche -->
-			<div class="col-lg-9 col-sm-12">
+			<div class="col-lg-8 col-sm-12">
 				<form method="GET" action="catalogue.php">
 					<div class="form-group">
 						<div class="input-group md-form form-sm form-2 pl-0">
@@ -38,14 +37,27 @@
 				</div>
 
 				<!-- Colonne Compte -->
-				<div class="col-lg-3 col-sm-12 d-flex justify-content-sm-center">
-					<!-- Liste des boutons dispo. Ajouter <li> pour plus d'options-->
-					<ul class="nav navbar-nav ml-lg-auto pl-lg-0">
+				<div class="col-lg-4 col-sm-12 d-flex justify-content-sm-center">
+					<ul class="nav navbar-nav ml-lg-auto pl-lg-0 align-items-center">
 						<?php include "../php/buttonAdmin.php" ?>
 						<li class="bg-nav-inverse">
-							<a class="btn btn-primary mx-1 my-1" href="login.php">
+							<!--
+							Si non connecté bouton connexion
+							Si connecté
+								<a class="btn btn-primary mx-1 my-1" href="account.php">
+									<i class="fa fa-user-circle"></i>
+									<span>Mon Compte</span>
+								</a>
+							-->
+							<a class="btn btn-success mx-1 my-1" href="login.php">
 								<i class="fa fa-user-circle"></i>
-								<span> Mon Compte</span>
+								<span>Connexion</span>
+							</a>
+						</li>
+						<!-- Afficher en cas de connexion-->
+						<li>
+							<a class="btn btn-danger mx-1 my-1 px-2 py-2" href="#">
+								<i class="fas fa-power-off"><span></span></i>
 							</a>
 						</li>
 					</ul>
