@@ -41,7 +41,7 @@
 					<ul class="nav navbar-nav ml-lg-auto pl-lg-0 align-items-center">
 						<?php
 								if(isset($_SESSION['rang']) && $_SESSION['rang'] != "client")
-						 			include "../php/buttonAdmin.php"
+						 			include "../php/buttonAdmin.php";
 								if(isset($_SESSION['id_utilisateur']))
 								{
 									echo "
