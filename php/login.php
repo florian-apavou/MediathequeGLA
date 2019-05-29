@@ -1,13 +1,10 @@
 <?php
+session_start();
 $_SESSION['page_en_cours'] = "login";
 include "../php/logIncludes.php";
 // On redirige si déjà connecté
 if(isset($_SESSION['id_utilisateur']))
   header('Location: index.php');
-
-
-
-
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -53,7 +50,7 @@ if(isset($_POST['formulaire_envoye']))
 		    $_SESSION['id_utilisateur'] = $data['id'];
 		    $_SESSION['rang'] = $data['type'];
 		    $_SESSION['prenom'] = $data['prenom'];
-		    $message = '<p>Bienvenue '.$data['prenom'].',
+		    $message = '<p>Bienvenue '.$_SESSION['prenom'].',
 				vous êtes maintenant connecté!</p>
 				<p>Cliquez <a href="./index.php">ici</a>
 				pour revenir à la page d accueil</p>';

@@ -39,27 +39,34 @@
 				<!-- Colonne Compte -->
 				<div class="col-lg-4 col-sm-12 d-flex justify-content-sm-center">
 					<ul class="nav navbar-nav ml-lg-auto pl-lg-0 align-items-center">
-						<?php include "../php/buttonAdmin.php" ?>
-						<li class="bg-nav-inverse">
-							<!--
-							Si non connecté bouton connexion
-							Si connecté
-								<a class="btn btn-primary mx-1 my-1" href="account.php">
-									<i class="fa fa-user-circle"></i>
-									<span>Mon Compte</span>
-								</a>
-							-->
-							<a class="btn btn-success mx-1 my-1" href="login.php">
-								<i class="fa fa-user-circle"></i>
-								<span>Connexion</span>
-							</a>
-						</li>
-						<!-- Afficher en cas de connexion-->
-						<li>
-							<a class="btn btn-danger mx-1 my-1 px-2 py-2" href="#">
-								<i class="fas fa-power-off"><span></span></i>
-							</a>
-						</li>
+						<?php
+								if(isset($_SESSION['rang']) && $_SESSION['rang'] != "client")
+						 			include "../php/buttonAdmin.php";
+								if(isset($_SESSION['id_utilisateur']))
+								{
+									echo "
+									<li class=\"bg-nav-inverse\">
+										<a class=\"btn btn-primary mx-1 my-1\" href=\"account.php\">
+											<i class=\"fa fa-user-circle\"></i>
+											<span>Mon Compte</span>
+										</a>
+									</li>
+									<li>
+										<a class=\"btn btn-danger mx-1 my-1 px-2 py-2\" href=\"deconnexion.php\">
+											<i class=\"fas fa-power-off\"><span></span></i>
+										</a>
+									</li>";
+								}
+								else
+								{
+									echo "
+									<li class=\"bg-nav-inverse\">
+										<a class=\"btn btn-success mx-1 my-1\" href=\"login.php\">
+											<i class=\"fa fa-user-circle\"></i>
+											<span>Connexion</span>
+										</a>
+									</li>";
+								}?>
 					</ul>
 				</div>
 			</div>

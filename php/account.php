@@ -1,5 +1,8 @@
 <?php
+session_start();
 $_SESSION['page_en_cours'] = "account";
+if(!isset($_SESSION['id_utilisateur']))
+  header('Location: login.php');
 include "../php/includes.php";
 ?>
 

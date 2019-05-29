@@ -1,4 +1,5 @@
 <?php
+session_start();
 $_SESSION['page_en_cours'] = "info_media";
 include "../php/includes.php";
 
