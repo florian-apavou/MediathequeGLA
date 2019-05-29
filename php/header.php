@@ -60,16 +60,16 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto list-group" id="ul_menu_header">
 					<li class="nav-item">
-						<a id="menu-accueil" class="nav-link list-group-item <?php selected('accueil')?>" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+						<a id="menu-accueil" class="nav-link list-group-item <?php selected('accueil')?> px-5" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a id="menu-catalogue" class="nav-link list-group-item <?php selected('catalogue')?>" href="catalogue.php">Catalogue</a>
+						<a id="menu-catalogue" class="nav-link list-group-item <?php selected('catalogue')?> px-5" href="catalogue.php">Catalogue</a>
 					</li>
 					<li class="nav-item">
-						<a id="menu-nouveautes" class="nav-link list-group-item <?php selected('nouveautes')?>" href="#">Nouveautés</a>
+						<a id="menu-nouveautes" class="nav-link list-group-item <?php selected('nouveautes')?> px-5" href="#">Nouveautés</a>
 					</li>
 					<li class="nav-item" >
-						<a id="menu-contact" class="nav-link list-group-item <?php selected('contact')?>" href="contact.php">Contact</a>
+						<a id="menu-contact" class="nav-link list-group-item <?php selected('contact')?> px-5" href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</div>
