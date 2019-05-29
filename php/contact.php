@@ -1,11 +1,8 @@
 <?php
-$_SESSION['page_en_cours'] = "contact";
+$titre = "contact";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
-
-
 ?>
+
 <div class="container">
   <h1>Formulaire de contact</h1>
   <div>

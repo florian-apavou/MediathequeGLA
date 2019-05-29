@@ -1,8 +1,6 @@
 <?php
-$_SESSION['page_en_cours'] = "";
+$titre = "liste_reservations";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
 $_SESSION['type_utilisateur'] = "Admin";
 
 if($_SESSION['type_utilisateur'] != "Admin")

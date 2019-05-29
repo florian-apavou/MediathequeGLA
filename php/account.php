@@ -1,8 +1,6 @@
 <?php
-  $_SESSION['page_en_cours'] = "";
-  include "../php/includes.php";
-  include "../php/fonctions.php";
-  include "../php/header.php";
+$titre = "account";
+include "../php/includes.php";
 ?>
 
 <div class="sidebar list-group">

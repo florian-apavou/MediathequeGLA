@@ -1,8 +1,7 @@
 <?php
+$titre = "abonnement";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
- ?>
+?>
  <div class="sidebar list-group">
  	<a class=" list-group-item" href="account.php">Infos Générales</a>
  	<a class=" list-group-item" href="liste_reservations.php">Réservations</a>

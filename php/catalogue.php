@@ -1,8 +1,7 @@
 <?php
-$_SESSION['page_en_cours'] = "catalogue";
+$titre = "catalogue";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
+
 /*
 *
 *	GESTION DES VARIABLES ET ERREURS

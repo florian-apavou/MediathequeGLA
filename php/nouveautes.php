@@ -1,8 +1,6 @@
 <?php
-$_SESSION['page_en_cours'] = "nouveautes";
+$titre = "nouveautes";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
 
 $_SESSION['type_utilisateur'] = "Admin";
 $_SESSION['id_utilisateur'] = "22";

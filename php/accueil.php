@@ -1,9 +1,7 @@
 <?php
-  $_SESSION['page_en_cours'] = "accueil";
-  include "../php/includes.php";
-  include "../php/fonctions.php";
-  include "../php/header.php";
- ?>
+$titre = "accueil";
+include "../php/includes.php";
+?>
 
 
 C'est ici que se trouve l'accueil

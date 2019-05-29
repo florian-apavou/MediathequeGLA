@@ -1,15 +1,7 @@
 <?php
-$_SESSION['page_en_cours'] = "";
+$titre = "reservation";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
-?>
 
-<script type="text/javascript" src="../js/fonctions.js"></script>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-
-<?php
 $media['id'] = $_REQUEST['idMed'];
 $media['type'] = "CD";
 $media['titre'] = "XEU";

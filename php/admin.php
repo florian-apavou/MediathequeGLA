@@ -1,5 +1,4 @@
 <?php
+$titre = "admin";
 include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
 ?>
