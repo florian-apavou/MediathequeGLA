@@ -117,6 +117,7 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
   position: fixed;
   height: 100%;
   overflow: auto;
+
 }
 
 /* Sidebar links */
@@ -125,6 +126,7 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
   color: black;
   padding: 16px;
   text-decoration: none;
+  background-color: #F4F4F4;
 }
 
 /* Active/current link */
