@@ -43,7 +43,7 @@
 					<ul class="nav navbar-nav ml-lg-auto pl-lg-0">
 						<?php include "../php/buttonAdmin.php" ?>
 						<li class="bg-nav-inverse">
-							<a class="btn btn-primary mx-1 my-1" href="login.php">
+							<a class="btn btn-primary mx-1 my-1" href="account.php">
 								<i class="fa fa-user-circle"></i>
 								<span> Mon Compte</span>
 							</a>
