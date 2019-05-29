@@ -1,6 +1,6 @@
 <?php
 $_SESSION['page_en_cours'] = "login";
-include "../php/includes.php";
+include "../php/logIncludes.php";
 ?>
 
 <!DOCTYPE html>
@@ -8,11 +8,6 @@ include "../php/includes.php";
 <head>
 	<meta charset="utf-8">
 	<title>Connexion</title>
-
-	<?php
-  $_SESSION['page_en_cours'] = "";
-	include "../php/logIncludes.php";
-	?>
 </head>
 <body>
 	<div class="navbar navbar-expand-lg" id="navbar-content">
