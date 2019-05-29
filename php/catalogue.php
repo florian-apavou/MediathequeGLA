@@ -88,7 +88,7 @@ $medias = requete_tableau($requete_medias, "id");
     {
       $html = "";
       $html .= "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
-      <img src=\"".$media["photo"]."\" class=\"card-img-top \" alt=\" Image \">
+      <img src=\"../imgs/".$media["photo"]."\" class=\"card-img-top \" alt=\" Image \">
       <div class=\"card-body\">
       <h5 class=\"card-title\">".$media["titre"]."</h5>
       <p class=\"card-text\">Auteur: ".$media["auteur"]."</p>
