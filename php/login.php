@@ -6,8 +6,7 @@
 
 	<?php
   $_SESSION['page_en_cours'] = "";
-  include "../php/includes.php";
-  include "../php/fonctions.php";
+	include "../php/logIncludes.php";
 	?>
 </head>
 <body>
@@ -23,7 +22,7 @@
 
 	<div class="container">
 		<div class="row formsCo">
-			<div id="connexion" class="col-lg-5 verticalLine">
+			<div id="connexion" class="col-lg-5 verticalLine my-3">
 				<fieldset>
 					<legend>Connexion</legend>
 					<form method="post" action="account.php">

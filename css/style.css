@@ -55,13 +55,13 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
 }
 
 .formsCo{
-  margin: 0;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  margin-right: -50%;
-  transform: translate(-50%, -50%);
-}
+
+    margin: auto;
+    margin-top: 10%;
+    width: 60%;
+    padding: 10px;
+    padding-bottom: 30px;
+  }
 
 .verticalLine {
   border-right: 1px solid lightgrey;
