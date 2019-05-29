@@ -1,5 +1,5 @@
 <?php
-$titre = "abonnement";
+$_SESSION['page_en_cours'] = "abonnement";
 include "../php/includes.php";
 ?>
  <div class="sidebar list-group">

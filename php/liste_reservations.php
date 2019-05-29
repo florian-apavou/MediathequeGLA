@@ -1,5 +1,5 @@
 <?php
-$titre = "liste_reservations";
+$_SESSION['page_en_cours'] = "liste_reservations";
 include "../php/includes.php";
 $_SESSION['type_utilisateur'] = "Admin";
 

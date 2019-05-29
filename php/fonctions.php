@@ -36,6 +36,8 @@ function echobr($var_a_afficher)
 
 function selected($page)
 {
+	if(!isset($titre))
+		echo "wtf";
 	if(isset($titre) && $titre == $page)
 		echo "active";
 }

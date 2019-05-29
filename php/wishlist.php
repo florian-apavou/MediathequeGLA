@@ -1,5 +1,5 @@
 <?php
-$titre = "wishlist";
+$_SESSION['page_en_cours'] = "wishlist";
 include "../php/includes.php";
 ?>
 <div class="sidebar list-group">
