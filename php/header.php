@@ -41,8 +41,9 @@
 				<div class="col-lg-3 col-sm-12 d-flex justify-content-sm-center">
 					<!-- Liste des boutons dispo. Ajouter <li> pour plus d'options-->
 					<ul class="nav navbar-nav ml-lg-auto pl-lg-0">
+						<?php include "../php/buttonAdmin.php" ?>
 						<li class="bg-nav-inverse">
-							<a href="login.php">
+							<a class="btn btn-primary mx-1 my-1" href="login.php">
 								<i class="fa fa-user-circle"></i>
 								<span> Mon Compte</span>
 							</a>
