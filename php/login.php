@@ -1,3 +1,8 @@
+<?php
+$_SESSION['page_en_cours'] = "login";
+include "../php/includes.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>

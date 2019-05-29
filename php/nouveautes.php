@@ -1,5 +1,5 @@
 <?php
-$titre = "nouveautes";
+$_SESSION['page_en_cours'] = "nouveautes";
 include "../php/includes.php";
 
 $_SESSION['type_utilisateur'] = "Admin";

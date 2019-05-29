@@ -1,5 +1,5 @@
 <?php
-$titre = "info_media";
+$_SESSION['page_en_cours'] = "info_media";
 include "../php/includes.php";
 
 //Debug :

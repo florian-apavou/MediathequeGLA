@@ -1,5 +1,5 @@
 <?php
-$titre = "catalogue";
+$_SESSION['page_en_cours'] = "catalogue";
 include "../php/includes.php";
 
 /*

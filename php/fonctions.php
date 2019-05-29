@@ -36,7 +36,7 @@ function echobr($var_a_afficher)
 
 function selected($page)
 {
-	if(isset($titre) && $titre == $page)
+	if(isset($_SESSION['page_en_cours']) && $_SESSION['page_en_cours'] == $page)
 		echo "active";
 }
 

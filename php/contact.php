@@ -1,5 +1,5 @@
 <?php
-$titre = "contact";
+$_SESSION['page_en_cours'] = "contact";
 include "../php/includes.php";
 ?>
 

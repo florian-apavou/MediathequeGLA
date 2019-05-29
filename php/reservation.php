@@ -1,5 +1,5 @@
 <?php
-$titre = "reservation";
+$_SESSION['page_en_cours'] = "reservation";
 include "../php/includes.php";
 
 $media['id'] = $_REQUEST['idMed'];
