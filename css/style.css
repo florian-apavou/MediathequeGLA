@@ -129,8 +129,6 @@ a:hover, a:focus, a:visited, .btn-link:hover, .btn-link:focus, .btn-link:visited
   background-color: #F4F4F4;
 }
 
-/* Active/current link */
-
 
 /* Links on mouse-over */
 .sidebar a:hover:not(.active) {

@@ -51,13 +51,6 @@ $nouveautes[4] = [
 ];
 ?>
 
-<div class="sidebar list-group">
-  <a class=" list-group-item" href="account.php">Infos Générales</a>
-  <a class=" list-group-item" href="liste_reservations.php">Réservations</a>
-  <a class="active list-group-item" href="historique.php">Historique</a>
-  <a class=" list-group-item" href="abonnement.php">Abonnement</a>
-</div>
-<div class="content">
   <div class="container">
       <h1>Derniers ajouts</h1>
       <br>
@@ -188,7 +181,6 @@ $nouveautes[4] = [
         </tbody>
       </table>
   </div>
-</div>
 
 <?php
   include "../php/footer.php";
