@@ -41,8 +41,9 @@
 				<div class="col-lg-3 col-sm-12 d-flex justify-content-sm-center">
 					<!-- Liste des boutons dispo. Ajouter <li> pour plus d'options-->
 					<ul class="nav navbar-nav ml-lg-auto pl-lg-0">
+						<?php include "../php/buttonAdmin.php" ?>
 						<li class="bg-nav-inverse">
-							<a href="login.php">
+							<a class="btn btn-primary mx-1 my-1" href="login.php">
 								<i class="fa fa-user-circle"></i>
 								<span> Mon Compte</span>
 							</a>
@@ -60,16 +61,16 @@
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
 				<ul class="navbar-nav mr-auto list-group" id="ul_menu_header">
 					<li class="nav-item">
-						<a id="menu-accueil" class="nav-link list-group-item <?php selected('accueil')?>" href="index.php">Accueil <span class="sr-only">(current)</span></a>
+						<a id="menu-accueil" class="nav-link list-group-item <?php selected('accueil')?> px-5" href="index.php">Accueil <span class="sr-only">(current)</span></a>
 					</li>
 					<li class="nav-item">
-						<a id="menu-catalogue" class="nav-link list-group-item <?php selected('catalogue')?>" href="catalogue.php">Catalogue</a>
+						<a id="menu-catalogue" class="nav-link list-group-item <?php selected('catalogue')?> px-5" href="catalogue.php">Catalogue</a>
 					</li>
 					<li class="nav-item">
-						<a id="menu-nouveautes" class="nav-link list-group-item <?php selected('nouveautes')?>" href="#">Nouveautés</a>
+						<a id="menu-nouveautes" class="nav-link list-group-item <?php selected('nouveautes')?> px-5" href="nouveautes.php">Nouveautés</a>
 					</li>
 					<li class="nav-item" >
-						<a id="menu-contact" class="nav-link list-group-item <?php selected('contact')?>" href="contact.php">Contact</a>
+						<a id="menu-contact" class="nav-link list-group-item <?php selected('contact')?> px-5" href="contact.php">Contact</a>
 					</li>
 				</ul>
 			</div>

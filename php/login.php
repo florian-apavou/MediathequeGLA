@@ -8,7 +8,6 @@
   $_SESSION['page_en_cours'] = "";
   include "../php/includes.php";
   include "../php/fonctions.php";
-  include "../php/header.php";
 	?>
 </head>
 <body>
@@ -52,29 +51,29 @@
 						<form method="post" action="account.php">
 							<div class="form-row">
 								<div class="form-group col-md-6">
-									<label for="inputEmail4">Email</label>
+									<label for="inputEmail4">Email*</label>
 									<input type="email" class="form-control" id="inputEmail4" placeholder="Email">
 								</div>
 								<div class="form-group col-md-6">
-									<label for="inputPassword4">Mot de Passe</label>
+									<label for="inputPassword4">Mot de Passe*</label>
 									<input type="password" class="form-control" id="inputPassword4" placeholder="Mot de Passe">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="inputAddress">Adresse</label>
+								<label for="inputAddress">Adresse*</label>
 								<input type="text" class="form-control" id="inputAddress" placeholder="1234 Rue Dupont...">
 							</div>
 							<div class="form-group">
-								<label for="inputAddress2">Adresse 2</label>
+								<label for="inputAddress2">Complément d'Adresse</label>
 								<input type="text" class="form-control" id="inputAddress2" placeholder="Appartement, studio ou étage...">
 							</div>
 							<div class="form-row">
 								<div class="form-group col-md-8">
-									<label for="inputCity">Ville</label>
+									<label for="inputCity">Ville*</label>
 									<input type="text" class="form-control" id="inputCity">
 								</div>
 								<div class="form-group col-md-4">
-									<label for="inputZip">Code Postal</label>
+									<label for="inputZip">Code Postal*</label>
 									<input type="text" class="form-control" id="inputZip">
 								</div>
 							</div>

@@ -150,8 +150,9 @@ foreach($medias_en_cours as $id => $media)
 <div class="sidebar list-group">
   <a class=" list-group-item" href="account.php">Infos Générales</a>
   <a class=" list-group-item" href="liste_reservations.php">Réservations</a>
-  <a class="active list-group-item" href="historique.php">Historique</a>
+  <a class="active list-group-item" href="#">Historique</a>
   <a class=" list-group-item" href="abonnement.php">Abonnement</a>
+  <a class=" list-group-item" href="wishlist.php">Notifications</a>
 </div>
 <div class="content">
 <div class="container">

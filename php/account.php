@@ -10,6 +10,7 @@
 	<a class=" list-group-item" href="liste_reservations.php">Réservations</a>
 	<a class=" list-group-item" href="historique.php">Historique</a>
 	<a class=" list-group-item" href="abonnement.php">Abonnement</a>
+  <a class=" list-group-item" href="wishlist.php">Notifications</a>
 </div>
 
 <!-- Page content -->
