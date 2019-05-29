@@ -2,21 +2,21 @@
 
 function requete_tableau($requete, $ligne = null)
 {
-	$db = mysql_connect('localhost', 'login', 'password');
-	mysql_select_db('nom_de_la_base',$db);
-	$req = mysql_query($requete) or die('Erreur SQL !<br>'.$requete.'<br>'.mysql_error());
+	$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
+	if (mysqli_connect_errno()) {
+		return [];
+	}
 	$tableau = [];
-	while($data = mysql_fetch_assoc($req))
+	if($resultat = mysqli_query($bdd, $requete))
     {
-    	if($ligne != null && isset($data[$ligne]))
-    	{ // Si une ligne est envoyée en parametre et qu'elle existe, on la met en index
-    		$tableau[$ligne] = $data;
-    	}
-    	else
-    		$tableau[] = $data;
-    }
-	mysql_close();
 
+			while($row = mysqli_fetch_assoc($resultat))
+			{
+				$tableau[] = $row;
+			}
+    	mysqli_free_result($resultat);
+    }
+	mysqli_close($bdd);
 	return $tableau;
 }
 
