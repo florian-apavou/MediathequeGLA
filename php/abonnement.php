@@ -11,6 +11,7 @@ include "../php/header.php";
   <a class=" list-group-item" href="wishlist.php">Liste de souhait</a>
  </div>
 
+<div class="content">
 <div class="container">
   <h1>Abonnement</h1>
   <p>Grâce à un abonnement mensuel à la médiathèque Karine Le Marchand vous pouvez emprunter des livres, CD, DVD et revues sans payer les frais de location</p>
@@ -39,4 +40,5 @@ include "../php/header.php";
   <button class="btn btn-primary">Renouveller votre abonnement</button>
   <button class="btn btn-danger">Résilier votre abonnement</button>
 
+</div>
 </div>
