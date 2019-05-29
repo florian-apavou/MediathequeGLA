@@ -1,16 +1,8 @@
 <?php
-<<<<<<< HEAD
   $_SESSION['page_en_cours'] = "";
   include "../php/includes.php";
   include "../php/fonctions.php";
   include "../php/header.php";
-=======
-
-include "../php/includes.php";
-include "../php/fonctions.php";
-include "../php/header.php";
-
->>>>>>> c53981029d8a048559baf51635176627e3725cfd
 
 //Debug :
 $_SESSION['type_utilisateur'] = "Admin";
