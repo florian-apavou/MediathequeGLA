@@ -4,26 +4,32 @@ include "../php/includes.php";
 
 $html = "";
 $filtre_recherche = $_GET['search']??null;
-$filtre_type = $_GET['filtre_type']??[];
-$rechargement_filtre = (bool)($_GET['rechargement_filtre']??false);
+if($filtre_recherche == "")
+  unset($filtre_recherche);
 
-$requete_types_medias = "select *
-from TypeMedia";
-//$types_medias = requete_tableau($requete_types_medias);
-$types_medias = [];
-$types_medias[0] = "Livre";
-$types_medias[1] = "CD";
-$types_medias[2] = "DVD";
-$types_medias[3] = "Revue";
+$filtres_type = [];
+if(isset($_GET['Livre']))
+  $filtres_type[] = "\"Livre\"";
+if(isset($_GET['CD']))
+  $filtres_type[] = "\"CD\"";
+if(isset($_GET['DVD']))
+  $filtres_type[] = "\"DVD\"";
+if(isset($_GET['Revue']))
+  $filtres_type[] = "\"Revue\"";
 
-$requete_medias = "select numMedia, titre, auteur, nb_exemplaire, prix, type, photo
-from media m";
+$requete_medias = "select id, titre, auteur, nbExemplaire, prix, type, photo
+from media
+where 1=1";
+
 if(isset($filtre_recherche))
-$requete_medias .= "
-where m.titre like \"%".$filtre_recherche."%\"";
-$medias = requete_tableau($requete_medias, "numMedia");
-var_dump($requete_medias);
-var_dump($medias);
+  $requete_medias .= "
+    and titre like \"%".$filtre_recherche."%\"";
+
+if($filtres_type != [])
+  $requete_medias .= "
+    and type in (".implode(', ', $filtres_type).")";
+
+$medias = requete_tableau($requete_medias, "id");
 ?>
 
 <div class="container-fluid content-page">
@@ -36,22 +42,27 @@ var_dump($medias);
         <tr>
           <td class="col-lg-6">
             <div class="input-group md-form form-sm form-2 pl-0">
-              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" name="search" value="<?= $filtre_recherche?>">
+              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" name="search" value="<?= $filtre_recherche??""?>">
             </div>
           </td>
           <td>
             <div id="div_filtre_type">
-              <?php
-              foreach($types_medias as $id_media => $type_media)
-              {
-                $html .=
-                "<td>
-                  <input type=\"checkbox\" id=\"input_".$id_media."\" name=\"".strtolower($type_media)."\" ".(in_array($id_media, $filtre_type)?"checked":"").">
-                  <label for=\"".strtolower($type_media)."\">".$type_media."</label>
-                </td>";
-              }
-              echo $html;
-              ?>
+              <td>
+                <input type="checkbox" id="input_livre" name="Livre" <?php echo(in_array("\"Livre\"", $filtres_type)?"checked":"")?>>
+                <label for="Livre">Livre</label>
+              </td>
+              <td>
+                <input type="checkbox" id="input_cd" name="CD" <?php echo(in_array("\"CD\"", $filtres_type)?"checked":"")?>>
+                <label for="CD">CD</label>
+              </td>
+              <td>
+                <input type="checkbox" id="input_dvd" name="DVD" <?php echo(in_array("\"DVD\"", $filtres_type)?"checked":"")?>>
+                <label for="DVD">DVD</label>
+              </td>
+              <td>
+                <input type="checkbox" id="input_revue" name="Revue" <?php echo(in_array("\"Revue\"", $filtres_type)?"checked":"")?>>
+                <label for="Revue">Revue</label>
+              </td>
             </div>
           </td>
           <td class="col-lg-3">
@@ -67,7 +78,7 @@ var_dump($medias);
 
 <div class="row justify-content-center">
   <?php
-  if(empty($media))
+  if($medias == [])
   {
     echo "<div>Aucun résultat pour cette recherche...</div>";
   }
@@ -84,7 +95,7 @@ var_dump($medias);
       <input type=\"hidden\" name=\"idMed\" value=\"".$media["id"]."\">
       <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mr-1 my-1\">Plus d'infos</a>";
 
-      if($media["nb_exemplaire"]>0){
+      if($media["nbExemplaire"]>0){
         $html .= "<button type=\"submit\" class=\"btn btn-primary my-1\">Réserver</button>
         </form>
         </div>

@@ -35,12 +35,20 @@ if(isset($_POST['formulaire_envoye']))
 	{// Connexion
 
 		$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
-		$query = mysqli_prepare($bdd, 'SELECT id, mdp, type, prenom
+		$stmt = mysqli_prepare($bdd, 'SELECT id, mdp, type, prenom
         FROM membre WHERE mail = ?');
-		mysqli_stmt_bind_param($query, 's', $_POST['connexion_email']);
-    mysqli_stmt_execute($query);
-    $data = $query->fetch();
-		if($data['mdp'] == md5($_POST['connexion_password'])) // Acces OK !
+		mysqli_stmt_bind_param($stmt, 's', $_POST['connexion_email']);
+    mysqli_stmt_execute($stmt);
+    mysqli_stmt_bind_result($stmt, $id, $mdp, $type, $prenom);
+    while(mysqli_stmt_fetch($stmt))
+		{
+			$data['id'] = $id;
+			$data['mdp'] = $mdp;
+			$data['type'] = $type;
+			$data['prenom'] = $prenom;
+    }
+
+		if($data['mdp'] == ($_POST['connexion_password'])) // Acces OK !
 		{
 		    $_SESSION['id_utilisateur'] = $data['id'];
 		    $_SESSION['rang'] = $data['type'];
@@ -52,7 +60,7 @@ if(isset($_POST['formulaire_envoye']))
 		}
 		else // Acces pas OK !
 		{
-		    $message = '<p>Une erreur s\'est produite
+		    $message = $data['mail']."+".$data['mdp'].'<p>Une erreur s\'est produite
 		    pendant votre identification.<br /> Le mot de passe ou le pseudo
 	            entré n\'est pas correcte.</p><p>Cliquez <a href="./login.php">ici</a>
 		    pour revenir à la page précédente
