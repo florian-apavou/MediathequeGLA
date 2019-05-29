@@ -6,11 +6,11 @@ include "../php/header.php";
 $_SESSION['type_utilisateur'] = "Admin";
 
 if($_SESSION['type_utilisateur'] != "Admin")
-  header('Location: login.php');
+header('Location: login.php');
 
-  include "../php/includes.php";
-  include "../php/fonctions.php";
-  include "../php/header.php";
+include "../php/includes.php";
+include "../php/fonctions.php";
+include "../php/header.php";
 
 
 //Debug :
@@ -108,30 +108,30 @@ $date = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
 
 foreach($medias_en_cours as $id => $media)
 {
-    $tableau_en_cours .= "
-      <tr".($date < $media['date_retour_max']?"":" class=\"table-danger\"").">
-          <td>
-            ".$media["type"]."
-          </td>
-          <td>
-            ".$media["titre"]."
-          </td>
-          <td>
-            ".$media["auteur"]."
-          </td>
-          <td>
-            ".$media["date_reservation"]->format('d/m/Y')."
-          </td>
-          <td>
-            ".$media['date_retour_max']->format('d/m/Y')."
-          </td>
-          <td>
-            ".$media["prix"]."
-          </td>
-          <td>
-            <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
-          </td>
-      </tr>";
+  $tableau_en_cours .= "
+  <tr".($date < $media['date_retour_max']?"":" class=\"table-danger\"").">
+  <td>
+  ".$media["type"]."
+  </td>
+  <td>
+  ".$media["titre"]."
+  </td>
+  <td>
+  ".$media["auteur"]."
+  </td>
+  <td>
+  ".$media["date_reservation"]->format('d/m/Y')."
+  </td>
+  <td>
+  ".$media['date_retour_max']->format('d/m/Y')."
+  </td>
+  <td>
+  ".$media["prix"]."
+  </td>
+  <td>
+  <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+  </td>
+  </tr>";
 }
 
 ?>
@@ -141,52 +141,52 @@ foreach($medias_en_cours as $id => $media)
   <a class="active list-group-item" href="#">Réservations</a>
   <a class=" list-group-item" href="historique.php">Historique</a>
   <a class=" list-group-item" href="abonnement.php">Abonnement</a>
-  <a class=" list-group-item" href="wishlist.php">Liste de souhait</a>
+  <a class=" list-group-item" href="wishlist.php">Notifications</a>
 </div>
 
 <div class="content">
-<div class="container ">
-  <div class="row">
-    <div class="col-lg-12">
-      <h1>Réservations en cours</h1>
-      <br>
-      <table class="table table-hover table-striped self-align-center">
-        <thead>
-          <tr>
-            <th scope="col">
-              Type
-            </th>
-            <th scope="col">
-              Titre
-            </th>
-            <th scope="col">
-              Auteur
-            </th>
-            <th scope="col">
-              Date réservation
-            </th>
-            <th scope="col">
-              Date retour max
-            </th>
-            <th scope="col">
-              Prix
-            </th>
-            <th scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <?= $tableau_en_cours?>
-        </tbody>
-      </table>
-      <br>
+  <div class="container ">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Réservations en cours</h1>
+        <br>
+        <table class="table table-hover table-striped self-align-center">
+          <thead>
+            <tr>
+              <th scope="col">
+                Type
+              </th>
+              <th scope="col">
+                Titre
+              </th>
+              <th scope="col">
+                Auteur
+              </th>
+              <th scope="col">
+                Date réservation
+              </th>
+              <th scope="col">
+                Date retour max
+              </th>
+              <th scope="col">
+                Prix
+              </th>
+              <th scope="col">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <?= $tableau_en_cours?>
+          </tbody>
+        </table>
+        <br>
+      </div>
     </div>
   </div>
-</div>
 </div>
 
 
 <?php
-  include "../php/footer.php";
- ?>
+include "../php/footer.php";
+?>

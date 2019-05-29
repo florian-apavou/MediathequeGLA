@@ -8,7 +8,7 @@ include "../php/header.php";
  	<a class=" list-group-item" href="liste_reservations.php">Réservations</a>
  	<a class=" list-group-item" href="historique.php">Historique</a>
  	<a class="active list-group-item" href="#">Abonnement</a>
-  <a class=" list-group-item" href="wishlist.php">Liste de souhait</a>
+  <a class=" list-group-item" href="wishlist.php">Notifications</a>
  </div>
 
 <div class="content">
