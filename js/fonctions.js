@@ -232,18 +232,21 @@ function reserve_media(id_media)
 	{
     if(data == "ok")
 		{
-			$("#div_success").text("Le média a bien été réservé, vous pouvez désormais aller le récupèrer à la Médiathèque.");
+		bascule_masque("btn_success");
+			$("#btn_success").text("Le média a bien été réservé, vous pouvez désormais aller le récupèrer à la Médiathèque.");
 			bascule_masque("btn_reserver");
 			reduit_nbExemplaire(id_media);
 		}
     else if(data == "informations")
 		{
-			$("#div_success").text("Veuillez remplir toutes les informations");
+		bascule_masque("btn_erreur");
+			$("#btn_erreur").text("Veuillez remplir toutes les informations");
 		}
     else if(data == "nb")
 		{
 			bascule_masque("btn_reserver");
-			$("#div_success").text("Ce média n'est plus disponible");
+			bascule_masque("btn_erreur");
+			$("#btn_erreur").text("Ce média n'est plus disponible");
 		}
 		else
 		{
