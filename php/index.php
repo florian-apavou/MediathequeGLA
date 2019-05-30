@@ -7,8 +7,12 @@ include "../php/includes.php";
   <h1 class="text-center">Bienvenue à la médiathèque Karine Le Marchand</h1>
   <br>
   <p class="text-center">
-    L’inscription gratuite dans les 15 médiathèques intercommunales permet d’emprunter, d’accéder aux ressources numériques en ligne, de consulter l’offre et de gérer son compte en ligne, d’utiliser des postes informatiques, de bénéficier des conseils des bibliothécaires, d’assister à des rencontres, de voir des expos, de participer à des ateliers…
-  </p>
+    Présente depuis 2019, l’e-médiathèque Karine Lemarchand vous redonnera le sourire. 
+	Ouverte à tous, la médiathèque a pour vocation de mettre à portée de main 
+	toute une offre culturelle sous forme d’ouvrages, de documents audiovisuels et autres. 
+	Avec une interface épuré et facile d’utilisation, 
+	la réservation de documents n’as jamais été aussi simple et rapide. 
+	</p>
 
 </br>
 </div>
