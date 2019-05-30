@@ -86,6 +86,15 @@ $medias = requete_tableau($requete_medias, "id");
   else {
     foreach($medias as $id_media => $media)
     {
+      if(isset($_SESSION['id_utilisateur']))
+      {
+        $requete = "select *
+        from notification
+        where membre = ".$_SESSION['id_utilisateur']."
+        and media = ".$media['id'];
+        $deja_notifie = requete_tableau($requete) != [];
+      }
+
       $html = "";
       $html .= "<div class=\"card mx-2 my-2 thumb-post\" style=\"width: 18rem;\">
       <img src=\"../imgs/".$media["photo"]."\" class=\"card-img-top \" alt=\" Image \">
@@ -105,9 +114,9 @@ $medias = requete_tableau($requete_medias, "id");
       }
       else {
         $html .= "<button class=\"btn btn-danger my-1\" disabled>Indisponible</button>";
-        if(/*connecte && pas encore dans les notifiés*/true)
+        if(isset($_SESSION['id_utilisateur']) && !$deja_notifie)
           $html .= "
-            <a id=\"notif_bell\" onClick=\"demande_notification('".$id_media."'); bascule_masque('notif_bell')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"></a>";
+            <a id=\"notif_bell_".$media['id']."\" onClick=\"demander_notification('".$media['id']."'); bascule_masque('notif_bell_".$media['id']."')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"></a>";
         $html .= "
         </form>
         </div>

@@ -2,6 +2,36 @@
 session_start();
 $_SESSION['page_en_cours'] = "wishlist";
 include "../php/includes.php";
+
+if(!isset($_SESSION['id_utilisateur']))
+  header('Location: login.php');
+
+$requete_wishlist = "select *
+from notification n
+left outer join membre m on n.membre = m.id
+left outer join media med on n.media = med.id
+where n.membre = ".$_SESSION['id_utilisateur'];
+
+$wishlist = requete_tableau($requete_wishlist);
+
+$tableau_wishlist = "";
+foreach($wishlist as $id => $media)
+{
+    $tableau_wishlist .= "
+      <tr>
+          <td>
+            ".$media["titre"]."
+          </td>
+          <td>
+            ".$media["auteur"]."
+          </td>
+          <td>
+            <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+            <a id=\"notif_danger\" class=\"btn btn-danger\" onclick=\"annuler_notification('".$media["id"]."')\">Ne plus suivre</a>
+            <a id=\"notif_info\" class=\"btn btn-info\" onclick=\"demander_notification('".$media["id"]."')\" hidden><i class=\"fas fa-bell\"></i> Suivre à nouveau</a>
+          </td>
+      </tr>";
+}
 ?>
 <div class="sidebar list-group">
   <a class=" list-group-item" href="account.php">Infos Générales</a>
@@ -33,22 +63,7 @@ include "../php/includes.php";
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Ch'uis pas rassurer</td>
-              <td>Zambla</td>
-              <td class="d-flex justify-content-center">
-                <button class="btn btn-primary mx-1">Accéder au média</button>
-                <button class="btn btn-danger mx-1">Ne plus suivre</button>
-              </td>
-            </tr>
-            <tr class="table-success">
-              <td>B2O vs 272727 Arrrrrh</td>
-              <td>Baba</td>
-              <td class="d-flex justify-content-center">
-                <button class="btn btn-primary mx-1">Accéder au média</button>
-                <button class="btn btn-danger mx-1">Ne plus suivre</button>
-              </td>
-            </tr>
+            <?= $tableau_wishlist?>
           </tbody>
         </table>
         <br>

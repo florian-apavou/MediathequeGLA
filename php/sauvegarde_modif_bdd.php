@@ -132,6 +132,38 @@ if($fonction_requete == "augmente_nbExemplaire")
   else
       echo $requete;
 }
+if($fonction_requete == "demander_notification")
+{
+  $requete = "insert into notification (membre, media) values (\"".$_SESSION['id_utilisateur']."\", \"".$_POST['media']."\")";
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
+if($fonction_requete == "annuler_notification")
+{
+  $requete = "select id
+  from notification
+  where membre = ".$_SESSION['id_utilisateur']."
+  and media = ".$_POST['media'];
+
+  $id = requete_tableau($requete);
+  if($id != [])
+  {
+    $id = $id[0]['id'];
+    $requete = "delete from notification
+    where id = ".$id;
+    if(mysqli_query($bdd, $requete))
+        echo "ok";
+    else
+        echo $requete;
+  }
+  else {
+    echo "id";
+  }
+
+}
 if($fonction_requete == "changeMdp")
 {
   if($_POST['nouveau_mdp'] == $_POST['nouveau_mdp2'])

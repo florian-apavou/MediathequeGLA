@@ -205,10 +205,42 @@ function changeMdp()
   });
 }
 
-function demande_notification(id_media, id_client)
+function demander_notification(id_media)
 {
-	requete = "insert into notification...";
-	update_bdd(requete);
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "demander_notification",
+		media : id_media,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("notif_danger", "notif_info");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function annuler_notification(id_media)
+{
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "annuler_notification",
+		media : id_media,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("notif_danger", "notif_info");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
 function reserve_media(id_media)

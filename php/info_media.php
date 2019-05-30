@@ -20,6 +20,12 @@ where c.media = ".$id_media;
 
 $commentaires = requete_tableau($requete_commentaires);
 
+$requete = "select *
+from notification
+where membre = ".$_SESSION['id_utilisateur']."
+and media = ".$id_media;
+$deja_notifie = requete_tableau($requete) != [];
+
 $note_moyenne = 0;
 $nb_commentaires = 0;
 foreach($commentaires as $id => $commentaire)
@@ -121,10 +127,10 @@ $note_moyenne = $nb_commentaires == 0 ? "N/A" : $note_moyenne / $nb_commentaires
         </tbody>
       </table>
       <?php
-      if($media["nbExemplaire"] == 0)
+      if($media["nbExemplaire"] == 0 && !$deja_notifie)
       echo "
       <div>
-      <button id=\"notif_bell\" onClick=\"demande_notification('".$id_media."'); bascule_masque('notif_bell')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"></button>
+      <button id=\"notif_bell\" onClick=\"demander_notification('".$id_media."'); bascule_masque('notif_bell')\" class=\"btn btn-info fas fa-bell\" title=\"Me notifier dès sa disponibilité\"> Me notifier dès sa disponiblité</button>
       </div>";
       ?>
     </div>
