@@ -13,18 +13,21 @@ where id = ".$id_media;
 
 $media = requete_tableau($requete_media)[0];
 
-$requete_commentaires = "select *
-from Média m
-left outer join Commentaire c on c.media = m.id
-left outer join Client cl on cl.id = c.client
-where m.id = ".$id_media;
+$requete_commentaires = "select c.id, c.message, m.nom, m.prenom, c.note
+from commentaire c
+  left outer join membre m on m.id = c.membre
+where c.media = ".$id_media;
 
-//$commentaires = requete_tableau($requete_commentaires);
-$commentaires[0] = ["commentaire" => "Très bon livre !","nom" => "Delpech","prenom" => "Michel","note" => 5];
-$commentaires[1] = ["commentaire" => "Fin un peu décevante","nom" => "Ngijol","prenom" => "Thomas","note" => 2];
-$commentaires[2] = ["commentaire" => "Mon fils a adoré","nom" => "Carmil","prenom" => "Sandrine","note" => 4];
-$commentaires[3] = ["commentaire" => "Moyen","nom" => "Goodenough","prenom" => "David","note" => 3];
-$commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "lheur","prenom" => "Spoï","note" => 1];
+$commentaires = requete_tableau($requete_commentaires);
+
+$note_moyenne = 0;
+$nb_commentaires = 0;
+foreach($commentaires as $id => $commentaire)
+{
+  $note_moyenne += $commentaire['note'];
+  $nb_commentaires ++;
+}
+$note_moyenne = $nb_commentaires == 0 ? "N/A" : $note_moyenne / $nb_commentaires;
 
 
 ?>
@@ -37,7 +40,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
     <div class="col-lg-6">
       <div class="d-flex">
         <h1>Infos Pratiques</h1>
-        <button class="btn btn-danger ml-auto">Supprimer ce média</button>
+        <button class="btn btn-danger ml-auto" onclick="supprime_media('<?= $id_media?>')">Supprimer ce média</button>
       </div>
       <br>
       <table class="table table-hover self-align-center">
@@ -55,7 +58,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             echo "
             <td><input id=\"input_titre\" value=\"".$media["titre"]."\" hidden></input>
             <i id=\"pen_titre\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre')\"></i>
-            <i id=\"check_titre\" class=\"fas fa-check\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre'); modifie_titre('".$id_media."')\" hidden></i></td>";
+            <i id=\"check_titre\" class=\"fas fa-check\" onclick=\"bascule_masque('span_titre', 'input_titre', 'pen_titre', 'check_titre'); modifie_titre_media('".$id_media."')\" hidden></i></td>";
             ?>
           </tr>
           <tr>
@@ -70,7 +73,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             echo "
             <td><input id=\"input_auteur\" value=\"".$media["auteur"]."\" hidden></input>
             <i id=\"pen_auteur\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur')\"></i>
-            <i id=\"check_auteur\" class=\"fas fa-check\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur'); modifie_auteur('".$id_media."')\" hidden></i></td>";
+            <i id=\"check_auteur\" class=\"fas fa-check\" onclick=\"bascule_masque('span_auteur', 'input_auteur', 'pen_auteur', 'check_auteur'); modifie_auteur_media('".$id_media."')\" hidden></i></td>";
             ?>
           </tr>
           <tr>
@@ -85,7 +88,7 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             echo "
             <td><input type=\"number\" id=\"input_prix\" value=\"".$media["prix"]."\" hidden></input>
             <i id=\"pen_prix\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix')\"></i>
-            <i id=\"check_prix\" class=\"fas fa-check\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix'); modifie_prix('".$id_media."')\" hidden></i></td>";
+            <i id=\"check_prix\" class=\"fas fa-check\" onclick=\"bascule_masque('span_prix', 'input_prix', 'pen_prix', 'check_prix'); modifie_prix_media('".$id_media."')\" hidden></i></td>";
             ?>
           </tr>
           <tr>
@@ -100,8 +103,16 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
             echo "
             <td><input type=\"number\" id=\"input_nb_exemplaire\" value=\"".$media["nbExemplaire"]."\" hidden></input>
             <i id=\"pen_nb_exemplaire\" class=\"fas fa-pen\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire')\"></i>
-            <i id=\"check_nb_exemplaire\" class=\"fas fa-check\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire'); modifie_nb_exemplaire('".$id_media."')\" hidden></i></td>";
+            <i id=\"check_nb_exemplaire\" class=\"fas fa-check\" onclick=\"bascule_masque('span_nb_exemplaire', 'input_nb_exemplaire', 'pen_nb_exemplaire', 'check_nb_exemplaire'); modifie_nb_exemplaire_media('".$id_media."')\" hidden></i></td>";
             ?>
+          </tr>
+          <tr>
+            <th scope="row">Note moyenne</th>
+            <td>
+              <div>
+                <span id="span_note_moyenne"><?= $note_moyenne?></span>
+              </div>
+            </td>
           </tr>
         </tbody>
       </table>
@@ -116,48 +127,59 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
   </div>
   <br>
   <fieldset>
-    <legend>Laisser un commentaire</legend>
-    <div id="div_commentaire">
-      <div>
-        <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
-      </div>
-      <div class="d-flex">
-        <div class="star-rating" id="div_star-rating">
-          <input id="star-5" type="radio" name="rating" value="star-5">
-          <label for="star-5" title="5 stars">
-            <i id="i_star-5" class="active fa fa-star" aria-hidden="true"></i>
-          </label>
-          <input id="star-4" type="radio" name="rating" value="star-4">
-          <label for="star-4" title="4 stars">
-            <i id="i_star-4" class="active fa fa-star" aria-hidden="true"></i>
-          </label>
-          <input id="star-3" type="radio" name="rating" value="star-3">
-          <label for="star-3" title="3 stars">
-            <i id="i_star-3" class="active fa fa-star" aria-hidden="true"></i>
-          </label>
-          <input id="star-2" type="radio" name="rating" value="star-2">
-          <label for="star-2" title="2 stars">
-            <i id="i_star-2" class="active fa fa-star" aria-hidden="true"></i>
-          </label>
-          <input id="star-1" type="radio" name="rating" value="star-1">
-          <label for="star-1" title="1 star">
-            <i id="i_star-1" class="active fa fa-star" aria-hidden="true"></i>
-          </label>
+    <?php if(isset($_SESSION['id_utilisateur']))
+    {?>
+      <legend>Laisser un commentaire</legend>
+      <div id="div_commentaire">
+        <div>
+          <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
         </div>
-        <button class="btn btn-primary my-3 ml-auto p-2 py-1" value="Envoyer" onclick="commenterMedia('<?= $id_media?>')">Envoyer</button>
+        <div class="d-flex">
+          <div class="star-rating" id="div_star-rating">
+            <input id="star-5" type="radio" name="rating" value="star-5">
+            <label for="star-5" title="5 stars">
+              <i id="i_star-5" class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input id="star-4" type="radio" name="rating" value="star-4">
+            <label for="star-4" title="4 stars">
+              <i id="i_star-4" class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input id="star-3" type="radio" name="rating" value="star-3">
+            <label for="star-3" title="3 stars">
+              <i id="i_star-3" class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input id="star-2" type="radio" name="rating" value="star-2">
+            <label for="star-2" title="2 stars">
+              <i id="i_star-2" class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+            <input id="star-1" type="radio" name="rating" value="star-1">
+            <label for="star-1" title="1 star">
+              <i id="i_star-1" class="active fa fa-star" aria-hidden="true"></i>
+            </label>
+          </div>
+          <button class="btn btn-primary my-3 ml-auto p-2 py-1" value="Envoyer" onclick="commenterMedia('<?= $id_media?>')">Envoyer</button>
+        </div>
       </div>
-    </div>
+      <?php
+    } ?>
     <br>
     <fieldset>
       <legend>Commentaires</legend>
       <table class="table table-striped">
         <?php
-        foreach($commentaires as $commentaire)
+        if($commentaires == [])
         {
-          echo "<tr>
-          <td>".$commentaire['prenom']." ".$commentaire['nom']."</td>
-          <td>".$commentaire['commentaire']."</td><td>".$commentaire['note']."/5</td>
-          </tr>";
+          echo "Aucun commentaire... Soyez le premier à poster un commentaire sur ce média !";
+        }
+        else
+        {
+          foreach($commentaires as $commentaire)
+          {
+            echo "<tr>
+            <td>".$commentaire['prenom']." ".$commentaire['nom']."</td>
+            <td>".$commentaire['message']."</td><td>".$commentaire['note']."/5</td>
+            </tr>";
+          }
         }
         ?>
       </table>

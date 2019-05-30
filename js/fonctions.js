@@ -39,39 +39,115 @@ function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = nu
 	}
 }
 
-function modifie_titre(id)
+function modifie_titre_media(id_media)
 {
 	nouvelle_val = $("#input_titre").val();
 	$("#span_titre").text(nouvelle_val);
-	// On sauvegarde dans la bdd
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieMedia",
+		media : id_media,
+		colonne : "titre",
+		val : nouvelle_val,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("valeur "+nouvelle_val+" bien modifiée");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
-function modifie_auteur(id)
+function modifie_auteur_media(id_media)
 {
 	nouvelle_val = $("#input_auteur").val();
 	$("#span_auteur").text(nouvelle_val);
-	// On sauvegarde dans la bdd
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieMedia",
+		media : id_media,
+		colonne : "auteur",
+		val : nouvelle_val,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("valeur "+nouvelle_val+" bien modifiée");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
-function modifie_prix(id)
+function modifie_prix_media(id_media)
 {
 	nouvelle_val = $("#input_prix").val();
 	$("#span_prix").text(nouvelle_val);
-	// On sauvegarde dans la bdd
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieMedia",
+		media : id_media,
+		colonne : "prix",
+		val : nouvelle_val,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("valeur "+nouvelle_val+" bien modifiée");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
-function modifie_nb_exemplaire(id)
+function modifie_nb_exemplaire_media(id_media)
 {
 	nouvelle_val = $("#input_nb_exemplaire").val();
 	$("#span_nb_exemplaire").text(nouvelle_val);
-	// On sauvegarde dans la bdd
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieMedia",
+		media : id_media,
+		colonne : "nbExemplaire",
+		val : nouvelle_val,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("valeur "+nouvelle_val+" bien modifiée");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
-function recherche_catalogue()
+function supprime_media(id_media)
 {
-	$("#conteneur_central").load("../php/catalogue.php", {
-		filtre_recherche : $("#recherche_catalogue").val(),
-		oui : "non",
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "supprimeMedia",
+		media : id_media,
+	}, function(data)
+	{
+		if(data == "ok")
+		{
+			console.log("id_media bien supprimé");
+			window.location.href = "../php/catalogue.php";
+		}
+		else
+		{
+			console.log(data);
+		}
 	});
 }
 
@@ -132,7 +208,7 @@ function commenterMedia(id_media)
 	{
     if(data == "ok")
 		{
-			$("#div_commentaire").empty().text("Votre commentaire a bien été pris en compte");
+			$("#div_commentaire").empty().text("Votre commentaire a bien été pris en compte.");
 		}
 		else
 		{

@@ -13,10 +13,32 @@ if($fonction_requete == "commenterMedia")
   if(mysqli_query($bdd, $requete))
       echo "ok";
   else
-      echo "nok";
+      echo $requete;
 
 }
+if($fonction_requete == "modifieMedia")
+{
+  $requete = "update media
+  set
+  ".$_POST['colonne']." = \"".$_POST['val']."\"
+  where id = ".$_POST['media'];
 
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
+
+if($fonction_requete == "supprimeMedia")
+{
+  $requete = "delete from media
+  where id = ".$_POST['media'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
 
 
  ?>
