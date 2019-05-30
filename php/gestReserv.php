@@ -2,6 +2,49 @@
 session_start();
 $_SESSION['page_en_cours'] = "admin";
 include "../php/includes.php";
+
+
+
+$requete_reservation = "select m.id, nom, prenom, titre, auteur, datedebut,dateretour,retour
+from reservation r,membre m,media me
+where m.id = r.membre
+And r.media = me.id";
+$reservation = requete_tableau($requete_reservation);
+
+$debut_table = "
+<table class=\"table table-hover table-striped self-align-center\">
+  <thead>
+    <tr>
+      <th scope=\"col\">
+        Id
+      </th>
+      <th scope=\"col\">
+        Nom
+      </th>
+      <th scope=\"col\">
+        Prenom
+      </th>
+      <th scope=\"col\">
+        Titre media
+      </th>
+      <th scope=\"col\">
+        Auteur
+      </th>
+      <th scope=\"col\">
+        Date Emprunt
+      </th>
+      <th scope=\"col\">
+        Date Retour
+      </th>
+      <th scope=\"col\">
+      Retour
+      </th>
+      <th scope=\"col\">
+      Action
+      </th>
+    </tr>
+  </thead>
+  <tbody>";
 ?>
 
 <div class="container">
@@ -27,16 +70,49 @@ include "../php/includes.php";
       </form>
     </fieldset>
 
-    <table class="table">
-      <tr>
-        <th>ID Client</th>
-        <th>Nom</th>
-        <th>Prénom</th>
-        <th>Titre Média</th>
-        <th>Auteur Média</th>
-        <th>Date de réservation</th>
-        <th>Retrait</th>
-        <th>Rendu</th>
-      </tr>
-    </table>
+    <?php
+            if($reservation != [])
+            {
+              echo $debut_table;
+              foreach($reservation as $resa)
+              {
+                echo "
+                  <tr>
+                      <td>
+                        ".$resa["id"]."
+                      </td>
+                      <td>
+                        ".$resa["nom"]."
+                      </td>
+                      <td>
+                        ".$resa["prenom"]."
+                      </td>
+                      <td>
+                        ".$resa["titre"]."
+                      </td>
+                      <td>
+                        ".$resa["auteur"]."
+                      </td>
+                      <td>
+                        ".$resa["datedebut"]."
+                      </td>
+                      <td>
+                        ".$resa["dateretour"]."
+                      </td>
+                      <td>
+                        ".$resa["retour"]."
+                      </td>
+                      <td>
+                      <a href=\"gestReserv.php?id=".$resa["id"]."\" class=\"btn btn-primary\">Rendre</a>
+                    </td>
+                  </tr>";
+              }
+            }
+            else
+            {
+              echo "Aucune reservation presente";
+            }
+          ?>
+        </tbody>
+      </table>
   </div>
