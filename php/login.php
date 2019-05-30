@@ -50,6 +50,7 @@ if(isset($_POST['formulaire_envoye']))
 		    $_SESSION['id_utilisateur'] = $data['id'];
 		    $_SESSION['rang'] = $data['type'];
 		    $_SESSION['prenom'] = $data['prenom'];
+        header('Location: index.php');
 		    $message = '<p>Bienvenue '.$_SESSION['prenom'].',
 				vous êtes maintenant connecté!</p>
 				<p>Cliquez <a href="./index.php">ici</a>
