@@ -5,7 +5,7 @@ include "../php/includes.php";
 ?>
 
 <div class="container">
-  <h1>Ajout de Médias</h1>
+  <h1>Ajout d'un Média</h1>
   <p class="font-italic text-muted">Pour supprimer un média, utiliser la page d'information du média</p>
 
   <form>
