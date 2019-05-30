@@ -12,17 +12,16 @@ include "../php/includes.php";
   </br>
   <hr>
   </br>
-  <form action="/ma-page-de-traitement" method="post">
-    <div>
-      <label for="objet">Objet du message</label>
-      <input type='text' class="form-control" name="objet" placeholder="Objet du Message">
-      <br>
-      <label for="message">Message</label>
-      <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
-    </div>
-    </br>
-    <div>
-      <input type="submit" class="btn btn-primary" value="Envoyer"></input>
-    </div>
-  </form>
+  <div>
+    <label for="objet">Objet du message</label>
+    <input id="objet_contact" type='text' class="form-control" name="objet" placeholder="Objet du Message">
+    <br>
+    <label for="message">Message</label>
+    <textarea id="message_contact" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
+  </div>
+  </br>
+  <div>
+    <input id="btn_envoyer" class="btn btn-primary" value="Envoyer" onclick="contactAdmin()"></input>
+    <input id="btn_success" class="btn btn-success" value="Bien envoyé" hidden></input>
+  </div>
 </div>

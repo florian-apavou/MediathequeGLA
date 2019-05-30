@@ -216,3 +216,26 @@ function commenterMedia(id_media)
 		}
   });
 }
+
+function contactAdmin()
+{
+	objet = $("#objet_contact").val();
+	message = $("#message_contact").val();
+
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "contactAdmin",
+		objet : objet,
+		message : message,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("btn_envoyer", "btn_success");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}

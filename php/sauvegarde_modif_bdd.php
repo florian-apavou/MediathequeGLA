@@ -40,5 +40,14 @@ if($fonction_requete == "supprimeMedia")
       echo $requete;
 }
 
+if($fonction_requete == "contactAdmin")
+{
+  $requete = "insert into contact (membre, objet, message) values (\"".$_SESSION['id_utilisateur']."\", \"".$_POST['objet']."\", \"".$_POST['message']."\")";
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
+
 
  ?>
