@@ -89,10 +89,6 @@ else {
 							<label for="connexion_password">Mot de Passe</label>
 							<input type="password" class="form-control" name="connexion_password" id="connexion_password" placeholder="Mot de Passe" required>
 						</div>
-						<div class="form-group form-check">
-							<input type="checkbox" class="form-check-input" name="connexion_remember_me" id="remember_me">
-							<label class="form-check-label" for="connexion_remember_me">Se rappeler de moi</label>
-						</div>
 						<button type="submit" name="formulaire_envoye" value="connexion" class="btn btn-primary">Connexion</button>
 					</form>
 				</fieldset>
