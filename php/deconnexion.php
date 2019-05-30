@@ -5,5 +5,4 @@ unset($_SESSION['rang']);
 unset($_SESSION['prenom']);
 session_destroy();
 header('Location: index.php');
-//header("Location: http://localhost/MediathequeGLA/php/index.php");
 ?>

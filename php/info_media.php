@@ -15,7 +15,7 @@ $media = requete_tableau($requete_media)[0];
 
 $requete_commentaires = "select c.id, c.message, m.nom, m.prenom, c.note
 from commentaire c
-  left outer join membre m on m.id = c.membre
+left outer join membre m on m.id = c.membre
 where c.media = ".$id_media;
 
 $commentaires = requete_tableau($requete_commentaires);
@@ -40,7 +40,11 @@ $note_moyenne = $nb_commentaires == 0 ? "N/A" : $note_moyenne / $nb_commentaires
     <div class="col-lg-6">
       <div class="d-flex">
         <h1>Infos Pratiques</h1>
-        <button class="btn btn-danger ml-auto" onclick="supprime_media('<?= $id_media?>')">Supprimer ce média</button>
+        <?php
+        if(isset($_SESSION['rang']) && $_SESSION['rang'] == "gestMedia"){
+          echo "<button class=\"btn btn-danger ml-auto\" onclick=\"supprime_media(".$id_media.")\">Supprimer ce média</button>";
+        }
+        ?>
       </div>
       <br>
       <table class="table table-hover self-align-center">
