@@ -4,7 +4,7 @@ $_SESSION['page_en_cours'] = "reservation";
 include "../php/includes.php";
 
 if(!isset($_SESSION['id_utilisateur']))
-  echo "header('Location: login.php')";
+  header('Location: login.php');
 
   $date_debut = new DateTime();
   $date_fin = clone $date_debut;

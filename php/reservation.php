@@ -3,6 +3,8 @@ session_start();
 $_SESSION['page_en_cours'] = "reservation";
 include "../php/includes.php";
 
+if(!isset($_SESSION['id_utilisateur']))
+  header('Location: login.php');
 $requete = "select id, type, titre, auteur, prix
 from media
 where id = ".$_REQUEST['id'];
@@ -14,9 +16,6 @@ $date_reservation = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday'
 $date_retour_max = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
 $duree_reservation = new DateInterval('P15D');
 $date_retour_max = $date_retour_max->add($duree_reservation);
-
-if(!isset($_SESSION['id_utilisateur']))
-  echo "header('Location: login.php')";
 
 $requete_abo = "select id
 from abonnement

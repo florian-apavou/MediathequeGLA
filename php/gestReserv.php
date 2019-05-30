@@ -8,7 +8,7 @@ from reservation r
 left outer join membre m on m.id = r.membre
 left outer join media me on me.id = r.media
 where r.retour = 0";
-$search = $_REQUEST['search'];
+$search = $_REQUEST['search']??null;
 if(isset($search) && $search != "")
 {
   $requete_reservation .= "
