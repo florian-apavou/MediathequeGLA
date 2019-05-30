@@ -96,6 +96,30 @@ if($fonction_requete == "reserveMedia")
   else
     echo "informations";
 }
+if($fonction_requete == "traiterContact")
+{
+  $requete = "update contact
+  set
+  traite = 1
+  where id = ".$_POST['contact'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
+if($fonction_requete == "nontraiterContact")
+{
+  $requete = "update contact
+  set
+  traite = 0
+  where id = ".$_POST['contact'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
 if($fonction_requete == "reduit_nbExemplaire")
 {
   $requete = "select nbExemplaire
@@ -162,7 +186,6 @@ if($fonction_requete == "annuler_notification")
   else {
     echo "id";
   }
-
 }
 if($fonction_requete == "changeMdp")
 {

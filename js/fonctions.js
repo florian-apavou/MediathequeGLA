@@ -236,6 +236,10 @@ function annuler_notification(id_media)
 		{
 			bascule_masque("notif_danger", "notif_info");
 		}
+    else if(data == "id")
+		{
+			console.log("pas cet id");
+		}
 		else
 		{
 			console.log(data);
@@ -318,6 +322,44 @@ function augmente_nbExemplaire(id_media, success)
 		{
 			console.log("nb exemplaire augmenté");
 			success();
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function traiterContact(id_contact)
+{
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "traiterContact",
+		contact : id_contact,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("traite", "non_traite");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function nontraiterContact(id_contact)
+{
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "nontraiterContact",
+		contact : id_contact,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("traite", "non_traite");
 		}
 		else
 		{
