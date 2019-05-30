@@ -121,9 +121,6 @@ function commenterMedia(id_media)
 	else if ($("#star-5").prop('checked')) {
 		note = 5;
 	}
-	requete = "insert into commentaire
-	('message', 'membre', 'media', 'note')
-	VALUES (NULL, commentaire, '4', '3', '5')"
 
 	$.post("../php/sauvegarde_modif_bdd.php",
 	{
@@ -133,11 +130,13 @@ function commenterMedia(id_media)
 		note : note,
 	}, function(data)
 	{
-        console.log(data);
+    if(data == "ok")
+		{
+			$("#div_commentaire").empty().text("Votre commentaire a bien été pris en compte");
+		}
+		else
+		{
+			console.log(data);
+		}
   });
-}
-
-function test()
-{
-	alert('ok');
 }

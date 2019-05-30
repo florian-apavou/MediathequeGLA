@@ -3,8 +3,6 @@ session_start();
 $_SESSION['page_en_cours'] = "nouveautes";
 include "../php/includes.php";
 
-$_SESSION['type_utilisateur'] = "Admin";
-$_SESSION['id_utilisateur'] = "22";
 
 $requete_nouveautes = "select *... 5 MAX dernier id order by desc id";
 

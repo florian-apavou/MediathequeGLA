@@ -117,33 +117,35 @@ $commentaires[4] = ["commentaire" => "A la fin, le héros meurt !!!","nom" => "l
   <br>
   <fieldset>
     <legend>Laisser un commentaire</legend>
-    <div>
-      <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
-    </div>
-    <div class="d-flex">
-      <div class="star-rating" id="div_star-rating">
-        <input id="star-5" type="radio" name="rating" value="star-5">
-        <label for="star-5" title="5 stars">
-          <i id="i_star-5" class="active fa fa-star" aria-hidden="true"></i>
-        </label>
-        <input id="star-4" type="radio" name="rating" value="star-4">
-        <label for="star-4" title="4 stars">
-          <i id="i_star-4" class="active fa fa-star" aria-hidden="true"></i>
-        </label>
-        <input id="star-3" type="radio" name="rating" value="star-3">
-        <label for="star-3" title="3 stars">
-          <i id="i_star-3" class="active fa fa-star" aria-hidden="true"></i>
-        </label>
-        <input id="star-2" type="radio" name="rating" value="star-2">
-        <label for="star-2" title="2 stars">
-          <i id="i_star-2" class="active fa fa-star" aria-hidden="true"></i>
-        </label>
-        <input id="star-1" type="radio" name="rating" value="star-1">
-        <label for="star-1" title="1 star">
-          <i id="i_star-1" class="active fa fa-star" aria-hidden="true"></i>
-        </label>
+    <div id="div_commentaire">
+      <div>
+        <textarea id="msg" class="form-control" name="message" placeholder="Insérez votre message..."></textarea>
       </div>
-      <button class="btn btn-primary my-3 ml-auto p-2 py-1" value="Envoyer" onclick="test();commenterMedia('<?= $id_media?>')">Envoyer</button>
+      <div class="d-flex">
+        <div class="star-rating" id="div_star-rating">
+          <input id="star-5" type="radio" name="rating" value="star-5">
+          <label for="star-5" title="5 stars">
+            <i id="i_star-5" class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          <input id="star-4" type="radio" name="rating" value="star-4">
+          <label for="star-4" title="4 stars">
+            <i id="i_star-4" class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          <input id="star-3" type="radio" name="rating" value="star-3">
+          <label for="star-3" title="3 stars">
+            <i id="i_star-3" class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          <input id="star-2" type="radio" name="rating" value="star-2">
+          <label for="star-2" title="2 stars">
+            <i id="i_star-2" class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+          <input id="star-1" type="radio" name="rating" value="star-1">
+          <label for="star-1" title="1 star">
+            <i id="i_star-1" class="active fa fa-star" aria-hidden="true"></i>
+          </label>
+        </div>
+        <button class="btn btn-primary my-3 ml-auto p-2 py-1" value="Envoyer" onclick="commenterMedia('<?= $id_media?>')">Envoyer</button>
+      </div>
     </div>
     <br>
     <fieldset>

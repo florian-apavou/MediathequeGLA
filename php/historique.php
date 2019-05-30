@@ -3,9 +3,6 @@ session_start();
 $_SESSION['page_en_cours'] = "historique";
 include "../php/includes.php";
 
-$_SESSION['type_utilisateur'] = "Admin";
-$_SESSION['id_utilisateur'] = "22";
-
 if(!isset($_SESSION['id_utilisateur']))
   header('Location: login.php');
 
