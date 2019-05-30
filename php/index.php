@@ -7,7 +7,7 @@ include "../php/includes.php";
   <h1 class="text-center">Bienvenue à la médiathèque Karine Le Marchand</h1>
   <br>
   <p class="text-center">
-    Présente depuis 2019, l’e-médiathèque Karine Lemarchand vous redonnera le sourire. 
+    Présente depuis 2019, l’E-médiathèque KarineLemarchand vous redonnera le sourire. 
 	Ouverte à tous, la médiathèque a pour vocation de mettre à portée de main 
 	toute une offre culturelle sous forme d’ouvrages, de documents audiovisuels et autres. 
 	Avec une interface épuré et facile d’utilisation, 
