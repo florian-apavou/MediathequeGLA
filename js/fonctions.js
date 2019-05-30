@@ -151,6 +151,28 @@ function supprime_media(id_media)
 	});
 }
 
+function modifieMembre(colonne)
+{
+	nouvelle_val = $("#input_"+colonne).val();
+	$("#span_"+colonne).text(nouvelle_val);
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieMembre",
+		colonne : colonne,
+		val : nouvelle_val,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("nouveau "+colonne+" = "+nouvelle_val);
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
 function demande_notification(id_media, id_client)
 {
 	requete = "insert into notification...";
