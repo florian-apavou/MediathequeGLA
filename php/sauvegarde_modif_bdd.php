@@ -58,7 +58,30 @@ if($fonction_requete == "contactAdmin")
   else
       echo $requete;
 }
+if($fonction_requete == "reserveMedia")
+{
+  if(isset($_POST['owner']) && $_POST['owner'] != ""
+    && isset($_POST['cvv']) && $_POST['cvv'] != ""
+    && isset($_POST['cardNumber']) && $_POST['cardNumber'] != ""
+    && isset($_POST['mois']) && $_POST['mois'] != ""
+    && isset($_POST['annee']) && $_POST['annee'] != "")
+  {
+    $date = getdate();
+    $date_reservation = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+    $date_retour_max = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+    $duree_reservation = new DateInterval('P15D');
+    $date_retour_max = $date_retour_max->add($duree_reservation);
 
+    $requete = "insert into reservation (dateDebut, dateRetour, membre, media) values (\"".$date_reservation->format('Y-m-d')."\", \"".$date_retour_max->format('Y-m-d')."\", \"".$_SESSION['id_utilisateur']."\", \"".$_POST['media']."\")";
+
+    if(mysqli_query($bdd, $requete))
+        echo "ok";
+    else
+        echo $requete;
+  }
+  else
+    echo "informations";
+}
 if($fonction_requete == "changeMdp")
 {
   if($_POST['nouveau_mdp'] == $_POST['nouveau_mdp2'])
