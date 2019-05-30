@@ -173,6 +173,38 @@ function modifieMembre(colonne)
   });
 }
 
+function changeMdp()
+{
+	ancien_mdp = $("#ancien_mdp").val();
+	nouveau_mdp = $("#nouveau_mdp").val();
+	nouveau_mdp2 = $("#nouveau_mdp2").val();
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "changeMdp",
+		ancien_mdp : ancien_mdp,
+		nouveau_mdp : nouveau_mdp,
+		nouveau_mdp2 : nouveau_mdp2,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			$("#result_changeMdp").text("Le mot de passe a bien été changé");
+		}
+		else if(data == "nouveaux")
+		{
+			$("#result_changeMdp").text("Le nouveau mot de passe doit être le même que sa confirmation");
+		}
+		else if(data == "ancien")
+		{
+			$("#result_changeMdp").text("L'ancien mot de passe doit être correct");
+		}
+		else
+		{
+			console.log("erreur");
+		}
+  });
+}
+
 function demande_notification(id_media, id_client)
 {
 	requete = "insert into notification...";

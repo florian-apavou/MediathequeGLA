@@ -8,14 +8,14 @@ function requete_tableau($requete, $ligne = null)
 	}
 	$tableau = [];
 	if($resultat = mysqli_query($bdd, $requete))
-    {
+  {
 
-			while($row = mysqli_fetch_assoc($resultat))
-			{
-				$tableau[] = $row;
-			}
-    	mysqli_free_result($resultat);
-    }
+		while($row = mysqli_fetch_assoc($resultat))
+		{
+			$tableau[] = $row;
+		}
+  	mysqli_free_result($resultat);
+  }
 	mysqli_close($bdd);
 	return $tableau;
 }

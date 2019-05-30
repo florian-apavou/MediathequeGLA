@@ -59,5 +59,39 @@ if($fonction_requete == "contactAdmin")
       echo $requete;
 }
 
+if($fonction_requete == "changeMdp")
+{
+  if($_POST['nouveau_mdp'] == $_POST['nouveau_mdp2'])
+  {
+
+		$requete = "select mdp
+        from membre where id = ".$_SESSION['id_utilisateur'];
+
+  	if($resultat = mysqli_query($bdd, $requete))
+    {
+  		while($row = mysqli_fetch_assoc($resultat))
+  		{
+  			$info_membre = $row;
+  		}
+    	mysqli_free_result($resultat);
+      if($info_membre['mdp'] == $_POST['ancien_mdp'])
+      {
+        $requete = "update membre
+        set mdp = \"".$_POST['nouveau_mdp']."\"
+        where id = ".$_SESSION['id_utilisateur'];
+
+        if(mysqli_query($bdd, $requete))
+            echo "ok";
+        else
+            echo $requete;
+      }
+      else
+        echo "ancien";
+    }
+  }
+  else
+    echo "nouveaux";
+}
+
 
  ?>
