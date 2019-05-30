@@ -1,10 +1,5 @@
 page_en_cours = "accueil";
 
-function noteCommentaire(note)
-{
-	$("#span_note_commentaire").text(note+"/5");
-}
-
 function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = null)
 {
 	if(id1 != null)
@@ -100,23 +95,49 @@ function rend_media(id_media)
 
 function update_bdd(requete)
 {
-	$.post("../php/sauvegarde_modif_bdd.php", {requete: requete}, function(data){
+	$.post("../php/sauvegarde_modif_bdd.php", {requete: requete}, function(data)
+	{
         // Tu affiches le contenu dans ta div
         console.log(data);
-    });
+  });
 }
 
-$(window).bind("load", function() {
-   // code here
-	 alert('fin du js?');
-});
-
-function selectionne_menu()
+function commenterMedia(id_media)
 {
-	console.log("sm");
-	$("#ul_menu_header").children().each(function()
+	commentaire = $("#msg").val();
+	note = 0;
+	if ($("#star-1").prop('checked')) {
+		note = 1;
+	}
+	else if ($("#star-2").prop('checked')) {
+		note = 2;
+	}
+	else if ($("#star-3").prop('checked')) {
+		note = 3;
+	}
+	else if ($("#star-4").prop('checked')) {
+		note = 4;
+	}
+	else if ($("#star-5").prop('checked')) {
+		note = 5;
+	}
+	requete = "insert into commentaire
+	('message', 'membre', 'media', 'note')
+	VALUES (NULL, commentaire, '4', '3', '5')"
+
+	$.post("../php/sauvegarde_modif_bdd.php",
 	{
-	console.log(this);
-	})
-	$("#menu_").addClass("active");
+		fonction_requete : "commenterMedia",
+		commentaire : commentaire,
+		media : id_media,
+		note : note,
+	}, function(data)
+	{
+        console.log(data);
+  });
+}
+
+function test()
+{
+	alert('ok');
 }
