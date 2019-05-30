@@ -156,6 +156,34 @@ if($fonction_requete == "augmente_nbExemplaire")
   else
       echo $requete;
 }
+if($fonction_requete == "rend_media")
+{
+  $date = getdate();
+  $date_retour = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+  $requete = "update reservation
+  set
+  emprunte = 0,
+  retour = 1,
+  dateRetour = \"".$date_retour->format('Y-m-d')."\"
+  where id = ".$_POST['reservation'];
+
+  if(mysqli_query($bdd, $requete))
+    echo "ok";
+  else
+    echo $requete;
+}
+if($fonction_requete == "emprunte_media")
+{
+  $requete = "update reservation
+  set
+  emprunte = 1
+  where id = ".$_POST['reservation'];
+
+  if(mysqli_query($bdd, $requete))
+    echo "ok";
+  else
+    echo $requete;
+}
 if($fonction_requete == "demander_notification")
 {
   $requete = "insert into notification (membre, media) values (\"".$_SESSION['id_utilisateur']."\", \"".$_POST['media']."\")";

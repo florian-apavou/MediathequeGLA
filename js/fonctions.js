@@ -321,7 +321,8 @@ function augmente_nbExemplaire(id_media, success)
     if(data == "ok")
 		{
 			console.log("nb exemplaire augmenté");
-			success();
+			if(success != undefined)
+				success();
 		}
 		else
 		{
@@ -368,10 +369,43 @@ function nontraiterContact(id_contact)
   });
 }
 
-function rend_media(id_media)
+function rend_media(id_media, id_reservation)
 {
-	requete = "delete from...";
-	update_bdd(requete);
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "rend_media",
+		reservation : id_reservation,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			augmente_nbExemplaire(id_media);
+			bascule_masque("rend_media_"+id_reservation);
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function emprunte_media(id_media, id_reservation)
+{
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "emprunte_media",
+		reservation : id_reservation,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("rend_media_"+id_reservation, "emprunte_media_"+id_reservation);
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
 function update_bdd(requete)

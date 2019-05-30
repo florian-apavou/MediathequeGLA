@@ -3,21 +3,26 @@ session_start();
 $_SESSION['page_en_cours'] = "admin";
 include "../php/includes.php";
 
-
-
-$requete_reservation = "select m.id, nom, prenom, titre, auteur, datedebut,dateretour,retour
-from reservation r,membre m,media me
-where m.id = r.membre
-And r.media = me.id";
-$reservation = requete_tableau($requete_reservation);
+$requete_reservation = "select m.id, m.nom, m.prenom, me.titre, me.auteur, r.dateDebut,  r.dateRetour, r.retour, r.emprunte, me.id as id_media, r.id as id_reservation
+from reservation r
+left outer join membre m on m.id = r.membre
+left outer join media me on me.id = r.media
+where r.retour = 0";
+$search = $_REQUEST['search'];
+if(isset($search) && $search != "")
+{
+  $requete_reservation .= "
+    and (m.nom like \"%".$search."%\"
+    or m.prenom like \"%".$search."%\"
+    or me.auteur like \"%".$search."%\"
+    or me.titre like \"%".$search."%\")";
+}
+$reservations = requete_tableau($requete_reservation);
 
 $debut_table = "
 <table class=\"table table-hover table-striped self-align-center\">
   <thead>
     <tr>
-      <th scope=\"col\">
-        Id
-      </th>
       <th scope=\"col\">
         Nom
       </th>
@@ -37,14 +42,74 @@ $debut_table = "
         Date Retour
       </th>
       <th scope=\"col\">
-      Retour
-      </th>
-      <th scope=\"col\">
       Action
       </th>
     </tr>
   </thead>
   <tbody>";
+
+  $table_reservation_emprunte = "";
+  $table_reservation_pas_emprunte = "";
+  foreach($reservations as $reservation)
+  {
+    if($reservation['emprunte'] == 0)
+    {
+      $table_reservation_pas_emprunte .= "
+        <tr>
+            <td>
+              ".$reservation["nom"]."
+            </td>
+            <td>
+              ".$reservation["prenom"]."
+            </td>
+            <td>
+              ".$reservation["titre"]."
+            </td>
+            <td>
+              ".$reservation["auteur"]."
+            </td>
+            <td>
+              ".$reservation["dateDebut"]."
+            </td>
+            <td>
+              ".$reservation["dateRetour"]."
+            </td>
+            <td>
+            <a id=\"rend_media_".$reservation['id_reservation']."\" onclick=\"rend_media('".$reservation['id_media']."', '".$reservation['id_reservation']."')\" class=\"btn btn-primary\" hidden>Récupérer le média</a>
+            <a id=\"emprunte_media_".$reservation['id_reservation']."\" onclick=\"emprunte_media('".$reservation['id_media']."', '".$reservation['id_reservation']."')\" class=\"btn btn-warning\">Remettre le média</a>
+          </td>
+        </tr>";
+    }
+    elseif($reservation['emprunte'] == 1)
+    {
+      $table_reservation_emprunte .= "
+        <tr>
+            <td>
+              ".$reservation["nom"]."
+            </td>
+            <td>
+              ".$reservation["prenom"]."
+            </td>
+            <td>
+              ".$reservation["titre"]."
+            </td>
+            <td>
+              ".$reservation["auteur"]."
+            </td>
+            <td>
+              ".$reservation["dateDebut"]."
+            </td>
+            <td>
+              ".$reservation["dateRetour"]."
+            </td>
+            <td>
+            <a id=\"rend_media_".$reservation['id_reservation']."\" onclick=\"rend_media('".$reservation['id_media']."', '".$reservation['id_reservation']."')\" class=\"btn btn-primary\">Récupérer le média</a>
+            <a id=\"emprunte_media_".$reservation['id_reservation']."\" onclick=\"emprunte_media('".$reservation['id_media']."', '".$reservation['id_reservation']."')\" class=\"btn btn-warning\" hidden>Remettre le média</a>
+          </td>
+        </tr>";
+    }
+  }
+
 ?>
 
 <div class="container">
@@ -52,12 +117,12 @@ $debut_table = "
   <br>
   <fieldset>
     <legend>Recherche du Client</legend>
-    <form method="get" action="#">
+    <form method="get" action="gestReserv.php">
       <table>
         <tr>
           <td class="col-lg-6">
             <div class="input-group md-form form-sm form-2 pl-0">
-              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" name="search" value="">
+              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" name="search" value="<?php echo(isset($_REQUEST['search'])?$_REQUEST['search']:"");?>">
             </div>
           </td>
           <td>
@@ -69,50 +134,39 @@ $debut_table = "
         </table>
       </form>
     </fieldset>
-
+    <div>
+    <legend>Remise des réservations</legend>
     <?php
-            if($reservation != [])
+            if($table_reservation_pas_emprunte != "")
             {
               echo $debut_table;
-              foreach($reservation as $resa)
-              {
-                echo "
-                  <tr>
-                      <td>
-                        ".$resa["id"]."
-                      </td>
-                      <td>
-                        ".$resa["nom"]."
-                      </td>
-                      <td>
-                        ".$resa["prenom"]."
-                      </td>
-                      <td>
-                        ".$resa["titre"]."
-                      </td>
-                      <td>
-                        ".$resa["auteur"]."
-                      </td>
-                      <td>
-                        ".$resa["datedebut"]."
-                      </td>
-                      <td>
-                        ".$resa["dateretour"]."
-                      </td>
-                      <td>
-                        ".$resa["retour"]."
-                      </td>
-                      <td>
-                      <a href=\"gestReserv.php?id=".$resa["id"]."\" class=\"btn btn-primary\">Rendre</a>
-                    </td>
-                  </tr>";
-              }
+              echo $table_reservation_pas_emprunte;
+              echo "
+            </tbody>
+          </table>";
             }
             else
             {
-              echo "Aucune reservation presente";
+              echo "Aucune reservation non empruntée en cours";
+            }?>
+      </div>
+    </br>
+      <div>
+      <legend>Retour des emprunts</legend>
+      <?php
+            if($table_reservation_emprunte != "")
+            {
+
+              echo $debut_table;
+              echo $table_reservation_emprunte;
+              echo "
+            </tbody>
+          </table>";
+            }
+            else
+            {
+              echo "Aucune emprunt en cours";
             }
           ?>
-        </tbody>
-      </table>
+      </div>
   </div>
