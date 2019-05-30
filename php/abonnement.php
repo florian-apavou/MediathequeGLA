@@ -56,7 +56,7 @@ else {
     }
     else{
       echo "<p> Vous ne possédez actuellement pas d'abonnement. L'abonnement est de 15e/mois.</p>
-      <button class=\"btn btn-primary\">S'abonner</button>";
+      <a href=\"souscription.php\" class=\"btn btn-primary\">S'abonner</a>";
     }
     ?>
 
