@@ -7,123 +7,42 @@ $_SESSION['type_utilisateur'] = "Admin";
 if($_SESSION['type_utilisateur'] != "Admin")
 header('Location: login.php');
 
-//Debug :
 
-
-$requete_reservations = "select *
-from reservation r
-where r.rendu = 0";
-
-//$medias_en_cours = requete_tableau($requete_reservations);
-$medias_en_cours[0] = [
-  'id' => 5,
-  'client' => "Tom",
-  'type' => "DVD",
-  'titre' => "YMCA 4ever",
-  'auteur' => 'YMCA',
-  "date_reservation" => new DateTime("2019/05/24"),
-  "date_retour_max" => new DateTime("2019/06/09"),
-  "prix" => 5,
-];
-$medias_en_cours[1] = [
-  'id' => 6,
-  'client' => "Tom",
-  "type" => "DVD",
-  "titre" => "La belle et la bête",
-  "auteur" => "Disney",
-  "date_reservation" => new DateTime("2019/05/10"),
-  "date_retour_max" => new DateTime("2019/05/25"),
-  "prix" => 15,
-];
-$medias_en_cours[2] = [
-  'id' => 5,
-  'client' => "Jean",
-  'type' => "DVD",
-  'titre' => "Macarena",
-  'auteur' => 'Damso',
-  "date_reservation" => new DateTime("2019/05/20"),
-  "date_retour_max" => new DateTime("2019/06/05"),
-  "prix" => 5,
-];
-$medias_en_cours[3] = [
-  'id' => 6,
-  'client' => "Gérard",
-  "type" => "CD",
-  "titre" => "Stupvirus",
-  "auteur" => "Stupeflip",
-  "date_reservation" => new DateTime("2019/05/18"),
-  "date_retour_max" => new DateTime("2019/05/2"),
-  "prix" => 15,
-];
-$medias_en_cours[4] = [
-  'id' => 5,
-  'client' => "Gérard",
-  'type' => "Livre",
-  'titre' => "Ce qu'un président ne devrait pas dire",
-  'auteur' => 'François Hollande',
-  "date_reservation" => new DateTime("2019/05/22"),
-  "date_retour_max" => new DateTime("2019/06/07"),
-  "prix" => 5,
-];
-$medias_en_cours[5] = [
-  'id' => 6,
-  'client' => "Lucie",
-  "type" => "DVD",
-  "titre" => "Lulu la fourmi",
-  "auteur" => "Disney",
-  "date_reservation" => new DateTime("2019/05/10"),
-  "date_retour_max" => new DateTime("2019/05/25"),
-  "prix" => 15,
-];
-$medias_en_cours[6] = [
-  'id' => 5,
-  'client' => "Emma",
-  'type' => "CD",
-  'titre' => "Never say never",
-  'auteur' => 'Justin Bieber',
-  "date_reservation" => new DateTime("2019/01/24"),
-  "date_retour_max" => new DateTime("2019/02/09"),
-  "prix" => 5,
-];
-$medias_en_cours[7] = [
-  'id' => 6,
-  'client' => "Kamel",
-  "type" => "DVD",
-  "titre" => "La danse",
-  "auteur" => "Kamel Ouali",
-  "date_reservation" => new DateTime("2019/02/10"),
-  "date_retour_max" => new DateTime("2019/02/25"),
-  "prix" => 15,
-];
+$requete_reservations = "select titre, auteur, type, dateDebut, dateRetour, membre, prix
+from reservation r, media m
+where r.retour = 0
+and r.membre =".$_SESSION["id_utilisateur"]."
+and r.media = m.id";
+$result  = requete_tableau($requete_reservations);
 
 $tableau_en_cours = "";
 $date = getdate();
 $date = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
 
-foreach($medias_en_cours as $id => $media)
+foreach($result as $reservation)
 {
   $tableau_en_cours .= "
-  <tr".($date < $media['date_retour_max']?"":" class=\"table-danger\"").">
+  <tr".($date < $reservation['dateRetour']?"":" class=\"table-danger\"").">
   <td>
-  ".$media["type"]."
+  ".$reservation["type"]."
   </td>
   <td>
-  ".$media["titre"]."
+  ".$reservation["titre"]."
   </td>
   <td>
-  ".$media["auteur"]."
+  ".$reservation["auteur"]."
   </td>
   <td>
-  ".$media["date_reservation"]->format('d/m/Y')."
+  ".$reservation["dateDebut"]->format('d/m/Y')."
   </td>
   <td>
-  ".$media['date_retour_max']->format('d/m/Y')."
+  ".$reservation['dateRetour']->format('d/m/Y')."
   </td>
   <td>
-  ".$media["prix"]."
+  ".$reservation["prix"]."
   </td>
   <td>
-  <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+  <a href=\"info_media.php?id=".$reservation["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
   </td>
   </tr>";
 }
