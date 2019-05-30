@@ -1,5 +1,6 @@
 <?php
 session_start();
+include "../php/fonctions.php";
 
 
 $bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
@@ -66,21 +67,70 @@ if($fonction_requete == "reserveMedia")
     && isset($_POST['mois']) && $_POST['mois'] != ""
     && isset($_POST['annee']) && $_POST['annee'] != "")
   {
-    $date = getdate();
-    $date_reservation = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
-    $date_retour_max = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
-    $duree_reservation = new DateInterval('P15D');
-    $date_retour_max = $date_retour_max->add($duree_reservation);
+    $requete = "select nbExemplaire
+    from media
+    where id = ".$_POST['media'];
 
-    $requete = "insert into reservation (dateDebut, dateRetour, membre, media) values (\"".$date_reservation->format('Y-m-d')."\", \"".$date_retour_max->format('Y-m-d')."\", \"".$_SESSION['id_utilisateur']."\", \"".$_POST['media']."\")";
+    $nbExemplaire = requete_tableau($requete)[0]['nbExemplaire'];
 
-    if(mysqli_query($bdd, $requete))
-        echo "ok";
+    if($nbExemplaire > 0)
+    {
+      $date = getdate();
+      $date_reservation = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+      $date_retour_max = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+      $duree_reservation = new DateInterval('P15D');
+      $date_retour_max = $date_retour_max->add($duree_reservation);
+
+      $requete = "insert into reservation (dateDebut, dateRetour, membre, media) values (\"".$date_reservation->format('Y-m-d')."\", \"".$date_retour_max->format('Y-m-d')."\", \"".$_SESSION['id_utilisateur']."\", \"".$_POST['media']."\")";
+
+      if(mysqli_query($bdd, $requete))
+          echo "ok";
+      else
+          echo $requete;
+    }
     else
-        echo $requete;
+    {
+      echo "nb";
+    }
   }
   else
     echo "informations";
+}
+if($fonction_requete == "reduit_nbExemplaire")
+{
+  $requete = "select nbExemplaire
+  from media
+  where id = ".$_POST['media'];
+
+  $nbExemplaire = requete_tableau($requete)[0]['nbExemplaire'];
+
+  $requete = "update media
+  set
+  nbExemplaire = ".($nbExemplaire - 1)."
+  where id = ".$_POST['media'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
+if($fonction_requete == "augmente_nbExemplaire")
+{
+  $requete = "select nbExemplaire
+  from media
+  where id = ".$_POST['media'];
+
+  $nbExemplaire = requete_tableau($requete)[0]['nbExemplaire'];
+
+  $requete = "update media
+  set
+  nbExemplaire = ".($nbExemplaire + 1)."
+  where id = ".$_POST['media'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
 }
 if($fonction_requete == "changeMdp")
 {
