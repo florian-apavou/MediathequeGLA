@@ -1,5 +1,11 @@
 <?php
 
+function souscription($requete){
+	$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
+	$resultat = mysqli_query($bdd, $requete);
+	mysqli_close($bdd);
+}
+
 function requete_tableau($requete, $ligne = null)
 {
 	$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');

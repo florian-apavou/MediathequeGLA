@@ -3,18 +3,30 @@ session_start();
 $_SESSION['page_en_cours'] = "reservation";
 include "../php/includes.php";
 
-
 if(!isset($_SESSION['id_utilisateur']))
   echo "header('Location: login.php')";
 
   $date_debut = new DateTime();
-  $date_fin = $date_debut;
+  $date_fin = clone $date_debut;
   $date_fin -> add(new DateInterval("P1M"));
 
   $dated = $date_debut->format('d-m-Y');
   $datef = $date_fin->format('d-m-Y');
-?>
 
+  if (count($_POST)) {
+    $requete = "insert into abonnement (dateDebut, dateFin, membre) values ('".$date_debut->format('Y-m-d')."','".$date_fin->format('Y-m-d')."',".$_SESSION["id_utilisateur"].") ";
+    souscription($requete);
+    ?>
+    <div class="container centered-div">
+      <h2>Souscription</h2>
+      <br>
+      <h4 class="text-align p-5">Votre abonnement a été pris en compte !</h4>
+    </div>
+    <?php
+  }
+  else {
+?>
+<form action method="post">
 <div class="container centered-div">
   <h2>Souscription</h2>
   <br>
@@ -72,7 +84,7 @@ if(!isset($_SESSION['id_utilisateur']))
          <div class="row">
            <div class="form-group col" id="card-number-field">
              <label for="cardNumber">Numéro de carte</label>
-             <input type="text" class="form-control" id="cardNumber">
+             <input type="text" name="cb" class="form-control" id="cardNumber">
            </div>
          </div>
          <div class="row">
@@ -111,7 +123,7 @@ if(!isset($_SESSION['id_utilisateur']))
            </div>
          </div>
          <div class="form-group" id="pay-now">
-           <button id="btn_reserver" class="btn btn-primary" onclick="">Payer et réserver</button>
+           <button id="btn_reserver" class="btn btn-primary">Payer et réserver</button>
          </div>
          <btn id="btn_success" class="btn btn-success" disabled hidden></div>
          <btn id="btn_erreur" class="btn btn-danger" disabled hidden></div>
@@ -119,6 +131,8 @@ if(!isset($_SESSION['id_utilisateur']))
      </div>
    </fieldset>
 </div>
+</form>
 <?php
+}
 include "../php/footer.php";
 ?>
