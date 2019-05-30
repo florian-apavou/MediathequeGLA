@@ -4,178 +4,218 @@ $_SESSION['page_en_cours'] = "nouveautes";
 include "../php/includes.php";
 
 
-$requete_nouveautes = "select *... 5 MAX dernier id order by desc id";
+$requete_nouveautes_livre = "select id, type, titre, auteur, nbExemplaire, prix
+from media
+where type = 'Livre'
+order by id desc
+limit 5";
+$nouveautes_livre = requete_tableau($requete_nouveautes_livre);
 
-//$nouveautes = requete_tableau($requete_nouveautes)[0];
-$nouveautes[0] = [
-  'id' => 0,
-  'type' => "Livre",
-  'titre' => "Le livre de la jungle",
-  'auteur' => 'Rudyard Kipling',
-  "nb_exemplaire" => 5,
-  "prix" => 5,
-];
-$nouveautes[1] = [
-  'id' => 1,
-  "type" => "DVD",
-  "titre" => "Comment c'est loin",
-  "auteur" => "Les casseurs flowters",
-  "nb_exemplaire" => 3,
-  "prix" => 15,
-];
-$nouveautes[2] = [
-  'id' => 2,
-  "type" => "CD",
-  "titre" => "Humain à l'eau",
-  "auteur" => "Stromae",
-  "nb_exemplaire" => 5,
-  "prix" => 10,
-];
-$nouveautes[3] = [
-  'id' => 3,
-  "type" => "DVD",
-  "titre" => "Bambi",
-  "auteur" => "Bambo",
-  "nb_exemplaire" => 2,
-  "prix" => 5,
-];
-$nouveautes[4] = [
-  'id' => 4,
-  "type" => "DVD",
-  "titre" => "Les mystérieuses cités d'or",
-  "auteur" => "Esteban",
-  "nb_exemplaire" => 10,
-  "prix" => 5,
-];
+$requete_nouveautes_dvd = "select id, type, titre, auteur, nbExemplaire, prix
+from media
+where type = 'DVD'
+order by id desc
+limit 5";
+$nouveautes_dvd = requete_tableau($requete_nouveautes_dvd);
+
+$requete_nouveautes_cd = "select id, type, titre, auteur, nbExemplaire, prix
+from media
+where type = 'CD'
+order by id desc
+limit 5";
+$nouveautes_cd = requete_tableau($requete_nouveautes_cd);
+
+$requete_nouveautes_revue = "select id, type, titre, auteur, nbExemplaire, prix
+from media
+where type = 'Revue'
+order by id desc
+limit 5";
+$nouveautes_revue = requete_tableau($requete_nouveautes_revue);
+
+$debut_table = "
+<table class=\"table table-hover table-striped self-align-center\">
+  <thead>
+    <tr>
+      <th scope=\"col\">
+        Type
+      </th>
+      <th scope=\"col\">
+        Titre
+      </th>
+      <th scope=\"col\">
+        Auteur
+      </th>
+      <th scope=\"col\">
+        Nombre d'exemplaires
+      </th>
+      <th scope=\"col\">
+        Prix
+      </th>
+      <th scope=\"col\">
+        Action
+      </th>
+    </tr>
+  </thead>
+  <tbody>";
+
 ?>
 
   <div class="container">
       <h1>Derniers ajouts</h1>
-      <br>
-      <table class="table table-hover table-striped self-align-center">
-        <thead>
-          <tr>
-            <th scope="col">
-              Type
-            </th>
-            <th scope="col">
-              Titre
-            </th>
-            <th scope="col">
-              Auteur
-            </th>
-            <th scope="col">
-              Nombre d'exemplaires
-            </th>
-            <th scope="col">
-              Prix
-            </th>
-            <th scope="col">
-              Action
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-              <td>
-                <?=$nouveautes[0]["type"]?>
-              </td>
-              <td>
-                <?=$nouveautes[0]["titre"]?>
-              </td>
-              <td>
-                <?=$nouveautes[0]["auteur"]?>
-              </td>
-              <td>
-                <?=$nouveautes[0]["nb_exemplaire"]?>
-              </td>
-              <td>
-                <?=$nouveautes[0]["prix"]?>
-              </td>
-              <td>
-                <a href="info_media.php?id=<?=$nouveautes[0]["id"]?>" class="btn btn-primary">Plus d'infos</a>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <?=$nouveautes[1]["type"]?>
-              </td>
-              <td>
-                <?=$nouveautes[1]["titre"]?>
-              </td>
-              <td>
-                <?=$nouveautes[1]["auteur"]?>
-              </td>
-              <td>
-                <?=$nouveautes[1]["nb_exemplaire"]?>
-              </td>
-              <td>
-                <?=$nouveautes[1]["prix"]?>
-              </td>
-              <td>
-                <a href="info_media.php?id=<?=$nouveautes[0]["id"]?>" class="btn btn-primary">Plus d'infos</a>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <?=$nouveautes[2]["type"]?>
-              </td>
-              <td>
-                <?=$nouveautes[2]["titre"]?>
-              </td>
-              <td>
-                <?=$nouveautes[2]["auteur"]?>
-              </td>
-              <td>
-                <?=$nouveautes[2]["nb_exemplaire"]?>
-              </td>
-              <td>
-                <?=$nouveautes[2]["prix"]?>
-              </td>
-              <td>
-                <a href="info_media.php?id=<?=$nouveautes[0]["id"]?>" class="btn btn-primary">Plus d'infos</a>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <?=$nouveautes[3]["type"]?>
-              </td>
-              <td>
-                <?=$nouveautes[3]["titre"]?>
-              </td>
-              <td>
-                <?=$nouveautes[3]["auteur"]?>
-              </td>
-              <td>
-                <?=$nouveautes[3]["nb_exemplaire"]?>
-              </td>
-              <td>
-                <?=$nouveautes[3]["prix"]?>
-              </td>
-              <td>
-                <a href="info_media.php?id=<?=$nouveautes[0]["id"]?>" class="btn btn-primary">Plus d'infos</a>
-              </td>
-          </tr>
-          <tr>
-              <td>
-                <?=$nouveautes[4]["type"]?>
-              </td>
-              <td>
-                <?=$nouveautes[4]["titre"]?>
-              </td>
-              <td>
-                <?=$nouveautes[4]["auteur"]?>
-              </td>
-              <td>
-                <?=$nouveautes[4]["nb_exemplaire"]?>
-              </td>
-              <td>
-                <?=$nouveautes[4]["prix"]?>
-              </td>
-              <td>
-                <a href="info_media.php?id=<?=$nouveautes[0]["id"]?>" class="btn btn-primary">Plus d'infos</a>
-              </td>
-          </tr>
+      <hr>
+      </br>
+      <h2>Derniers livre</h2>
+          <?php
+            if($nouveautes_livre != [])
+            {
+              echo $debut_table;
+              foreach($nouveautes_livre as $livre)
+              {
+                echo "
+                  <tr>
+                      <td>
+                        ".$livre["type"]."
+                      </td>
+                      <td>
+                        ".$livre["titre"]."
+                      </td>
+                      <td>
+                        ".$livre["auteur"]."
+                      </td>
+                      <td>
+                        ".$livre["nbExemplaire"]."
+                      </td>
+                      <td>
+                        ".$livre["prix"]."
+                      </td>
+                      <td>
+                        <a href=\"info_media.php?id=".$livre["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+                      </td>
+                  </tr>";
+              }
+            }
+            else
+            {
+              echo "Aucun livre ajouté...";
+            }
+          ?>
+        </tbody>
+      </table>
+      </br>
+      </br>
+      <h2>Derniers DVD</h2>
+          <?php
+            if($nouveautes_dvd != [])
+            {
+              echo $debut_table;
+              foreach($nouveautes_dvd as $dvd)
+              {
+                echo "
+                  <tr>
+                      <td>
+                        ".$dvd["type"]."
+                      </td>
+                      <td>
+                        ".$dvd["titre"]."
+                      </td>
+                      <td>
+                        ".$dvd["auteur"]."
+                      </td>
+                      <td>
+                        ".$dvd["nbExemplaire"]."
+                      </td>
+                      <td>
+                        ".$dvd["prix"]."
+                      </td>
+                      <td>
+                        <a href=\"info_media.php?id=".$dvd["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+                      </td>
+                  </tr>";
+              }
+            }
+            else
+            {
+              echo "Aucun DVD ajouté...";
+            }
+          ?>
+        </tbody>
+      </table>
+      </br>
+      </br>
+      <h2>Derniers CD</h2>
+          <?php
+            if($nouveautes_cd != [])
+            {
+              echo $debut_table;
+              foreach($nouveautes_cd as $cd)
+              {
+                echo "
+                  <tr>
+                      <td>
+                        ".$cd["type"]."
+                      </td>
+                      <td>
+                        ".$cd["titre"]."
+                      </td>
+                      <td>
+                        ".$cd["auteur"]."
+                      </td>
+                      <td>
+                        ".$cd["nbExemplaire"]."
+                      </td>
+                      <td>
+                        ".$cd["prix"]."
+                      </td>
+                      <td>
+                        <a href=\"info_media.php?id=".$cd["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+                      </td>
+                  </tr>";
+              }
+            }
+            else
+            {
+              echo "Aucun CD ajouté...";
+            }
+          ?>
+        </tbody>
+      </table>
+      </br>
+      </br>
+      <h2>Dernières revues</h2>
+          <?php
+            if($nouveautes_revue != [])
+            {
+              echo $debut_table;
+              foreach($nouveautes_revue as $revue)
+              {
+                echo "
+                  <tr>
+                      <td>
+                        ".$revue["type"]."
+                      </td>
+                      <td>
+                        ".$revue["titre"]."
+                      </td>
+                      <td>
+                        ".$revue["auteur"]."
+                      </td>
+                      <td>
+                        ".$revue["nbExemplaire"]."
+                      </td>
+                      <td>
+                        ".$revue["prix"]."
+                      </td>
+                      <td>
+                        <a href=\"info_media.php?id=".$revue["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+                      </td>
+                  </tr>";
+              }
+            }
+            else
+            {
+              echo "Aucune revue ajoutée...";
+            }
+          ?>
         </tbody>
       </table>
   </div>
