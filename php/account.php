@@ -48,7 +48,7 @@ $compte = requete_tableau($requete_compte)[0];
         </tr>
         <tr class="row col-md-12">
           <th class="col-md-1">Email:</th>
-          <td class="col-md-3">
+          <td class="col-md-4">
             <span id="span_mail"><?= $compte["mail"]?></span>
             <input type="text" id="input_mail" value="<?= $compte["mail"]?>" hidden></input>
           </td>
@@ -57,7 +57,7 @@ $compte = requete_tableau($requete_compte)[0];
             <i id="check_mail" class="fas fa-check btn btn-success" onclick="bascule_masque('span_mail', 'input_mail', 'pen_mail', 'check_mail'); modifieMembre('mail')" hidden></i>
           </td>
           <th class="col-md-3">Date de Naissance:</th>
-          <td class="col-md-3">
+          <td class="col-md-2">
             <span id="span_dateNaissance"><?= $compte["dateNaissance"]?></span>
             <input type="text" id="input_dateNaissance" value="<?= $compte["dateNaissance"]?>" hidden></input>
           </td>
