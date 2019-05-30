@@ -28,7 +28,7 @@ $compte = requete_tableau($requete_compte)[0];
       <table class="table table-striped">
         <tr  class="row col-md-12">
           <th class="col-md-1">Nom:</th>
-          <td class="col-md-3">
+          <td class="col-md-4">
             <span id="span_nom"><?= $compte["nom"]?></span>
             <input type="text" id="input_nom" value="<?= $compte["nom"]?>" hidden></input>
           </td>
@@ -37,7 +37,7 @@ $compte = requete_tableau($requete_compte)[0];
             <i id="check_nom" class="fas fa-check btn btn-success" onclick="bascule_masque('span_nom', 'input_nom', 'pen_nom', 'check_nom'); modifieMembre('nom')" hidden></i>
           </td>
           <th class="col-md-1">Prénom:</th>
-          <td class="col-md-3">
+          <td class="col-md-4">
             <span id="span_prenom"><?= $compte["prenom"]?></span>
             <input type="text" id="input_prenom" value="<?= $compte["prenom"]?>" hidden></input>
           </td>
@@ -48,7 +48,7 @@ $compte = requete_tableau($requete_compte)[0];
         </tr>
         <tr class="row col-md-12">
           <th class="col-md-1">Email:</th>
-          <td class="col-md-4">
+          <td class="col-md-3">
             <span id="span_mail"><?= $compte["mail"]?></span>
             <input type="text" id="input_mail" value="<?= $compte["mail"]?>" hidden></input>
           </td>
@@ -57,7 +57,7 @@ $compte = requete_tableau($requete_compte)[0];
             <i id="check_mail" class="fas fa-check btn btn-success" onclick="bascule_masque('span_mail', 'input_mail', 'pen_mail', 'check_mail'); modifieMembre('mail')" hidden></i>
           </td>
           <th class="col-md-3">Date de Naissance:</th>
-          <td class="col-md-2">
+          <td class="col-md-3">
             <span id="span_dateNaissance"><?= $compte["dateNaissance"]?></span>
             <input type="text" id="input_dateNaissance" value="<?= $compte["dateNaissance"]?>" hidden></input>
           </td>
@@ -67,7 +67,7 @@ $compte = requete_tableau($requete_compte)[0];
           </td>
         </tr>
         <tr class="row col-md-12">
-          <th class="col-md-2">Adresse 1:</th>
+          <th class="col-md-2">Adresse:</th>
           <td colspan="2" class="col-md-9">
             <span id="span_adresse"><?= $compte["adresse"]?></span>
             <input type="text" id="input_adresse" value="<?= $compte["adresse"]?>" hidden></input>
@@ -90,7 +90,7 @@ $compte = requete_tableau($requete_compte)[0];
         </tr>
         <tr class="row col-md-12">
           <th class="col-md-1">Ville:</th>
-          <td class="col-md-3">
+          <td class="col-md-4">
             <span id="span_ville"><?= $compte["ville"]?></span>
             <input type="text" id="input_ville" value="<?= $compte["ville"]?>" hidden></input>
           </td>
@@ -99,7 +99,7 @@ $compte = requete_tableau($requete_compte)[0];
             <i id="check_ville" class="fas fa-check btn btn-success" onclick="bascule_masque('span_ville', 'input_ville', 'pen_ville', 'check_ville'); modifieMembre('ville')" hidden></i>
           </td>
           <th class="col-md-2">Code Postal:</th>
-          <td class="col-md-4">
+          <td class="col-md-3">
             <span id="span_codePostal"><?= $compte["codePostal"]?></span>
             <input type="text" id="input_codePostal" value="<?= $compte["codePostal"]?>" hidden></input>
           </td>
@@ -109,7 +109,7 @@ $compte = requete_tableau($requete_compte)[0];
           </td>
         </tr>
         <tr class="row col-md-12">
-          <th class="col-md-1">Téléphone:</th>
+          <th class="col-md-1">Téléphone: </th>
           <td class="col-md-4">
             <span id="span_telephone"><?= $compte["telephone"]?></span>
             <input type="text" id="input_telephone" value="<?= $compte["telephone"]?>" hidden></input>
@@ -123,23 +123,28 @@ $compte = requete_tableau($requete_compte)[0];
     </fieldset>
     </br>
     <fieldset>
-      <div>
-        </br>
-        <h3>Changer votre mot de passe : </h3>
-        <hr>
-        <div id="div_ancien_mdp">
-          <label for='ancien_mdp'>Ancien mot de passe : </label>
-          <input type="password" id="ancien_mdp" name="ancien_mdp"></input>
-        </div>
-        <div id="div_nouveau_mdp">
-          <label for='nouveau_mdp'>Nouveau mot de passe : </label>
-          <input type="password" id="nouveau_mdp" name="nouveau_mdp"></input>
-        </div>
-        <div id="div_nouveau_mdp2">
-          <label for='nouveau_mdp2'>Confirmez votre nouveau mot de passe : </label>
-          <input type="password" id="nouveau_mdp2" name="nouveau_mdp2"></input>
-        </div>
-        <button id="btn_changement_mdp" onclick="changeMdp()">Confirmer</button>
+        <legend>Changer votre mot de passe : </legend>
+        <table class="table">
+          <tr>
+            <div id="div_ancien_mdp">
+            <td><label for='ancien_mdp'>Ancien mot de passe: </label></td>
+            <td><input type="password" id="ancien_mdp" name="ancien_mdp"></input></td>
+            </div>
+          </tr>
+          <tr>
+            <div id="div_nouveau_mdp">
+            <td><label for='nouveau_mdp'>Nouveau mot de passe: </label></td>
+            <td><input type="password" id="nouveau_mdp" name="nouveau_mdp"></input></td>
+            </div>
+          </tr>
+          <tr>
+            <div id="div_nouveau_mdp2">
+            <td><label for='nouveau_mdp2'>Confirmez votre nouveau mot de passe: </label></td>
+            <td><input type="password" id="nouveau_mdp2" name="nouveau_mdp2"></input></td>
+            </div>
+          </tr>
+        </table>
+        <button class="btn btn-success" id="btn_changement_mdp" onclick="changeMdp()">Confirmer</button>
         <div id="result_changeMdp"></div>
       </div>
     </fieldset>
