@@ -97,7 +97,8 @@ $medias = requete_tableau($requete_medias, "id");
       <a href=\"info_media.php?id=".$media["id"]."\" class=\"btn btn-primary mr-1 my-1\">Plus d'infos</a>";
 
       if($media["nbExemplaire"]>0){
-        $html .= "<button type=\"submit\" class=\"btn btn-primary my-1\">Réserver</button>
+        $html .= "
+        <a href=\"reservation.php?id=".$media["id"]."\" class=\"btn btn-primary my-1\">Réserver</a>
         </form>
         </div>
         </div>";

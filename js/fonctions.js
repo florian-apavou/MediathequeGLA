@@ -213,8 +213,37 @@ function demande_notification(id_media, id_client)
 
 function reserve_media(id_media)
 {
-	requete = "update table...";
-	update_bdd(requete);
+	owner = $("#owner").val();
+	cvv = $("#cvv").val();
+	cardNumber = $("#cardNumber").val();
+	mois = $("#mois").val();
+	annee = $("#annee").val();
+
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "reserveMedia",
+		media : id_media,
+		owner : owner,
+		cvv : cvv,
+		cardNumber : cardNumber,
+		mois : mois,
+		annee : annee,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			$("#div_success").text("Le média a bien été réservé, vous pouvez désormais aller le récupèrer à la Médiathèque.");
+			bascule_masque("btn_reserver");
+		}
+    else if(data == "informations")
+		{
+			$("#div_success").text("Veuillez remplir toutes les informations");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
 }
 
 function rend_media(id_media)
