@@ -18,7 +18,7 @@ if(isset($_SESSION['id_utilisateur']))
 		<!-- Colonne Icone -->
 		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12">
 			<!-- Logo Navbar -->
-			<a class="navbar-brand" href="index.php">Médiathèque <br> Karine <br> Lemarchand</a>
+			<a class="navbar-brand" href="index.php">Médiathèque <br> Karine <br> Le Marchand</a>
 		</div>
 	</div>
 	<div class="container">
@@ -32,25 +32,30 @@ if(isset($_POST['formulaire_envoye']))
 	{// Connexion
 
 		$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
-		$stmt = mysqli_prepare($bdd, 'SELECT id, mdp, type, prenom
+		$stmt = mysqli_prepare($bdd, 'SELECT id, mdp, type, prenom, mail
         FROM membre WHERE mail = ?');
 		mysqli_stmt_bind_param($stmt, 's', $_POST['connexion_email']);
     mysqli_stmt_execute($stmt);
-    mysqli_stmt_bind_result($stmt, $id, $mdp, $type, $prenom);
+    mysqli_stmt_bind_result($stmt, $id, $mdp, $type, $prenom, $mail);
+
+    if(!isset($data)) $data = [];
     while(mysqli_stmt_fetch($stmt))
 		{
 			$data['id'] = $id;
 			$data['mdp'] = $mdp;
 			$data['type'] = $type;
 			$data['prenom'] = $prenom;
+			$data['mail'] = $mail;
+      break;
     }
 
-		if($data['mdp'] == ($_POST['connexion_password'])) // Acces OK !
+		if($data['mdp'] == hash('sha256', $_POST['connexion_password'])) // Acces OK !
 		{
 		    $_SESSION['id_utilisateur'] = $data['id'];
 		    $_SESSION['rang'] = $data['type'];
 		    $_SESSION['prenom'] = $data['prenom'];
         header('Location: index.php');
+        die;
 		    $message = '<p>Bienvenue '.$_SESSION['prenom'].',
 				vous êtes maintenant connecté!</p>
 				<p>Cliquez <a href="./index.php">ici</a>
@@ -58,7 +63,7 @@ if(isset($_POST['formulaire_envoye']))
 		}
 		else // Acces pas OK !
 		{
-		    $message = $data['mail']."+".$data['mdp'].'<p>Une erreur s\'est produite
+		    $message = '<p>Une erreur s\'est produite
 		    pendant votre identification.<br /> Le mot de passe ou le pseudo
 	            entré n\'est pas correcte.</p><p>Cliquez <a href="./login.php">ici</a>
 		    pour revenir à la page précédente
@@ -70,7 +75,14 @@ if(isset($_POST['formulaire_envoye']))
 	}
 	elseif($_POST['formulaire_envoye'] == "inscription")
 	{// Inscription
-
+    $bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
+    $requete = "insert into membre (nom, prenom, mail, mdp, adresse, adresseComplement, ville, codePostal, type) values ('".$_POST["inscription_nom"]."', '".$_POST["inscription_prenom"]."', '".$_POST["inscription_email"]."', '".hash('sha256', $_POST["inscription_password"])."', '".$_POST["inscription_adresse"]."', '".$_POST["inscription_complement_adresse"]."', '".$_POST["inscription_ville"]."', '".$_POST["inscription_cp"]."', 'client') ";
+    $id = souscription($requete);
+    $_SESSION['id_utilisateur'] = $id;
+    $_SESSION['rang'] = 'client';
+    $_SESSION['prenom'] = $_POST['inscription_prenom'];
+    header('Location: index.php');
+    die;
 	}
 }
 else {
@@ -106,6 +118,16 @@ else {
 								<div class="form-group col-md-6">
 									<label for="inscription_password">Mot de Passe*</label>
 									<input type="password" class="form-control" name="inscription_password" id="inscription_password" placeholder="Mot de Passe">
+								</div>
+							</div>
+              <div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="inscription_nom">Nom*</label>
+									<input type="text" class="form-control" name="inscription_nom" id="inscription_nom" placeholder="Nom">
+								</div>
+								<div class="form-group col-md-6">
+									<label for="inscription_prenom">Prénom*</label>
+									<input type="text" class="form-control" name="inscription_prenom" id="inscription_prenom" placeholder="Prénom">
 								</div>
 							</div>
 							<div class="form-group">

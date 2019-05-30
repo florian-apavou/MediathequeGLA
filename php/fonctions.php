@@ -3,7 +3,9 @@
 function souscription($requete){
 	$bdd = mysqli_connect('localhost', 'root', '', 'mediatheque');
 	$resultat = mysqli_query($bdd, $requete);
+	$id = mysqli_insert_id($bdd);
 	mysqli_close($bdd);
+	return $id;
 }
 
 function requete_tableau($requete, $ligne = null)
