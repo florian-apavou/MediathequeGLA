@@ -16,13 +16,12 @@ and r.media = m.id";
 $result  = requete_tableau($requete_reservations);
 
 $tableau_en_cours = "";
-$date = getdate();
-$date = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+$timestamp = time();
 
 foreach($result as $reservation)
 {
   $tableau_en_cours .= "
-  <tr".($date < $reservation['dateRetour']?"":" class=\"table-danger\"").">
+  <tr".($timestamp < strtotime($reservation['dateRetour']) ? "" : " class=\"table-danger\"").">
   <td>
   ".$reservation["type"]."
   </td>
