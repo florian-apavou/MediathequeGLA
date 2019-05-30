@@ -10,12 +10,12 @@ $requete_compte = "select nom, prenom, dateNaissance, mail, mdp, telephone, adre
 from membre
 where id = ".$_SESSION['id_utilisateur']." ";
 $compte = requete_tableau($requete_compte);
-
 foreach($compte as $user){
   $nom = $user["nom"];
   $prenom = $user["prenom"];
   $mail = $user["mail"];
   $naissance = $user["dateNaissance"];
+  $naissance = date("j F Y", strtotime($naissance));
   $adresse = $user["adresse"];
   $adresse2 = $user["adresseComplement"];
   $ville = $user["ville"];
