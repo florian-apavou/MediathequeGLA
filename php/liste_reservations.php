@@ -8,7 +8,7 @@ if($_SESSION['type_utilisateur'] != "Admin")
 header('Location: login.php');
 
 
-$requete_reservations = "select titre, auteur, type, dateDebut, dateRetour, membre, prix
+$requete_reservations = "select m.id as media_id, titre, auteur, type, dateDebut, dateRetour, membre, prix
 from reservation r, media m
 where r.retour = 0
 and r.membre =".$_SESSION["id_utilisateur"]."
@@ -33,16 +33,16 @@ foreach($result as $reservation)
   ".$reservation["auteur"]."
   </td>
   <td>
-  ".$reservation["dateDebut"]->format('d/m/Y')."
+  ".date('d/m/Y', strtotime($reservation["dateDebut"]))."
   </td>
   <td>
-  ".$reservation['dateRetour']->format('d/m/Y')."
+  ".date('d/m/Y', strtotime($reservation['dateRetour']))."
   </td>
   <td>
   ".$reservation["prix"]."
   </td>
   <td>
-  <a href=\"info_media.php?id=".$reservation["id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
+  <a href=\"info_media.php?id=".$reservation["media_id"]."\" class=\"btn btn-primary\">Plus d'infos</a>
   </td>
   </tr>";
 }
