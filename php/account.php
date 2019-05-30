@@ -128,19 +128,19 @@ $compte = requete_tableau($requete_compte)[0];
           <tr>
             <div id="div_ancien_mdp">
             <td><label for='ancien_mdp'>Ancien mot de passe: </label></td>
-            <td><input type="password" id="ancien_mdp" name="ancien_mdp"></input></td>
+            <td><input class="form-control" type="password" id="ancien_mdp" name="ancien_mdp"></input></td>
             </div>
           </tr>
           <tr>
             <div id="div_nouveau_mdp">
             <td><label for='nouveau_mdp'>Nouveau mot de passe: </label></td>
-            <td><input type="password" id="nouveau_mdp" name="nouveau_mdp"></input></td>
+            <td><input class="form-control" type="password" id="nouveau_mdp" name="nouveau_mdp"></input></td>
             </div>
           </tr>
           <tr>
             <div id="div_nouveau_mdp2">
             <td><label for='nouveau_mdp2'>Confirmez votre nouveau mot de passe: </label></td>
-            <td><input type="password" id="nouveau_mdp2" name="nouveau_mdp2"></input></td>
+            <td><input class="form-control" type="password" id="nouveau_mdp2" name="nouveau_mdp2"></input></td>
             </div>
           </tr>
         </table>
