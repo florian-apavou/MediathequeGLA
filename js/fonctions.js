@@ -341,7 +341,7 @@ function traiterContact(id_contact)
 	{
     if(data == "ok")
 		{
-			bascule_masque("traite", "non_traite");
+			bascule_masque("traite_"+id_contact, "non_traite_"+id_contact);
 		}
 		else
 		{
@@ -360,7 +360,48 @@ function nontraiterContact(id_contact)
 	{
     if(data == "ok")
 		{
-			bascule_masque("traite", "non_traite");
+			bascule_masque("traite_"+id_contact, "non_traite_"+id_contact);
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function supprimeNotification(id_notification)
+{
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "supprimeNotification",
+		notification : id_notification,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			bascule_masque("notif_"+id_notification, "success_"+id_notification);
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+function notifieMembre(id_notification, mail, prenom, titre, id_media)
+{
+	$.post("../php/envoieMail.php",
+	{
+		notification : id_notification,
+		mail : mail,
+		prenom : prenom,
+		titre : titre,
+		media : id_media,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			supprimeNotification(id_notification);
 		}
 		else
 		{

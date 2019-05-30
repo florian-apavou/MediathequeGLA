@@ -31,7 +31,7 @@ if(!isset($_REQUEST['traite']) && isset($_REQUEST['nontraite']))
 }
 $requete .= "
   order by c.id desc";
-  
+
 $contacts = requete_tableau($requete);
 
 $table_contacts = "";
@@ -59,12 +59,12 @@ foreach($contacts as $id => $contact)
           </td>
           <td>
             ".($contact['traite'] == 0?"
-            <a id=\"traite\" onclick=\"traiterContact(".$contact['idc'].")\" class=\"btn btn-primary\">Considérer comme traité</a>
-            <a id=\"non_traite\" onclick=\"nontraiterContact(".$contact['idc'].")\" class=\"btn btn-danger\" hidden>Considérer comme non-traité</a>
+            <a id=\"traite_".$contact['idc']."\" onclick=\"traiterContact(".$contact['idc'].")\" class=\"btn btn-primary\">Considérer comme traité</a>
+            <a id=\"non_traite_".$contact['idc']."\" onclick=\"nontraiterContact(".$contact['idc'].")\" class=\"btn btn-danger\" hidden>Considérer comme non-traité</a>
             ":
             "
-            <a id=\"traite\" onclick=\"traiterContact(".$contact['idc'].")\" class=\"btn btn-primary\" hidden>Considérer comme traité</a>
-            <a id=\"non_traite\" onclick=\"nontraiterContact(".$contact['idc'].")\" class=\"btn btn-danger\">Considérer comme non-traité</a>
+            <a id=\"traite_".$contact['idc']."\" onclick=\"traiterContact(".$contact['idc'].")\" class=\"btn btn-primary\" hidden>Considérer comme traité</a>
+            <a id=\"non_traite_".$contact['idc']."\" onclick=\"nontraiterContact(".$contact['idc'].")\" class=\"btn btn-danger\">Considérer comme non-traité</a>
             ")."
           </td>
       </tr>";

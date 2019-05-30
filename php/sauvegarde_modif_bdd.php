@@ -39,6 +39,16 @@ if($fonction_requete == "supprimeMedia")
   else
       echo $requete;
 }
+if($fonction_requete == "supprimeNotification")
+{
+  $requete = "delete from notification
+  where id = ".$_POST['notification'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
 if($fonction_requete == "modifieMembre")
 {
   $requete = "update membre
@@ -174,9 +184,16 @@ if($fonction_requete == "rend_media")
 }
 if($fonction_requete == "emprunte_media")
 {
+  $date = getdate();
+  $date_emprunt = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+  $date_retour_max = new DateTime($date['year'].'/'.$date['mon'].'/'.$date['mday']);
+  $duree_reservation = new DateInterval('P15D');
+  $date_retour_max = $date_retour_max->add($duree_reservation);
   $requete = "update reservation
   set
-  emprunte = 1
+  emprunte = 1,
+  dateDebut = \"".$date_emprunt->format('Y-m-d')."\",
+  dateRetour = \"".$date_retour_max->format('Y-m-d')."\"
   where id = ".$_POST['reservation'];
 
   if(mysqli_query($bdd, $requete))

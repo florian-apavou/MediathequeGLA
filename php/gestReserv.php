@@ -30,19 +30,19 @@ $debut_table = "
         Prenom
       </th>
       <th scope=\"col\">
-        Titre media
+        Titre
       </th>
       <th scope=\"col\">
         Auteur
       </th>
       <th scope=\"col\">
-        Date Emprunt
+        Date d'emprunt
       </th>
       <th scope=\"col\">
-        Date Retour
+        Date retour
       </th>
       <th scope=\"col\">
-      Action
+        Actions
       </th>
     </tr>
   </thead>
