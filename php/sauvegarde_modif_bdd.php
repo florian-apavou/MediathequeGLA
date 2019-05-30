@@ -61,6 +61,18 @@ if($fonction_requete == "modifieMembre")
   else
       echo $requete;
 }
+if($fonction_requete == "modifieTypeMembre")
+{
+  $requete = "update membre
+  set
+  type = \"".$_POST['type']."\"
+  where id = ".$_POST['membre'];
+
+  if(mysqli_query($bdd, $requete))
+      echo "ok";
+  else
+      echo $requete;
+}
 if($fonction_requete == "contactAdmin")
 {
   $requete = "insert into contact (membre, objet, message) values (\"".$_SESSION['id_utilisateur']."\", \"".$_POST['objet']."\", \"".$_POST['message']."\")";

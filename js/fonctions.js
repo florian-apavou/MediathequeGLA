@@ -449,6 +449,28 @@ function emprunte_media(id_media, id_reservation)
   });
 }
 
+function modifieTypeMembre(id_membre)
+{
+	type = $("#select_type_"+id_membre).val();
+	$.post("../php/sauvegarde_modif_bdd.php",
+	{
+		fonction_requete : "modifieTypeMembre",
+		membre : id_membre,
+		type : type,
+	}, function(data)
+	{
+    if(data == "ok")
+		{
+			console.log("ok");
+		}
+		else
+		{
+			console.log(data);
+		}
+  });
+}
+
+
 function update_bdd(requete)
 {
 	$.post("../php/sauvegarde_modif_bdd.php", {requete: requete}, function(data)

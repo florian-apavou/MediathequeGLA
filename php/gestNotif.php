@@ -11,6 +11,14 @@ left outer join membre m on m.id = n.membre
 left outer join media me on me.id = n.media";
 
 $search = $_REQUEST['search']??null;
+if(isset($search) && $search != "")
+{
+  $requete .= "
+    where (m.nom like \"%".$search."%\"
+    or m.prenom like \"%".$search."%\"
+    or me.auteur like \"%".$search."%\"
+    or me.titre like \"%".$search."%\")";
+}
 $notifications = requete_tableau($requete);
 
 $table_notif_a_envoyer = "";
