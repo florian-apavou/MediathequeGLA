@@ -5,37 +5,37 @@ function bascule_masque(id1 = null, id2 = null, id3 = null, id4 = null, id5 = nu
 	if(id1 != null)
 	{
 		if($("#"+id1).attr("hidden"))
-			$("#"+id1).removeAttr("hidden");
+		$("#"+id1).removeAttr("hidden");
 		else
-			$("#"+id1).attr("hidden", "hidden");
+		$("#"+id1).attr("hidden", "hidden");
 	}
 	if(id2 != null)
 	{
 		if($("#"+id2).attr("hidden"))
-			$("#"+id2).removeAttr("hidden");
+		$("#"+id2).removeAttr("hidden");
 		else
-			$("#"+id2).attr("hidden", "hidden");
+		$("#"+id2).attr("hidden", "hidden");
 	}
 	if(id3 != null)
 	{
 		if($("#"+id3).attr("hidden"))
-			$("#"+id3).removeAttr("hidden");
+		$("#"+id3).removeAttr("hidden");
 		else
-			$("#"+id3).attr("hidden", "hidden");
+		$("#"+id3).attr("hidden", "hidden");
 	}
 	if(id4 != null)
 	{
 		if($("#"+id4).attr("hidden"))
-			$("#"+id4).removeAttr("hidden");
+		$("#"+id4).removeAttr("hidden");
 		else
-			$("#"+id4).attr("hidden", "hidden");
+		$("#"+id4).attr("hidden", "hidden");
 	}
 	if(id5 != null)
 	{
 		if($("#"+id5).attr("hidden"))
-			$("#"+id5).removeAttr("hidden");
+		$("#"+id5).removeAttr("hidden");
 		else
-			$("#"+id5).attr("hidden", "hidden");
+		$("#"+id5).attr("hidden", "hidden");
 	}
 }
 
@@ -51,7 +51,7 @@ function modifie_titre_media(id_media)
 		val : nouvelle_val,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("valeur "+nouvelle_val+" bien modifiée");
 		}
@@ -59,7 +59,7 @@ function modifie_titre_media(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function modifie_auteur_media(id_media)
@@ -74,7 +74,7 @@ function modifie_auteur_media(id_media)
 		val : nouvelle_val,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("valeur "+nouvelle_val+" bien modifiée");
 		}
@@ -82,7 +82,7 @@ function modifie_auteur_media(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function modifie_prix_media(id_media)
@@ -97,7 +97,7 @@ function modifie_prix_media(id_media)
 		val : nouvelle_val,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("valeur "+nouvelle_val+" bien modifiée");
 		}
@@ -105,7 +105,7 @@ function modifie_prix_media(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function modifie_nb_exemplaire_media(id_media)
@@ -120,7 +120,7 @@ function modifie_nb_exemplaire_media(id_media)
 		val : nouvelle_val,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("valeur "+nouvelle_val+" bien modifiée");
 		}
@@ -128,7 +128,7 @@ function modifie_nb_exemplaire_media(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function supprime_media(id_media)
@@ -162,7 +162,7 @@ function modifieMembre(colonne)
 		val : nouvelle_val,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("nouveau "+colonne+" = "+nouvelle_val);
 		}
@@ -170,7 +170,7 @@ function modifieMembre(colonne)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function changeMdp()
@@ -186,7 +186,7 @@ function changeMdp()
 		nouveau_mdp2 : nouveau_mdp2,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			$("#result_changeMdp").text("Le mot de passe a bien été changé");
 		}
@@ -202,7 +202,7 @@ function changeMdp()
 		{
 			console.log("erreur");
 		}
-  });
+	});
 }
 
 function demander_notification(id_media)
@@ -213,7 +213,7 @@ function demander_notification(id_media)
 		media : id_media,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("notif_danger", "notif_info");
 		}
@@ -221,7 +221,7 @@ function demander_notification(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function annuler_notification(id_media)
@@ -232,11 +232,11 @@ function annuler_notification(id_media)
 		media : id_media,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("notif_danger", "notif_info");
 		}
-    else if(data == "id")
+		else if(data == "id")
 		{
 			console.log("pas cet id");
 		}
@@ -244,7 +244,7 @@ function annuler_notification(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function reserve_media(id_media)
@@ -266,19 +266,22 @@ function reserve_media(id_media)
 		annee : annee,
 	}, function(data)
 	{
-    if(data == "ok")
+		console.log(data);
+		if(data == "ok")
 		{
-		bascule_masque("btn_success");
+			console.log("DATA OK")
+			window.location.replace("confirmation.php");
+			bascule_masque("btn_reussite");
 			$("#btn_success").text("Le média a bien été réservé, vous pouvez désormais aller le récupèrer à la Médiathèque.");
 			bascule_masque("btn_reserver");
 			reduit_nbExemplaire(id_media);
 		}
-    else if(data == "informations")
+		else if(data == "informations")
 		{
-		bascule_masque("btn_erreur");
+			bascule_masque("btn_erreur");
 			$("#btn_erreur").text("Veuillez remplir toutes les informations");
 		}
-    else if(data == "nb")
+		else if(data == "nb")
 		{
 			bascule_masque("btn_reserver");
 			bascule_masque("btn_erreur");
@@ -288,7 +291,7 @@ function reserve_media(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function reduit_nbExemplaire(id_media)
@@ -299,7 +302,7 @@ function reduit_nbExemplaire(id_media)
 		media : id_media,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("nb exemplaire réduit");
 		}
@@ -307,7 +310,7 @@ function reduit_nbExemplaire(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function augmente_nbExemplaire(id_media, success)
@@ -318,17 +321,17 @@ function augmente_nbExemplaire(id_media, success)
 		media : id_media,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("nb exemplaire augmenté");
 			if(success != undefined)
-				success();
+			success();
 		}
 		else
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function traiterContact(id_contact)
@@ -339,7 +342,7 @@ function traiterContact(id_contact)
 		contact : id_contact,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("traite_"+id_contact, "non_traite_"+id_contact);
 		}
@@ -347,7 +350,7 @@ function traiterContact(id_contact)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function nontraiterContact(id_contact)
@@ -358,7 +361,7 @@ function nontraiterContact(id_contact)
 		contact : id_contact,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("traite_"+id_contact, "non_traite_"+id_contact);
 		}
@@ -366,7 +369,7 @@ function nontraiterContact(id_contact)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function supprimeNotification(id_notification)
@@ -377,7 +380,7 @@ function supprimeNotification(id_notification)
 		notification : id_notification,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("notif_"+id_notification, "success_"+id_notification);
 		}
@@ -385,7 +388,7 @@ function supprimeNotification(id_notification)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function notifieMembre(id_notification, mail, prenom, titre, id_media)
@@ -399,7 +402,7 @@ function notifieMembre(id_notification, mail, prenom, titre, id_media)
 		media : id_media,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			supprimeNotification(id_notification);
 		}
@@ -407,7 +410,7 @@ function notifieMembre(id_notification, mail, prenom, titre, id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function rend_media(id_media, id_reservation)
@@ -418,7 +421,7 @@ function rend_media(id_media, id_reservation)
 		reservation : id_reservation,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			augmente_nbExemplaire(id_media);
 			bascule_masque("rend_media_"+id_reservation);
@@ -427,7 +430,7 @@ function rend_media(id_media, id_reservation)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function emprunte_media(id_media, id_reservation)
@@ -438,7 +441,7 @@ function emprunte_media(id_media, id_reservation)
 		reservation : id_reservation,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("rend_media_"+id_reservation, "emprunte_media_"+id_reservation);
 		}
@@ -446,7 +449,7 @@ function emprunte_media(id_media, id_reservation)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function modifieTypeMembre(id_membre)
@@ -459,7 +462,7 @@ function modifieTypeMembre(id_membre)
 		type : type,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			console.log("ok");
 		}
@@ -467,7 +470,7 @@ function modifieTypeMembre(id_membre)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 
@@ -475,9 +478,9 @@ function update_bdd(requete)
 {
 	$.post("../php/sauvegarde_modif_bdd.php", {requete: requete}, function(data)
 	{
-        // Tu affiches le contenu dans ta div
-        console.log(data);
-  });
+		// Tu affiches le contenu dans ta div
+		console.log(data);
+	});
 }
 
 function commenterMedia(id_media)
@@ -508,7 +511,7 @@ function commenterMedia(id_media)
 		note : note,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			$("#div_commentaire").empty().text("Votre commentaire a bien été pris en compte.");
 		}
@@ -516,7 +519,7 @@ function commenterMedia(id_media)
 		{
 			console.log(data);
 		}
-  });
+	});
 }
 
 function contactAdmin()
@@ -531,7 +534,7 @@ function contactAdmin()
 		message : message,
 	}, function(data)
 	{
-    if(data == "ok")
+		if(data == "ok")
 		{
 			bascule_masque("btn_envoyer", "btn_success");
 		}
@@ -539,5 +542,5 @@ function contactAdmin()
 		{
 			console.log(data);
 		}
-  });
+	});
 }

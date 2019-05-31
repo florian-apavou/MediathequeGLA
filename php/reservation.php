@@ -162,8 +162,8 @@ $peut_reserver = !$retard && $nb_reservations < 4;
          <div class="form-group" id="pay-now">
            <button id="btn_reserver" class="btn btn-primary" onclick="reserve_media('<?= $media['id']?>')">Payer et réserver</button>
          </div>
-         <btn id="btn_success" class="btn btn-success" disabled hidden></div>
-         <btn id="btn_erreur" class="btn btn-danger" disabled hidden></div>
+         <button id="btn_reussite" class="btn btn-success" disabled hidden></button>
+         <button id="btn_erreur" class="btn btn-danger" disabled hidden></button>
        </div>
      </div>
    </fieldset>

@@ -83,6 +83,7 @@ if($fonction_requete == "contactAdmin")
 }
 if($fonction_requete == "reserveMedia")
 {
+
   if(isset($_POST['owner']) && $_POST['owner'] != ""
     && isset($_POST['cvv']) && $_POST['cvv'] != ""
     && isset($_POST['cardNumber']) && $_POST['cardNumber'] != ""

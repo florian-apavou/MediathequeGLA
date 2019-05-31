@@ -49,10 +49,7 @@ else {
           <th>Date de fin d'abonnement: </th>
           <td>".$fin."</td>
         </tr>
-      </table>
-
-      <button class=\"btn btn-primary\">Renouveller votre abonnement</button>
-      <button class=\"btn btn-danger\">Résilier votre abonnement</button>";
+      </table>";
     }
     else{
       echo "<p> Vous ne possédez actuellement pas d'abonnement. L'abonnement est de 15e/mois.</p>
