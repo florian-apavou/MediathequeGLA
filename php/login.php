@@ -49,27 +49,39 @@ if(isset($_POST['formulaire_envoye']))
       break;
     }
 
-		if($data['mdp'] == hash('sha256', $_POST['connexion_password'])) // Acces OK !
-		{
-		    $_SESSION['id_utilisateur'] = $data['id'];
-		    $_SESSION['rang'] = $data['type'];
-		    $_SESSION['prenom'] = $data['prenom'];
-        header('Location: index.php');
-        die;
-		    $message = '<p>Bienvenue '.$_SESSION['prenom'].',
-				vous êtes maintenant connecté!</p>
-				<p>Cliquez <a href="./index.php">ici</a>
-				pour revenir à la page d accueil</p>';
-		}
-		else // Acces pas OK !
-		{
-		    $message = '<p>Une erreur s\'est produite
-		    pendant votre identification.<br /> Le mot de passe ou le pseudo
-	            entré n\'est pas correcte.</p><p>Cliquez <a href="./login.php">ici</a>
-		    pour revenir à la page précédente
-		    <br /><br />Cliquez <a href="./index.php">ici</a>
-		    pour revenir à la page d accueil</p>';
-		}
+    if(isset($data['mail'])){
+      if($data['mdp'] == hash('sha256', $_POST['connexion_password'])) // Acces OK !
+  		{
+  		    $_SESSION['id_utilisateur'] = $data['id'];
+  		    $_SESSION['rang'] = $data['type'];
+  		    $_SESSION['prenom'] = $data['prenom'];
+          header('Location: index.php');
+          die;
+  		    $message = '<p>Bienvenue '.$_SESSION['prenom'].',
+  				vous êtes maintenant connecté!</p>
+  				<p>Cliquez <a href="./index.php">ici</a>
+  				pour revenir à la page d accueil</p>';
+  		}
+  		else // Acces pas OK !
+  		{
+  		    $message = '<p>Une erreur s\'est produite
+  		    pendant votre identification.<br /> Le mot de passe ou le pseudo
+  	            entré n\'est pas correcte.</p><p>Cliquez <a href="./login.php">ici</a>
+  		    pour revenir à la page précédente
+  		    <br /><br />Cliquez <a href="./index.php">ici</a>
+  		    pour revenir à la page d accueil</p>';
+  		}
+    }
+    else // Acces pas OK !
+    {
+        $message = '<p>Une erreur s\'est produite
+        pendant votre identification.<br /> Le mot de passe ou le pseudo
+              entré n\'est pas correcte.</p><p>Cliquez <a href="./login.php">ici</a>
+        pour revenir à la page précédente
+        <br /><br />Cliquez <a href="./index.php">ici</a>
+        pour revenir à la page d accueil</p>';
+    }
+
 		mysqli_close($bdd);
 		echo $message;
 	}
