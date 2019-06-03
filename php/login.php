@@ -113,26 +113,26 @@ else {
 							<div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inscription_email">Email*</label>
-									<input type="email" class="form-control" name="inscription_email" id="inscription_email" placeholder="Email">
+									<input type="email" class="form-control" name="inscription_email" id="inscription_email" placeholder="Email" required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inscription_password">Mot de Passe*</label>
-									<input type="password" class="form-control" name="inscription_password" id="inscription_password" placeholder="Mot de Passe">
+									<input type="password" class="form-control" name="inscription_password" id="inscription_password" placeholder="Mot de Passe" required>
 								</div>
 							</div>
               <div class="form-row">
 								<div class="form-group col-md-6">
 									<label for="inscription_nom">Nom*</label>
-									<input type="text" class="form-control" name="inscription_nom" id="inscription_nom" placeholder="Nom">
+									<input type="text" class="form-control" name="inscription_nom" id="inscription_nom" placeholder="Nom" required>
 								</div>
 								<div class="form-group col-md-6">
 									<label for="inscription_prenom">Prénom*</label>
-									<input type="text" class="form-control" name="inscription_prenom" id="inscription_prenom" placeholder="Prénom">
+									<input type="text" class="form-control" name="inscription_prenom" id="inscription_prenom" placeholder="Prénom" required>
 								</div>
 							</div>
 							<div class="form-group">
 								<label for="inscription_adresse">Adresse*</label>
-								<input type="text" class="form-control" name="inscription_adresse" id="inscription_adresse" placeholder="1234 Rue Dupont...">
+								<input type="text" class="form-control" name="inscription_adresse" id="inscription_adresse" placeholder="1234 Rue Dupont..." required>
 							</div>
 							<div class="form-group">
 								<label for="inscription_complement_adresse">Complément d'Adresse</label>
@@ -141,11 +141,11 @@ else {
 							<div class="form-row">
 								<div class="form-group col-md-8">
 									<label for="inscription_ville">Ville*</label>
-									<input type="text" class="form-control" name="inscription_ville" id="inscription_ville">
+									<input type="text" class="form-control" name="inscription_ville" id="inscription_ville" required>
 								</div>
 								<div class="form-group col-md-4">
 									<label for="inscription_cp">Code Postal*</label>
-									<input type="text" class="form-control" name="inscription_cp" id="inscription_cp">
+									<input type="text" class="form-control" name="inscription_cp" id="inscription_cp" required>
 								</div>
 							</div>
 							<button type="submit" name="formulaire_envoye" value="inscription" class="btn btn-primary">S'inscrire</button>

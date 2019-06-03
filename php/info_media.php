@@ -20,11 +20,14 @@ where c.media = ".$id_media;
 
 $commentaires = requete_tableau($requete_commentaires);
 
-$requete = "select *
-from notification
-where membre = ".$_SESSION['id_utilisateur']."
-and media = ".$id_media;
-$deja_notifie = requete_tableau($requete) != [];
+if(isset($_SESSION['id_utilisateur'])){
+  $requete = "select *
+  from notification
+  where membre = ".$_SESSION['id_utilisateur']."
+  and media = ".$id_media;
+  $deja_notifie = requete_tableau($requete) != [];
+}
+else $deja_notifie = true; 
 
 $note_moyenne = 0;
 $nb_commentaires = 0;

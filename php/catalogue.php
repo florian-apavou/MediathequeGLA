@@ -24,7 +24,8 @@ where 1=1";
 
 if(isset($filtre_recherche))
   $requete_medias .= "
-    and titre like \"%".$filtre_recherche."%\"";
+    and titre like \"%".$filtre_recherche."%\"
+    or auteur like  \"%".$filtre_recherche."%\"";
 
 if($filtres_type != [])
   $requete_medias .= "
@@ -43,7 +44,7 @@ $medias = requete_tableau($requete_medias, "id");
         <tr>
           <td class="col-lg-6">
             <div class="input-group md-form form-sm form-2 pl-0">
-              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher..." aria-label="Search" name="search" value="<?= $filtre_recherche??""?>">
+              <input id="input_filtre_recherche" class="form-control my-0 py-1 lime-border" type="text" placeholder="Rechercher titre..." aria-label="Search" name="search" value="<?= $filtre_recherche??""?>">
             </div>
           </td>
           <td>
